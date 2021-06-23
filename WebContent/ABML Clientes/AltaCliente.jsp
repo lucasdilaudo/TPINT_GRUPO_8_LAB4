@@ -31,7 +31,10 @@ Usuario:
 			</tr>
 			<tr> 
 				<th align="left">Sexo</th>
-				<th><input type="text" name="txtSexo"> </th>
+				<th><select name="ddlSexo">
+					<option>Femenino</option>
+					<option>Masculino</option> 
+					</select></th>
 			</tr>
 			<tr> 
 				<th align="left">Nacionalidad</th>
