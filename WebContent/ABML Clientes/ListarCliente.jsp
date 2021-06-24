@@ -1,3 +1,4 @@
+<%@page import="com.sun.javafx.scene.layout.region.Margins.Converter"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -26,30 +27,34 @@
 <body>
 Usuario:
 <br>
-<h1 align="Center">Listar Usuarios</h1>
+<h1 align="Center">Listar Clientes</h1>
 
 	<table id="table_id" class="display">
 		<thead>	
 			<tr>
 				<th>DNI</th>			
-				<th>Nombre</th>	
+				<th>Nombre Completo</th>	
 				<th>Cuil</th>	
 				<th>Direccion</th>	
 				<th>Localidad</th>
-				<th>Usuario</th>		
+				<th>Correo</th>
+				<th>Usuario</th>
+				<th></th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody>
 		<% for(int i=1;i<15;i++){ %>
 			<tr>
 				<th><%= i %></th>	
-				<th> Ejemplo</th>	
+				<th><%= "Nombre" +i %></th>	
 				<th><%= i*1111 %></th>	
 				<th><%= "calle" +122+i %></th>	
 				<th> Localidad</th>	
-				<th>Ejemplo</th>	
-				
-				
+				<th>Ejemplo<%=i %>@mail.com</th>	
+				<th>Usu<%=i %></th>
+				<th> <input type="submit" value="Eliminar" name="btnBajaCliente"> </th>
+				<th> <input type="submit" value="Modificar" name="btnModCliente"> </th>
 			</tr>
 			<%} %>
 		</tbody>

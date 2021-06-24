@@ -13,10 +13,10 @@ Usuario:
 <div align="center">
 <br>
 <br>
-Ingrese el DNI del cliente que desea modificar:   <input type="text" name="txtBuscarDniBaja">
+DNI del cliente que desea modificar:   1111
 <br>
 <br>
-Usuario:  
+Usuario:  Ejemplo1
 <br>
 <br>
 Nueva Contraseña: <input type="text" name="txtNuevaContraseña"> <br><br>

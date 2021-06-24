@@ -7,23 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-Usuario:
+<h1 align="center">Confirmar</h1>
 <br>
-<h1 align="center">Baja Cliente</h1>
-<div align="center" >
+<div align="center"> ¿Esta seguro que desea dar de baja este Cliente?
+<br><br>Dni: 111111 Nombre: Marcos Gomez<br><br><input type="submit" name="ConfirmarSi" value="Si" style=" width: 82px">
+<input type="submit" name="ConfirmarNo" value="No" style=" width: 82px">
 <br>
-<br>
-Ingrese el DNI del cliente que desea dar de baja:   <input type="text" name="txtBuscarDniBaja">
-<br>
-<br>
-Usuario: 
-<br>
-<br>
-<input type="submit" value="Eliminar" name="btnBajaCliente">
 </div>
-
-
-
-
 </body>
 </html>

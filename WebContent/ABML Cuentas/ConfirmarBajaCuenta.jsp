@@ -7,25 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-Usuario:
+<h1 align="center">Confirmar</h1>
 <br>
-<h1 align="center">Baja Cuenta</h1>
-<div align="center" >
+<div align="center"> ¿Esta seguro que desea dar de baja esta Cuenta?<br><br>Nro: 1111
+ CBU: 201111 Nombre del Usuario: Gaston<br><br><input type="submit" name="ConfirmarSi" value="Si" style=" width: 82px">
+<input type="submit" name="ConfirmarNo" value="No" style=" width: 82px">
 <br>
-<br>
-Ingrese el CBU  y Numero de cuenta que desea dar de baja: <br>  <br>
-CBU: <input type="text" name="txtCBUBaja">
-Numero: <input type="text" name="txtNroBaja"> 
-  <br>
-<br>
-Dni: Nombre:
-<br>
-<br>
-<input type="submit" value="Eliminar" name="btnBajaCuenta">
 </div>
-
-
-
-
 </body>
 </html>

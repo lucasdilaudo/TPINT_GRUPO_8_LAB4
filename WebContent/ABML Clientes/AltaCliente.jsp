@@ -44,7 +44,7 @@ Usuario:
 				<th align="left">Fecha </th>
 				<th><input size="3" type="text" name="txtDia">
 					<input size="3" type="text" name="txtMes">
-					<input size="4" type="text" name="txtAnio"> 
+					<input size="3" type="text" name="txtAnio"> 
 					</th>
 			</tr>
 			<tr> 

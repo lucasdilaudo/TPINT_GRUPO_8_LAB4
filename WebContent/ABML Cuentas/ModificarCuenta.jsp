@@ -18,12 +18,11 @@
 			<tr>
 
 				<th align="left">N° de Cuenta</th>
-				<th><input type="text" name="txtNrodeCuenta"></th>
-				<th><input type="submit" name="btnBuscarCuenta" value="Buscar Cuenta">
-			<tr>
+				<th>123</th>
+				<tr>
 			<tr>
 				<th align="left">CBU</th>
-				<th><input type="text" name="txtCBU"></th>
+				<th>1312</th>
 			</tr>
 			<tr>
 				<th align="left">Tipo de Cuenta</th>
@@ -43,7 +42,7 @@
 			</tr>
 			<tr>
 				<th align="left">Saldo</th>
-				<th>$ 10.000</th>
+				<th><input type="text" name="txtSaldo"></th>
 		
 
 		</table>

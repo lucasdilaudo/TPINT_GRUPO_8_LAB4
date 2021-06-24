@@ -38,6 +38,8 @@ Usuario:
 				<th>Tipo de Cuenta</th>
 				<th>Fecha de Creacion</th>
 				<th>Saldo</th>		
+				<th></th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -50,7 +52,8 @@ Usuario:
 				<th> Caja de ahorro  </th>	
 				<th><%= i+1+"/"+6+"/"+2021 %> </th>	
 				<th><%= i*20020 %>
-				
+				<th> <input type="submit" value="Eliminar" name="btnBajaCuenta">
+				<th> <input type="submit" value="Modificar" name="btnModCuenta">
 			</tr>
 			<%} %>
 		</tbody>
