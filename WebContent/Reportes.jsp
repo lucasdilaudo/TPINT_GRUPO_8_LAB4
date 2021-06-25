@@ -22,13 +22,13 @@
 		
 		 <br>Fecha de fin:<input type="text" name="txtFechaFin"><br>
 		  
-		 <br><input type="submit" name="btnParametros" value="Parametros de ingreso"><br>
+		 <br><input type="submit" name="btnFiltrar" value="Filtrar"><br>
 		
 		<br><input type="submit" name="btnDeudores" value="Deudores"><br>
 				
 		<br><input type="submit" name="btnMontoTotalCuentas" value="Monto total de cuentas"><br>
 		
-		<br><input type="submit" name="btnMontoTotalCuentas" value="Monto total de cuentas"><br><br><br><br>
+		<br><input type="submit" name="btnMontoTotalCuentas" value="Monto total de cuentas"><br>
 		
 		</div>
 		<table name="tablaReportes" border="1" align="center">
