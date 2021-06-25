@@ -56,6 +56,7 @@
 			<div><a href="Transferencias.jsp"> Transferencias </a></div><br>
 			<div><a href="Prestamos.jsp"> Solicitar Prestamo </a></div><br>
 			<div><a href="Perfil.jsp"> Mi Perfil </a></div><br>
+			<div><a href="PagoDePrestamos.jsp"> Pago de prestamos </a></div><br>
 		</div>
 	</div>
 </body>
