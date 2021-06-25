@@ -23,7 +23,7 @@ Usuario:
 		    height: auto;">
 	Gestion de Clientes:
  <br>	<br>	
-		 <a href="ABML Clientes/AltaCliente.jsp">Alta Cliente</a><br>
+		 <a href="ABML Clientes/AltaCliente.jsp">Alta Cliente</a><br><br>
 		
 		<a href="ABML Clientes/ListarCliente.jsp">Listar Clientes</a><br>
 		
@@ -37,7 +37,7 @@ Usuario:
 		    height: auto;">
 	Gestion de Cuentas:
  <br>	<br>	
-		 <a href="ABML Cuentas/AltaCuenta.jsp">Alta Cuenta</a><br>
+		 <a href="ABML Cuentas/AltaCuenta.jsp">Alta Cuenta</a><br><br>
 		<a href="ABML Cuentas/ListarCuenta.jsp">Listar Cuenta</a><br>
 		
 		
@@ -52,8 +52,8 @@ Usuario:
 		    height: auto;">
 	<br>
 	<br>
-		<a href="Autorizacion">Autorizacion de prestamos </a><br>
-		<a href="Reportes">Reportes</a>
+		<a href="AutorizacionDePrestamos.jsp">Autorizacion de prestamos </a><br><br>
+		<a href="Reportes.jsp">Reportes</a>
 		</div>
 </body>
 </html>
