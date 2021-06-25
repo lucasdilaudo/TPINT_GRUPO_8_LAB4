@@ -6,11 +6,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Modificar Cuenta</title>
 </head>
 <body>
 <% LocalDate fecha = LocalDate.now(); %>
-	Usuario:
+	Usuario: 
+
 	<br>
 	<h1 align="center">Modificar  Cuenta</h1>
 	<div style="table-layout: auto" align="center">

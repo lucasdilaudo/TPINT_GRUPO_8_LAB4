@@ -4,9 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Confirmar Baja</title>
 </head>
 <body>
+Usuario:
+<br>
 <h1 align="center">Confirmar</h1>
 <br>
 <div align="center"> ¿Esta seguro que desea dar de baja este Cliente?
