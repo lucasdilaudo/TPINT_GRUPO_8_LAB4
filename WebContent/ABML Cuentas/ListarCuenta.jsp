@@ -1,3 +1,7 @@
+<%@page import="Negocio.NegocioCuenta"%>
+<%@page import="entidades.Cuenta"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -26,6 +30,7 @@
 <body>
 Usuario:
 <br>
+
 <h1 align="Center">Listar Cuentas</h1>
 
 	<table id="table_id" class="display">
@@ -43,18 +48,36 @@ Usuario:
 			</tr>
 		</thead>
 		<tbody>
-		<% for(int i=1;i<15;i++){ %>
+		<%ArrayList<Cuenta> ac = NegocioCuenta.ObtenerTodo();
+			
+			for(Cuenta c : ac){
+				
+		%>
+		
 			<tr>
-				<th><%= i %></th>	
-				<th><%=200000+i*1111 %></th>	
-				<th><%= i*1111 %></th>	
-				<th><%= "Nombre "+ i %></th>	
-				<th> Caja de ahorro  </th>	
-				<th><%= i+1+"/"+6+"/"+2021 %> </th>	
-				<th><%= i*20020 %>
-				<th> <input type="submit" value="Eliminar" name="btnBajaCuenta">
-				<th> <input type="submit" value="Modificar" name="btnModCuenta">
+				
+					<th><%= c.getNroCuenta() %></th>	
+					<th><%= c.getCBU() %></th>	
+					<th><%= c.getDNICliente() %></th>	
+					<th><%= "Nombre " %></td>	
+					<th><%= c.getTipoDeCuenta() %>  </th>	
+					<th><%= c.getFechaCreacion() %> </th>	
+					<th><%= c.getSaldo() %>
+					<th> <input type="submit" value="Eliminar" name="btnBajaCuenta"></th>
+					<th> <input type="submit" value="Modificar" name="btnModCuenta"></th>		
+		
+	
+				
+				
+				
+			
+				
+				
+
+					
 			</tr>
+			
+		
 			<%} %>
 		</tbody>
 	

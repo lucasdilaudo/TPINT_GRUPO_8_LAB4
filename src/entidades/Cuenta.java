@@ -2,7 +2,7 @@ package entidades;
 
 public class Cuenta {
 	
-	private String tipoDeCuenta;
+	private int tipoDeCuenta;
 	private String nroCuenta;
 	private String CBU;
 	private String DNICliente;
@@ -13,11 +13,11 @@ public class Cuenta {
 		saldo=10000;
 	}
 
-	public String getTipoDeCuenta() {
+	public int getTipoDeCuenta() {
 		return tipoDeCuenta;
 	}
 
-	public void setTipoDeCuenta(String tipoDeCuenta) {
+	public void setTipoDeCuenta(int tipoDeCuenta) {
 		this.tipoDeCuenta = tipoDeCuenta;
 	}
 
