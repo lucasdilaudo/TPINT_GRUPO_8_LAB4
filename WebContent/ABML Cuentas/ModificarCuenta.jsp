@@ -1,5 +1,7 @@
+<%@page import="Negocio.NegocioCuenta"%>
 <%@page import="java.time.LocalDate"%>
 <%@page import="java.util.Date"%>
+<%@page import="entidades.Cuenta" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -9,25 +11,31 @@
 <title>Modificar Cuenta</title>
 </head>
 <body>
-<% LocalDate fecha = LocalDate.now(); %>
 	Usuario: 
 
 	<br>
 	<h1 align="center">Modificar  Cuenta</h1>
-	<div style="table-layout: auto" align="center">
+	
+	
+<form action="${pageContext.request.contextPath}/ServletCuenta?action=LIST" method="post">
+<div style="table-layout: auto" align="center">
+	<% Cuenta c = new Cuenta(); //para evitar que llame a obtener cuenta una vez que modifico el registro
+		if(request.getAttribute("Modificado")==null) {
+		 c = NegocioCuenta.ObtenerCuenta(request.getParameter("CBU"), request.getParameter("NrodeCuenta"));
+		  %>
 		<table>
 			<tr>
 
 				<th align="left">N° de Cuenta</th>
-				<th>123</th>
+				<th><%= c.getNroCuenta() %><input type="hidden" value=<%=c.getNroCuenta() %> name="hiddenNrodeCuenta">  </th>
 				<tr>
 			<tr>
 				<th align="left">CBU</th>
-				<th>1312</th>
+				<th><%= c.getCBU() %><input type="hidden" value=<%= c.getCBU() %> name="hiddenCBU"> </th>
 			</tr>
 			<tr>
 				<th align="left">Tipo de Cuenta</th>
-				<th align="left"> <select name="tipodeCuenta">
+				<th align="left"> <select name="selectTipodeCuenta">
 						<option value="1">Caja de ahorro</option>
 						<option value="2">Cuenta corriente</option> 
 						</select>
@@ -35,15 +43,15 @@
 			</tr>
 			<tr>
 				<th align="left">Dni</th>
-				<th><input type="text" name="txtDni"></th>
+				<th><input type="text" name="txtDni" value="<%= c.getDNICliente() %>"></th>
 			</tr>
 			<tr>
 				<th align="left">Fecha de Creacion</th>
-				<th><%= fecha.getDayOfMonth()+"/"+fecha.getMonthValue()+"/"+ fecha.getYear() %></th>
+				<th><%= c.getFechaCreacion() %></th>
 			</tr>
 			<tr>
 				<th align="left">Saldo</th>
-				<th><input type="text" name="txtSaldo"></th>
+				<th><input type="text" name="txtSaldo" value="<%= c.getSaldo() %>"></th>
 		
 
 		</table>
@@ -54,7 +62,36 @@
 	</div>
 <br>
 	<div align="center">
-		<input type="submit" name="modificarCuenta" value="Modificar Cuenta">
+		<input type="submit" name="btnModificarCuenta" value="Modificar Cuenta"> 
+		<%
+		}
+			if(request.getAttribute("Modificado")!=null){
+				boolean modificado = (boolean) request.getAttribute("Modificado");
+			
+				if(modificado){
+				%>
+				
+					<br>Cuenta modificada con exito
+				
+					
+				<% 
+				}			
+			
+				
+			
+			}
+		
+		
+		
+		
+		
+		 %>
+		
+			<br> <br>
+		
+	<a href="${pageContext.request.contextPath}/ABML Cuentas/ListarCuenta.jsp?action=LIST">Volver a Listar Cuenta</a>
 	</div>
+	
+	</form>
 </body>
 </html>

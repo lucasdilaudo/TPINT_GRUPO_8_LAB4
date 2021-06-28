@@ -76,7 +76,8 @@ Usuario:
 					
 					<th> <input type="submit" value="Eliminar" name="btnBajaCuenta" 
 					onclick="window.location.href='ConfirmarBajaCuenta.jsp?CBU=<%=c.getCBU()%>&NrodeCuenta=<%= c.getNroCuenta() %>'"></th>
-					<th> <input type="submit" value="Modificar" name="btnModCuenta"></th>	
+					<th> <input type="submit" value="Modificar" name="btnModCuenta"
+					onclick="window.location.href='ModificarCuenta.jsp?CBU=<%=c.getCBU()%>&NrodeCuenta=<%= c.getNroCuenta() %>'"></th>	
 	
 			</tr>
 			<%} %>

@@ -13,14 +13,14 @@ Usuario:
 <br>
 <form action="${pageContext.request.contextPath}/ServletCuenta?action=LIST" method="post">
 
-
+<div align="center">
 <!-- el if es para que desaparezcan los controles una vez se haya confirmado la baja -->
 <% if(request.getAttribute("ConfirmarEliminado")==null){ %>
-				<div align="center"> ¿Esta seguro que desea dar de baja esta Cuenta?<br><br>
+				 ¿Esta seguro que desea dar de baja esta Cuenta?<br><br>
 				Nro de Cuenta: <%= request.getParameter("NrodeCuenta") %> 
 				 CBU: <%= request.getParameter("CBU") %> Nombre del Usuario: Gaston   <br><br>
-				 <input type="submit" name="ConfirmarBajaSi" value="Si" style=" width: 82px">
-				<input type="submit" name="ConfirmarBajaNo" value="No" style=" width: 82px">
+				 <input type="submit" name="ConfirmarBajaSi" value="Dar de Baja" style=" width: 123px">
+				
 				<br>
 				<br>
 				<!-- guardar los datos dentro de un hidden para conservar los valores y enviarlos al servley -->
@@ -36,8 +36,8 @@ Usuario:
 			%>
 			
 			Usuario Eliminado Con Exito
-			<br>
-			<a href="ABML Cuentas/ListarCuenta.jsp">Volver a Listar Cuentas</a>
+			
+			
 		<% 
 		}
 		
@@ -46,8 +46,8 @@ Usuario:
 	
 	
  %>
- 
- 
+ <br><br>
+ <a href="${pageContext.request.contextPath}/ABML Cuentas/ListarCuenta.jsp?action=LIST">Volver a Listar Cuentas</a>
  
 <br>
 </div>

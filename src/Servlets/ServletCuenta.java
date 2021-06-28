@@ -48,7 +48,7 @@ public class ServletCuenta extends HttpServlet {
 		if(request.getParameter("ConfirmarBajaSi")!=null){
 			
 	
-			System.out.println(request.getParameter("hiddenCBU"));
+			
 			boolean Eliminado = NegocioCuenta.EliminarCuenta(request.getParameter("hiddenCBU"),request.getParameter("hiddenNrodeCuenta"));
 			
 			request.setAttribute("ConfirmarEliminado", Eliminado );	
@@ -68,7 +68,23 @@ public class ServletCuenta extends HttpServlet {
 		}
 		
 
+		if(request.getParameter("btnModificarCuenta")!=null) {
+			
+			c.setCBU(request.getParameter("hiddenCBU"));
+			c.setNroCuenta(request.getParameter("hiddenNrodeCuenta"));
+			c.setDNICliente(request.getParameter("txtDni"));
+			c.setTipoDeCuenta( Integer.parseInt(request.getParameter("selectTipodeCuenta")));
+			c.setSaldo( Double.parseDouble(request.getParameter("txtSaldo")));
 		
+			boolean Modificado = NegocioCuenta.ModificarCuenta(c);
+			
+			
+			request.setAttribute("Modificado", Modificado);
+			
+			RequestDispatcher rd = request.getRequestDispatcher("ABML Cuentas/ModificarCuenta.jsp");
+			rd.forward(request, response);
+			
+		}
 		
 		
 	}
