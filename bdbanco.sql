@@ -1,6 +1,20 @@
 create database bdbanco;
 use bdbanco;
 
+CREATE TABLE `tiposdecuentas` (
+  `IDTipodeCuenta` int NOT NULL,
+  `Descripcion` varchar(50) NOT NULL,
+  `Estado` int DEFAULT NULL,
+  PRIMARY KEY (`IDTipodeCuenta`)
+); 
+
+CREATE TABLE `tiposdemovimientos` (
+  `IDTipodeMovimiento` int NOT NULL,
+  `Descripcion` varchar(50) NOT NULL,
+  `Estado` int DEFAULT NULL,
+  PRIMARY KEY (`IDTipodeMovimiento`)
+); 
+
 CREATE TABLE `usuarios` (
   `DNI` int NOT NULL,
   `Cuil` int NOT NULL,
@@ -33,6 +47,16 @@ CREATE TABLE `cuentas` (
 ); 
 
 -- inserts --
+INSERT INTO tiposdecuentas (`IDTipodeCuenta` ,`Descripcion`, `Estado`)
+ VALUES ('1', 'Caja de ahorro', '1'),
+		('2', 'Cuenta corriente', '1');
+			
+INSERT INTO tiposdemovimientos (`IDTipodeMovimiento` ,`Descripcion`, `Estado`)
+ VALUES ('1', 'Alta de cuenta', '1'),
+		('2', 'Alta de un prestamo', '1'),
+		('3', 'Pago de prestamo', '1'),
+		('4', 'Transferencia', '1');
+    
 INSERT INTO usuarios (`DNI`, `Cuil`, `Nombre`, `Apellido`, `Sexo`, `Nacionalidad`, `FechadeNacimiento`, `Direccion`, `Localidad`, `Provincia`, `CorreoElectronico`, `Telefono`, `TipodeUsuario`, `Usuario`, `Contrasena`, `Estado`)
  VALUES ('1111', '1001', 'Carlos', 'Perez', '1', 'Argentino', '1980-06-21', 'Av. Libertador 100', 'San Fernando', 'Buenos Aires', 'carlosperez@hotmail.com', '1510101010', '1', 'carlos', 'perez', '1'), -- admin --
         ('2222', '1002', 'Silvia', 'Gomez', '2', 'Argentino', '1980-05-20', 'Av. Larralde 1000', 'Tigre', 'Buenos Aires', 'silviagomez@hotmail.com', '1520202020', '2', 'silvia', 'gomez', '1'), -- cliente --
