@@ -11,10 +11,46 @@ Usuario:
 <br>
 <h1 align="center">Confirmar</h1>
 <br>
-<div align="center"> ¿Esta seguro que desea dar de baja esta Cuenta?<br><br>Nro: 1111
- CBU: 201111 Nombre del Usuario: Gaston<br><br><input type="submit" name="ConfirmarSi" value="Si" style=" width: 82px">
-<input type="submit" name="ConfirmarNo" value="No" style=" width: 82px">
+<form action="${pageContext.request.contextPath}/ServletCuenta?action=LIST" method="post">
+
+
+<!-- el if es para que desaparezcan los controles una vez se haya confirmado la baja -->
+<% if(request.getAttribute("ConfirmarEliminado")==null){ %>
+				<div align="center"> ¿Esta seguro que desea dar de baja esta Cuenta?<br><br>
+				Nro de Cuenta: <%= request.getParameter("NrodeCuenta") %> 
+				 CBU: <%= request.getParameter("CBU") %> Nombre del Usuario: Gaston   <br><br>
+				 <input type="submit" name="ConfirmarBajaSi" value="Si" style=" width: 82px">
+				<input type="submit" name="ConfirmarBajaNo" value="No" style=" width: 82px">
+				<br>
+				<br>
+				<!-- guardar los datos dentro de un hidden para conservar los valores y enviarlos al servley -->
+				<input type=hidden value=<%= request.getParameter("CBU") %> name="hiddenCBU">
+				<input type=hidden value=<%= request.getParameter("NrodeCuenta") %> name="hiddenNrodeCuenta">
+
+<%
+}
+	if(request.getAttribute("ConfirmarEliminado")!=null){	
+		boolean eliminado = (boolean) request.getAttribute("ConfirmarEliminado");	
+		
+		if(eliminado){
+			%>
+			
+			Usuario Eliminado Con Exito
+			<br>
+			<a href="ABML Cuentas/ListarCuenta.jsp">Volver a Listar Cuentas</a>
+		<% 
+		}
+		
+	}
+	
+	
+	
+ %>
+ 
+ 
+ 
 <br>
 </div>
+</form>
 </body>
 </html>

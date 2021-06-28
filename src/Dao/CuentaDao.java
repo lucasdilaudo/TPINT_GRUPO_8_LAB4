@@ -12,9 +12,9 @@ import entidades.Cuenta;
 public class CuentaDao {
 	private String insertar = "insert into cuentas values(?,?,?,?,?,?,?)";
 	//private String borrar = "delete from Cuentas where NrodeCuenta=? and CBU=?";
-	private String borrar = "update cuentas set Estado=0 where NrodeCuenta=? and CBU=?";
+	private String borrar = "update bdbanco.cuentas set Estado=0 where NrodeCuenta=? and CBU=?";
 	private String modificar = "update cuentas set DNI=?,TipodeCuenta=?,Saldo=? where NrodeCuenta=? and CBU=?";
-	private String obtener = "Select * from bdbanco.cuentas where Estado=1";
+	private String obtener = "SELECT * FROM bdbanco.cuentas where Estado=1";
 	
 	public int AgregarCuenta(Cuenta c) {
 		int filas=0;
@@ -44,11 +44,13 @@ public class CuentaDao {
 	
 	public int EliminarCuenta(String CBU, String NrodeCuenta) {
 		int filas=0;
+		System.out.println(CBU+" "+NrodeCuenta);
 		try {
 			Connection cn = Conexion.getConexion().getSQLConexion();
 			PreparedStatement pst = cn.prepareStatement(borrar);
-			pst.setString(2, CBU);
+			
 			pst.setString(1, NrodeCuenta);
+			pst.setString(2, CBU);
 			filas = pst.executeUpdate();
 			
 		}
@@ -125,8 +127,8 @@ public class CuentaDao {
 				c.setNroCuenta(rs.getString(1));
 				c.setCBU(rs.getString(2));
 				c.setDNICliente(rs.getString(3));
-				c.setFechaCreacion(rs.getString(4));
-				c.setTipoDeCuenta(rs.getInt(5));
+				c.setFechaCreacion(rs.getString(5));
+				c.setTipoDeCuenta(rs.getInt(4));
 				c.setSaldo(rs.getDouble(6));
 				
 				ac.add(c);
