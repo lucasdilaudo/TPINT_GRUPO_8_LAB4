@@ -13,8 +13,8 @@ public class CuentaDao {
 	private String insertar = "insert into cuentas values(?,?,?,?,?,?,?)";
 	//private String borrar = "delete from Cuentas where NrodeCuenta=? and CBU=?";
 	private String borrar = "update bdbanco.cuentas set Estado=0 where NrodeCuenta=? and CBU=?";
-	private String modificar = "update cuentas set DNI=?,TipodeCuenta=?,Saldo=? where NrodeCuenta=? and CBU=?";
-	private String obtener = "SELECT NrodeCuenta,CBU,DNI,TipodeCuenta,DATE_FORMAT(FechadeCreacion, '%d/%m/%Y'),Saldo FROM bdbanco.cuentas where Estado=1";
+	private String modificar = "update cuentas set usuarios_DNI=?,tiposdecuentas_IDTipodeCuenta=?,Saldo=? where NrodeCuenta=? and CBU=?";
+	private String obtener = "SELECT NrodeCuenta,CBU,usuarios_DNI,tiposdecuentas_IDTipodeCuenta,DATE_FORMAT(FechadeCreacion, '%d/%m/%Y'),Saldo FROM bdbanco.cuentas where Estado=1";
 	
 	public int AgregarCuenta(Cuenta c) {
 		int filas=0;
@@ -24,11 +24,11 @@ public class CuentaDao {
 			pst.setString(1, c.getNroCuenta());
 			pst.setString(2, c.getCBU());
 			
-			pst.setString(3, c.getDNICliente());
-			pst.setString(4, c.getFechaCreacion());
-			pst.setInt(5, c.getTipoDeCuenta());
-			pst.setDouble(6, c.getSaldo());
-			pst.setBoolean(7, true);
+			pst.setString(7, c.getDNICliente());
+			pst.setString(3, c.getFechaCreacion());
+			pst.setInt(6, c.getTipoDeCuenta());
+			pst.setDouble(4, c.getSaldo());
+			pst.setBoolean(5, true);
 			filas = pst.executeUpdate();
 			
 		}

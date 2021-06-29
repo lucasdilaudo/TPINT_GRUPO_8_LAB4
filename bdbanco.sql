@@ -1,67 +1,149 @@
-create database bdbanco;
-use bdbanco;
+-- MySQL Workbench Forward Engineering
 
-CREATE TABLE `tiposdecuentas` (
-  `IDTipodeCuenta` int NOT NULL,
-  `Descripcion` varchar(50) NOT NULL,
-  `Estado` int DEFAULT NULL,
-  PRIMARY KEY (`IDTipodeCuenta`)
-); 
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
-CREATE TABLE `tiposdemovimientos` (
-  `IDTipodeMovimiento` int NOT NULL,
-  `Descripcion` varchar(50) NOT NULL,
-  `Estado` int DEFAULT NULL,
-  PRIMARY KEY (`IDTipodeMovimiento`)
-); 
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+-- -----------------------------------------------------
+-- Schema bdbanco
+-- -----------------------------------------------------
 
-CREATE TABLE `usuarios` (
-  `DNI` int NOT NULL,
-  `Cuil` int NOT NULL,
-  `Nombre` varchar(50) NOT NULL,
-  `Apellido` varchar(50) NOT NULL,
-  `Sexo` int NULL,
-  `Nacionalidad` varchar(50) NULL,
-  `FechadeNacimiento` datetime NULL,
-  `Direccion` varchar(50) NULL,
-  `Localidad` varchar(50) NULL,
-  `Provincia` varchar(50) NULL,
-  `CorreoElectronico` varchar(50) NULL,
-  `Telefono` int NULL,
-  `TipodeUsuario` int NOT NULL,
-  `Usuario` varchar(20) NOT NULL,
-  `Contrasena` varchar(20) NOT NULL,
-  `Estado` int DEFAULT NULL,
-  PRIMARY KEY (`DNI`)
-); 
+-- -----------------------------------------------------
+-- Schema bdbanco
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `bdbanco` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
+USE `bdbanco` ;
 
-CREATE TABLE `cuentas` (
-  `NrodeCuenta` int NOT NULL,
-  `CBU` int NOT NULL,
-  `DNI` int DEFAULT NULL,
-  `TipodeCuenta` int DEFAULT NULL,
-  `FechadeCreacion` datetime DEFAULT NULL,
-  `Saldo` double DEFAULT NULL,
-  `Estado` int DEFAULT NULL,
-  PRIMARY KEY (`CBU`,`NrodeCuenta`)
-); 
+-- -----------------------------------------------------
+-- Table `bdbanco`.`tiposdecuentas`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `bdbanco`.`tiposdecuentas` (
+  `IDTipodeCuenta` INT NOT NULL,
+  `Descripcion` VARCHAR(50) NOT NULL,
+  `Estado` TINYINT NOT NULL,
+  PRIMARY KEY (`IDTipodeCuenta`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
 
--- inserts --
-INSERT INTO tiposdecuentas (`IDTipodeCuenta` ,`Descripcion`, `Estado`)
- VALUES ('1', 'Caja de ahorro', '1'),
-		('2', 'Cuenta corriente', '1');
-			
-INSERT INTO tiposdemovimientos (`IDTipodeMovimiento` ,`Descripcion`, `Estado`)
- VALUES ('1', 'Alta de cuenta', '1'),
-		('2', 'Alta de un prestamo', '1'),
-		('3', 'Pago de prestamo', '1'),
-		('4', 'Transferencia', '1');
-    
-INSERT INTO usuarios (`DNI`, `Cuil`, `Nombre`, `Apellido`, `Sexo`, `Nacionalidad`, `FechadeNacimiento`, `Direccion`, `Localidad`, `Provincia`, `CorreoElectronico`, `Telefono`, `TipodeUsuario`, `Usuario`, `Contrasena`, `Estado`)
- VALUES ('1111', '1001', 'Carlos', 'Perez', '1', 'Argentino', '1980-06-21', 'Av. Libertador 100', 'San Fernando', 'Buenos Aires', 'carlosperez@hotmail.com', '1510101010', '1', 'carlos', 'perez', '1'), -- admin --
-        ('2222', '1002', 'Silvia', 'Gomez', '2', 'Argentino', '1980-05-20', 'Av. Larralde 1000', 'Tigre', 'Buenos Aires', 'silviagomez@hotmail.com', '1520202020', '2', 'silvia', 'gomez', '1'), -- cliente --
-        ('3333', '1003', 'Raul', 'Fernandez', '1', 'Argentino', '1990-01-26', 'Av. Sobremonte 510', 'San Fernando', 'Buenos Aires', 'raulfernandez@hotmail.com', '1530303030', '2', 'raul', 'fernandez', '1'); -- cliente --
-  
-INSERT INTO cuentas (`NrodeCuenta`, `CBU`, `DNI`, `TipodeCuenta`, `FechadeCreacion`, `Saldo`, `Estado`) VALUES ('1', '1111', '1111', '1', '2021-06-21', '10000', '1');
-INSERT INTO cuentas (`NrodeCuenta`, `CBU`, `DNI`, `TipodeCuenta`, `FechadeCreacion`, `Saldo`, `Estado`) VALUES ('2', '2222', '2222', '2', '2021-06-03', '10000', '1');
-INSERT INTO cuentas (`NrodeCuenta`, `CBU`, `DNI`, `TipodeCuenta`, `FechadeCreacion`, `Saldo`, `Estado`) VALUES ('3', '3333', '3333', '2', '2021-06-01', '10000', '1');
+
+-- -----------------------------------------------------
+-- Table `bdbanco`.`usuarios`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `bdbanco`.`usuarios` (
+  `DNI` INT NOT NULL,
+  `Cuil` INT NOT NULL,
+  `Nombre` VARCHAR(50) NOT NULL,
+  `Apellido` VARCHAR(50) NOT NULL,
+  `Sexo` INT NULL DEFAULT NULL,
+  `Nacionalidad` VARCHAR(50) NULL DEFAULT NULL,
+  `FechadeNacimiento` DATETIME NULL DEFAULT NULL,
+  `Direccion` VARCHAR(50) NULL DEFAULT NULL,
+  `Localidad` VARCHAR(50) NULL DEFAULT NULL,
+  `Provincia` VARCHAR(50) NOT NULL,
+  `CorreoElectronico` VARCHAR(50) NOT NULL,
+  `Telefono` INT NOT NULL,
+  `TipodeUsuario` INT NOT NULL,
+  `Usuario` VARCHAR(20) NOT NULL,
+  `Contrasena` VARCHAR(20) NOT NULL,
+  `Estado` TINYINT NOT NULL,
+  PRIMARY KEY (`DNI`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `bdbanco`.`cuentas`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `bdbanco`.`cuentas` (
+  `NrodeCuenta` INT NOT NULL,
+  `CBU` INT NOT NULL,
+  `FechadeCreacion` DATETIME NOT NULL,
+  `Saldo` DOUBLE NOT NULL,
+  `Estado` TINYINT NOT NULL,
+  `tiposdecuentas_IDTipodeCuenta` INT NOT NULL,
+  `usuarios_DNI` INT NOT NULL,
+  PRIMARY KEY (`CBU`, `NrodeCuenta`, `tiposdecuentas_IDTipodeCuenta`, `usuarios_DNI`),
+  INDEX `fk_cuentas_tiposdecuentas1_idx` (`tiposdecuentas_IDTipodeCuenta` ASC) VISIBLE,
+  INDEX `fk_cuentas_usuarios1_idx` (`usuarios_DNI` ASC) VISIBLE,
+  CONSTRAINT `fk_cuentas_tiposdecuentas1`
+    FOREIGN KEY (`tiposdecuentas_IDTipodeCuenta`)
+    REFERENCES `bdbanco`.`tiposdecuentas` (`IDTipodeCuenta`),
+  CONSTRAINT `fk_cuentas_usuarios1`
+    FOREIGN KEY (`usuarios_DNI`)
+    REFERENCES `bdbanco`.`usuarios` (`DNI`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `bdbanco`.`tiposdemovimientos`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `bdbanco`.`tiposdemovimientos` (
+  `IDTipodeMovimiento` INT NOT NULL,
+  `Descripcion` VARCHAR(50) NOT NULL,
+  `Estado` TINYINT NOT NULL,
+  PRIMARY KEY (`IDTipodeMovimiento`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `bdbanco`.`movimiento`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `bdbanco`.`movimiento` (
+  `IDmovimiento` INT NOT NULL AUTO_INCREMENT,
+  `FechaMovimiento` DATETIME NOT NULL,
+  `DetalleMovimiento` VARCHAR(45) NOT NULL,
+  `ImporteMovimiento` FLOAT NOT NULL,
+  `TipoMovimiento` INT NOT NULL,
+  `CBU origen` INT NOT NULL,
+  `CBU destino` INT NOT NULL,
+  PRIMARY KEY (`IDmovimiento`),
+  INDEX `fk_movimiento_tipoMovimiento_TIPO_idx` (`TipoMovimiento` ASC) VISIBLE,
+  INDEX `fk_movimiento_cuentas_CBUorigen_idx` (`CBU origen` ASC) VISIBLE,
+  CONSTRAINT `fk_movimiento_cuentas_CBUorigen`
+    FOREIGN KEY (`CBU origen`)
+    REFERENCES `bdbanco`.`cuentas` (`CBU`)
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_movimiento_tipoMovimiento_TIPO`
+    FOREIGN KEY (`TipoMovimiento`)
+    REFERENCES `bdbanco`.`tiposdemovimientos` (`IDTipodeMovimiento`)
+    ON UPDATE CASCADE)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `bdbanco`.`prestamos`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `bdbanco`.`prestamos` (
+  `idprestamos` INT NOT NULL AUTO_INCREMENT,
+  `CBU` INT NOT NULL,
+  `FechaPrestamo` DATETIME NOT NULL,
+  `ImporteApagar` FLOAT NOT NULL,
+  `ImportePedido` FLOAT NOT NULL,
+  `PlazoPrestamo` INT NOT NULL,
+  `MontoMensual` FLOAT NOT NULL,
+  `CantCuotas` INT NOT NULL,
+  PRIMARY KEY (`idprestamos`),
+  INDEX `fk_prestamos_cuentas_CBU_idx` (`CBU` ASC) VISIBLE,
+  CONSTRAINT `fk_prestamos_cuentas_CBU`
+    FOREIGN KEY (`CBU`)
+    REFERENCES `bdbanco`.`cuentas` (`CBU`)
+    ON UPDATE CASCADE)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
