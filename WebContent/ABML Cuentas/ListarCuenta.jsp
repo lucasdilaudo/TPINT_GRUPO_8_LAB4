@@ -1,3 +1,5 @@
+<%@page import="Negocio.NegocioCliente"%>
+<%@page import="entidades.Cliente"%>
 <%@page import="Negocio.NegocioCuenta"%>
 <%@page import="entidades.Cuenta"%>
 <%@page import="java.util.ArrayList"%>
@@ -57,7 +59,8 @@ Usuario:
 		<%
 			ArrayList<Cuenta> ac = NegocioCuenta.ObtenerTodo();
 			for(Cuenta c : ac){ 
-				
+				Cliente clien = new Cliente();
+				clien = NegocioCliente.ObtenerCliente(c.getDNICliente());
 		%>
 			<tr>
 			
@@ -65,7 +68,7 @@ Usuario:
 					<th><%= c.getNroCuenta() %> </th>	
 					<th><%= c.getCBU() %></th>	
 					<th><%= c.getDNICliente() %></th>	
-					<th><%= "Nombre " %></th>	
+					<th><%= clien.getUsuario() %></th>	
 					<% if(c.getTipoDeCuenta()==1){%>
 						<th>Caja de Ahorro </th>	
 					<%}  else {%>
@@ -75,7 +78,7 @@ Usuario:
 					<th><%= c.getSaldo() %> </th>
 					
 					<th> <input type="submit" value="Eliminar" name="btnBajaCuenta" 
-					onclick="window.location.href='ConfirmarBajaCuenta.jsp?CBU=<%=c.getCBU()%>&NrodeCuenta=<%= c.getNroCuenta() %>'"></th>
+					onclick="window.location.href='ConfirmarBajaCuenta.jsp?CBU=<%=c.getCBU()%>&NrodeCuenta=<%= c.getNroCuenta() %>&Nombre=<%=clien.getNombre()%>'"></th>
 					<th> <input type="submit" value="Modificar" name="btnModCuenta"
 					onclick="window.location.href='ModificarCuenta.jsp?CBU=<%=c.getCBU()%>&NrodeCuenta=<%= c.getNroCuenta() %>'"></th>	
 	

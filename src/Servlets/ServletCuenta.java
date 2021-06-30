@@ -39,7 +39,7 @@ public class ServletCuenta extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		LocalDate fecha = LocalDate.now();
 		
-		int filas=0;
+		
 		if(request.getParameter("btnGuardarCuenta")!=null)
 	    {
 		     Cuenta c = new Cuenta();
@@ -49,13 +49,13 @@ public class ServletCuenta extends HttpServlet {
 		     c.setDNICliente(request.getParameter("txtDni"));
 		     c.setFechaCreacion(fecha.getYear()+"-"+fecha.getMonthValue()+"-"+fecha.getDayOfMonth());
 		     c.setSaldo(10000);
-		     
-			CuentaDao cdao = new CuentaDao();
-			filas=cdao.AgregarCuenta(c);
-			System.out.println("aaa");
+		    
+		    boolean Agregado = NegocioCuenta.AgregarCuenta(c);
+			
+			
 			
 			//REQUESTDISPACHER
-			request.setAttribute("cantFilas", filas);
+			request.setAttribute("Agregado", Agregado);
 			RequestDispatcher rd = request.getRequestDispatcher("ABML Cuentas/AltaCuenta.jsp");
 			rd.forward(request, response);
 	    }

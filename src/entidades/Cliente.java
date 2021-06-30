@@ -7,9 +7,11 @@ public class Cliente {
 	private String Apellido;
 	private String CUIL;
 	private String Nombre;
-	private String Sexo;
+	private int Sexo;
 	private String Nacionalidad;
-	private String Fecha,Mes,Anio;
+	private String Fecha;
+	private String Direccion;
+	private int TipodeCliente;
 	private String Localidad;
 	private String Provincia;
 	private String Correo;
@@ -40,10 +42,10 @@ public class Cliente {
 	public void setNombre(String nombre) {
 		Nombre = nombre;
 	}
-	public String getSexo() {
+	public int getSexo() {
 		return Sexo;
 	}
-	public void setSexo(String sexo) {
+	public void setSexo(int sexo) {
 		Sexo = sexo;
 	}
 	public String getNacionalidad() {
@@ -58,17 +60,12 @@ public class Cliente {
 	public void setFecha(String fecha) {
 		Fecha = fecha;
 	}
-	public String getMes() {
-		return Mes;
+
+	public String getDireccion() {
+		return Direccion;
 	}
-	public void setMes(String mes) {
-		Mes = mes;
-	}
-	public String getAnio() {
-		return Anio;
-	}
-	public void setAnio(String anio) {
-		Anio = anio;
+	public void setDireccion(String direccion) {
+		Direccion = direccion;
 	}
 	public String getLocalidad() {
 		return Localidad;
@@ -105,6 +102,12 @@ public class Cliente {
 	}
 	public void setContrasenia(String contrasenia) {
 		Contrasenia = contrasenia;
+	}
+	public int getTipodeCliente() {
+		return TipodeCliente;
+	}
+	public void setTipodeCliente(int tipodeCliente) {
+		TipodeCliente = tipodeCliente;
 	}
 	
 	

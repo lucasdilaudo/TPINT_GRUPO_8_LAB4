@@ -1,3 +1,8 @@
+<%@page import="Negocio.NegocioCuenta"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="Negocio.NegocioCliente"%>
+<%@page import="entidades.Cliente"%>
+<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@page import="com.sun.javafx.scene.layout.region.Margins.Converter"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -44,17 +49,22 @@ Usuario:
 			</tr>
 		</thead>
 		<tbody>
-		<% for(int i=1;i<15;i++){ %>
+		<% ArrayList<Cliente> ac = NegocioCliente.ObtenerTodo();
+		
+			for(Cliente c : ac){
+			 %>
 			<tr>
-				<th><%= i %></th>	
-				<th><%= "Nombre" +i %></th>	
-				<th><%= i*1111 %></th>	
-				<th><%= "calle" +122+i %></th>	
-				<th> Localidad</th>	
-				<th>Ejemplo<%=i %>@mail.com</th>	
-				<th>Usu<%=i %></th>
-				<th> <input type="submit" value="Eliminar" name="btnBajaCliente"> </th>
-				<th> <input type="submit" value="Modificar" name="btnModCliente"> </th>
+				<th><%= c.getDni() %></th>	
+				<th><%= c.getNombre()+" "+c.getApellido() %></th>	
+				<th><%= c.getCUIL() %></th>	
+				<th><%= c.getDireccion() %></th>	
+				<th><%= c.getLocalidad() %></th>	
+				<th><%=c.getCorreo() %></th>	
+				<th><%= c.getUsuario() %></th>
+				<th> <input type="submit" value="Eliminar" name="btnBajaCliente"
+				onclick="window.location.href='ConfirmarBajaCliente.jsp?DNI=<%=c.getDni()%>'"> </th>
+				<th> <input type="submit" value="Modificar" name="btnModCliente"
+				onclick="window.location.href='ModificarCliente.jsp?DNI=<%=c.getDni()%>'"> </th>
 			</tr>
 			<%} %>
 		</tbody>

@@ -59,30 +59,31 @@
 <br>
 	<div align="center">
 		<input type="submit" name="btnGuardarCuenta" value="Crear Cuenta">
-	</div>
-	</form>
+
 <% 
-int filas=0;
+ 
+boolean agregado;
 
-if(request.getAttribute("cantFilas")!=null){
-	 filas= Integer.parseInt(request.getAttribute("cantFilas").toString());
+if(request.getAttribute("Agregado")!=null){
+	agregado = (boolean) request.getAttribute("Agregado");
+	if(agregado){
+		%>
+		<br>	
+		Cuenta agregada con exito!
+		
+	<%}
 }
-%>
-	
-<%
 
-if(filas==1){
-	%>	
-	Cuenta agregada con exito!
-	
-<%}
+
+
 
 
 
 
 
 %>	
-	
+	</div>
+	</form>	
 	
 </body>
 </html>

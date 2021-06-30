@@ -1,3 +1,5 @@
+<%@page import="Negocio.NegocioCliente"%>
+<%@page import="entidades.Cliente"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -13,12 +15,14 @@ Usuario:
 <br>
 <form action="${pageContext.request.contextPath}/ServletCuenta?action=LIST" method="post">
 
+
+
 <div align="center">
 <!-- el if es para que desaparezcan los controles una vez se haya confirmado la baja -->
 <% if(request.getAttribute("ConfirmarEliminado")==null){ %>
 				 ¿Esta seguro que desea dar de baja esta Cuenta?<br><br>
 				Nro de Cuenta: <%= request.getParameter("NrodeCuenta") %> 
-				 CBU: <%= request.getParameter("CBU") %> Nombre del Usuario: Gaston   <br><br>
+				 CBU: <%= request.getParameter("CBU") %> Nombre del Usuario:  <%= request.getParameter("Nombre") %>  <br><br>
 				 <input type="submit" name="ConfirmarBajaSi" value="Dar de Baja" style=" width: 123px">
 				
 				<br>
