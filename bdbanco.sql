@@ -14,7 +14,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema bdbanco
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `bdbanco` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
+CREATE SCHEMA IF NOT EXISTS `bdbanco` ;
 USE `bdbanco` ;
 
 -- -----------------------------------------------------
@@ -25,10 +25,8 @@ CREATE TABLE IF NOT EXISTS `bdbanco`.`tiposdecuentas` (
   `Descripcion` VARCHAR(50) NOT NULL,
   `Estado` TINYINT NOT NULL,
   PRIMARY KEY (`IDTipodeCuenta`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
 
+;
 
 -- -----------------------------------------------------
 -- Table `bdbanco`.`usuarios`
@@ -50,10 +48,8 @@ CREATE TABLE IF NOT EXISTS `bdbanco`.`usuarios` (
   `Usuario` VARCHAR(20) NOT NULL,
   `Contrasena` VARCHAR(20) NOT NULL,
   `Estado` TINYINT NOT NULL,
-  PRIMARY KEY (`DNI`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`DNI`));
+
 
 
 -- -----------------------------------------------------
@@ -75,10 +71,8 @@ CREATE TABLE IF NOT EXISTS `bdbanco`.`cuentas` (
     REFERENCES `bdbanco`.`tiposdecuentas` (`IDTipodeCuenta`),
   CONSTRAINT `fk_cuentas_usuarios1`
     FOREIGN KEY (`usuarios_DNI`)
-    REFERENCES `bdbanco`.`usuarios` (`DNI`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+    REFERENCES `bdbanco`.`usuarios` (`DNI`));
+
 
 
 -- -----------------------------------------------------
@@ -89,9 +83,7 @@ CREATE TABLE IF NOT EXISTS `bdbanco`.`tiposdemovimientos` (
   `Descripcion` VARCHAR(50) NOT NULL,
   `Estado` TINYINT NOT NULL,
   PRIMARY KEY (`IDTipodeMovimiento`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+;
 
 
 -- -----------------------------------------------------
@@ -116,9 +108,7 @@ CREATE TABLE IF NOT EXISTS `bdbanco`.`movimiento` (
     FOREIGN KEY (`TipoMovimiento`)
     REFERENCES `bdbanco`.`tiposdemovimientos` (`IDTipodeMovimiento`)
     ON UPDATE CASCADE)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
+;
 
 
 -- -----------------------------------------------------
@@ -139,10 +129,7 @@ CREATE TABLE IF NOT EXISTS `bdbanco`.`prestamos` (
     FOREIGN KEY (`CBU`)
     REFERENCES `bdbanco`.`cuentas` (`CBU`)
     ON UPDATE CASCADE)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
-
+;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

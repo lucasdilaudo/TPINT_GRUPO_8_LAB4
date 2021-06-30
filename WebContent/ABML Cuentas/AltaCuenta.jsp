@@ -1,3 +1,6 @@
+<%@page import="Negocio.NegocioCuenta"%>
+<%@page import="Dao.CuentaDao"%>
+<%@page import="entidades.Cuenta"%>
 <%@page import="java.time.LocalDate"%>
 <%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -13,6 +16,8 @@
 	Usuario:
 	<br>
 	<h1 align="center">Alta Cuentas</h1>
+	
+	<form action="${pageContext.request.contextPath}/ServletCuenta?action=LIST" method="get">
 	<div style="table-layout: auto" align="center">
 		<table>
 			<tr>
@@ -53,7 +58,31 @@
 	</div>
 <br>
 	<div align="center">
-		<input type="submit" name="guardarCuenta" value="Crear Cuenta">
+		<input type="submit" name="btnGuardarCuenta" value="Crear Cuenta">
 	</div>
+	</form>
+<% 
+int filas=0;
+
+if(request.getAttribute("cantFilas")!=null){
+	 filas= Integer.parseInt(request.getAttribute("cantFilas").toString());
+}
+%>
+	
+<%
+
+if(filas==1){
+	%>	
+	Cuenta agregada con exito!
+	
+<%}
+
+
+
+
+
+%>	
+	
+	
 </body>
 </html>

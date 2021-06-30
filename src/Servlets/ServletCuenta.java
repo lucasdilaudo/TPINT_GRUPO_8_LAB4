@@ -1,6 +1,7 @@
 package Servlets;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.mysql.cj.Session;
 
+import Dao.CuentaDao;
 import Negocio.NegocioCuenta;
 import entidades.Cuenta;
 import sun.rmi.server.Dispatcher;
@@ -35,8 +37,30 @@ public class ServletCuenta extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		LocalDate fecha = LocalDate.now();
+		
+		int filas=0;
+		if(request.getParameter("btnGuardarCuenta")!=null)
+	    {
+		     Cuenta c = new Cuenta();
+		     c.setNroCuenta(request.getParameter("txtNrodeCuenta"));
+		     c.setCBU(request.getParameter("txtCBU"));
+		     c.setTipoDeCuenta(Integer.parseInt(request.getParameter("tipodeCuenta")));
+		     c.setDNICliente(request.getParameter("txtDni"));
+		     c.setFechaCreacion(fecha.getYear()+"-"+fecha.getMonthValue()+"-"+fecha.getDayOfMonth());
+		     c.setSaldo(10000);
+		     
+			CuentaDao cdao = new CuentaDao();
+			filas=cdao.AgregarCuenta(c);
+			System.out.println("aaa");
+			
+			//REQUESTDISPACHER
+			request.setAttribute("cantFilas", filas);
+			RequestDispatcher rd = request.getRequestDispatcher("ABML Cuentas/AltaCuenta.jsp");
+			rd.forward(request, response);
+	    }
+   
+
 	}
 
 	/**
@@ -85,6 +109,8 @@ public class ServletCuenta extends HttpServlet {
 			rd.forward(request, response);
 			
 		}
+		
+		
 		
 		
 	}
