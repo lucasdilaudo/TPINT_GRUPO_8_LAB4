@@ -3,6 +3,7 @@ package Servlets;
 import java.io.IOException;
 import java.time.LocalDate;
 
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -47,7 +48,7 @@ public class ServletCliente extends HttpServlet {
 		     c.setSexo(Integer.parseInt(request.getParameter("ddlSexo")));
 		     c.setNacionalidad(request.getParameter("txtNacionalidad"));
 		     //c.setFecha(request.getParameter("txtAnio")+"-"+request.getParameter("txtMes")+"-"+request.getParameter("txtDia"));  
-		     c.setFecha(fecha.getYear()+"-"+fecha.getMonthValue()+"-"+fecha.getDayOfMonth());
+		     c.setFecha(request.getParameter("txtAnio")+"-"+ request.getParameter("txtMes")+"-"+request.getParameter("txtDia"));
 		     c.setDireccion(request.getParameter("txtDireccion"));
 		     c.setLocalidad(request.getParameter("txtLocalidad"));
 		     c.setProvincia(request.getParameter("txtProvincia"));

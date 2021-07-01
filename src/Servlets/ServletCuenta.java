@@ -62,7 +62,7 @@ public class ServletCuenta extends HttpServlet {
 			   }
 			   else {
 				   if(NegocioCuenta.CantidadCuentas(c.getDNICliente())==3) {
-					   	Mensaje = "El cliente excedio la cantidad permitida de cuentas (3)";
+					   	Mensaje = "El cliente con el nuevo DNI ingresado ya posee el limite de cuentas permitido(3)";
 				   }
 				   else {
 					   if	(NegocioCuenta.AgregarCuenta(c)){
@@ -115,27 +115,40 @@ public class ServletCuenta extends HttpServlet {
 		
 
 		if(request.getParameter("btnModificarCuenta")!=null) {
-			
+			String dniantiguo = request.getParameter("hiddenDniAntiguo");
 			c.setCBU(request.getParameter("hiddenCBU"));
 			c.setNroCuenta(request.getParameter("hiddenNrodeCuenta"));
 			c.setDNICliente(request.getParameter("txtDni"));
 			c.setTipoDeCuenta( Integer.parseInt(request.getParameter("selectTipodeCuenta")));
 			c.setSaldo( Double.parseDouble(request.getParameter("txtSaldo")));
-		
+			System.out.println(dniantiguo+" "+c.getDNICliente());
 			String Mensaje;
 		    if(!NegocioCliente.Existe(c.getDNICliente())) {
 			      Mensaje = "No existe un cliente con el DNI ingresado";
 			}
 		    else {
-				if(NegocioCuenta.CantidadCuentas(c.getDNICliente())==3) {
-				   	Mensaje = "El cliente excedio la cantidad permitida de cuentas (3)";
-				}
+		    	if(!dniantiguo.equals(c.getDNICliente())) {
+					if(NegocioCuenta.CantidadCuentas(c.getDNICliente())==3) {
+					   	Mensaje = "El cliente excedio la cantidad permitida de cuentas (3)";
+					}
+					else {
+						   if	(NegocioCuenta.ModificarCuenta(c)){
+							   Mensaje = "Cuenta modificada con exito";
+							   }
+							   else Mensaje = "No se pudo modificar";
+						   
+						
+					}
+					
+					
+		    	}
 				else {
 				   if	(NegocioCuenta.ModificarCuenta(c)){
 					   Mensaje = "Cuenta modificada con exito";
 					   }
 					   else Mensaje = "No se pudo modificar";
-				   }
+						
+				}
 		    }
 			
 			request.setAttribute("Mensaje", Mensaje);

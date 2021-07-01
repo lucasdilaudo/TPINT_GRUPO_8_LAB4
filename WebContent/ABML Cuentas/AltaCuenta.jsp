@@ -16,8 +16,8 @@
 <body>
 <% LocalDate fecha = LocalDate.now(); %>
 	Usuario:
-	<br>
-	<h1 align="center">Alta Cuentas</h1>
+	
+	<h1 align="center">Alta Cuentas</h1><br><a href="${pageContext.request.contextPath}/MenuAdmin.jsp?action=LIST"> Volver al menu</a><br><br>
 	
 	<form action="${pageContext.request.contextPath}/ServletCuenta?action=LIST" method="get">
 	<div style="table-layout: auto" align="center">
@@ -25,11 +25,11 @@
 			<tr>
 
 				<th align="left">N° de Cuenta</th>
-				<th><input type="text" name="txtNrodeCuenta"></th>
+				<th><input type="text" name="txtNrodeCuenta" required pattern="[0-9]+" title="Solo se permiten Numeros"></th>
 			<tr>
 			<tr>
 				<th align="left">CBU</th>
-				<th><input type="text" name="txtCBU"></th>
+				<th><input type="text" name="txtCBU" required pattern="[0-9]+" title="Solo se permiten Numeros"></th>
 			</tr>
 			<tr>
 				<th align="left">Tipo de Cuenta</th>
@@ -41,7 +41,7 @@
 			</tr>
 			<tr>
 				<th align="left">Dni</th>
-				<th><input type="text" name="txtDni"></th>
+				<th><input type="text" name="txtDni" required pattern="[0-9]+" title="Solo se permiten Numeros"></th>
 			</tr>
 			<tr>
 				<th align="left">Fecha de Creacion</th>

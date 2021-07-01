@@ -13,14 +13,16 @@ Usuario:
 <div align="center">
 <br>
 <br>
+<form>
 DNI del cliente que desea modificar:   1111
 <br>
 <br>
 Usuario:  Ejemplo1
 <br>
 <br>
-Nueva Contraseña: <input type="text" name="txtNuevaContraseña"> <br><br>
+Nueva Contraseña: <input type="text" name="txtNuevaContraseña" required> <br><br>
 <input type="submit" value="Modificar" name="btnModCliente">
+</form>
 </div>
 
 

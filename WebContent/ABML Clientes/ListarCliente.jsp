@@ -33,6 +33,7 @@
 Usuario:
 <br>
 <h1 align="Center">Listar Clientes</h1>
+<a href="${pageContext.request.contextPath}/MenuAdmin.jsp?action=LIST"> Volver al menu</a><br><br>
 
 	<table id="table_id" class="display">
 		<thead>	

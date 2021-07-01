@@ -34,6 +34,9 @@ Usuario:
 <br>
 
 <h1 align="Center">Listar Cuentas</h1>
+<a href="${pageContext.request.contextPath}/MenuAdmin.jsp?action=LIST"> Volver al menu</a>
+<br>
+<br>
 
 	<table id="table_id" class="display">
 		<thead>
@@ -61,6 +64,8 @@ Usuario:
 			for(Cuenta c : ac){ 
 				Cliente clien = new Cliente();
 				clien = NegocioCliente.ObtenerCliente(c.getDNICliente());
+		
+				if(clien.getEstado()){   //para evitar mostrar cuentas con clientes dados de baja
 		%>
 			<tr>
 			
@@ -83,7 +88,9 @@ Usuario:
 					onclick="window.location.href='ModificarCuenta.jsp?CBU=<%=c.getCBU()%>&NrodeCuenta=<%= c.getNroCuenta() %>'"></th>	
 	
 			</tr>
-			<%} %>
+			<%}
+		
+			} %>
 		
 		</tbody>
 

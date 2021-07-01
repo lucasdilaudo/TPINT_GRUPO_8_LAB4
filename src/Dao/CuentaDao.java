@@ -147,7 +147,7 @@ public class CuentaDao {
 		try {
 		
 			Connection cn = Conexion.getConexion().getSQLConexion();
-			PreparedStatement pst = cn.prepareStatement(obtener);
+			PreparedStatement pst = cn.prepareStatement(obtener+ " where Estado=1");
 	
 			ResultSet rs = pst.executeQuery();
 		

@@ -17,13 +17,13 @@
 			 
 		    <tr>
 				<td width="50%">Usuario:</td>
-				<td width="50%"><input type="text" name="txtUsuario"></td>
+				<td width="50%"><input type="text" name="txtUsuario" required></td>
 				
 			</tr>
 			 
 			<tr>
 				<td width="50%">Contraseña:</td>
-				<td width="50%"><input type="text" name="txtConstraseña"></td>
+				<td width="50%"><input type="text" name="txtConstraseña" required></td>
 				
 			</tr>
 		    <tr>

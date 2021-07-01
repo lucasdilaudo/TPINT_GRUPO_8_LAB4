@@ -15,7 +15,7 @@ public class ClienteDao {
 	
 	private String borrar = "update usuarios set Estado=0 where DNI=?";
 	private String modificar = "update usuarios set Contrasena=? where DNI=?";
-	private String obtener = "SELECT DNI,Cuil,Nombre,Apellido,Sexo,Nacionalidad,DATE_FORMAT(FechadeNacimiento,'%d/%m/%Y'),Direccion,Localidad,Provincia,CorreoElectronico,Telefono,TipodeUsuario,Usuario,Contrasena from usuarios";
+	private String obtener = "SELECT DNI,Cuil,Nombre,Apellido,Sexo,Nacionalidad,DATE_FORMAT(FechadeNacimiento,'%d/%m/%Y'),Direccion,Localidad,Provincia,CorreoElectronico,Telefono,TipodeUsuario,Usuario,Contrasena,Estado from usuarios";
 	
 	
 	public int AgregarCliente(Cliente c) {
@@ -122,6 +122,7 @@ public class ClienteDao {
 			c.setTipodeCliente(rs.getInt(13));
 			c.setUsuario(rs.getString(14));
 			c.setContrasenia(rs.getString(15));
+			c.setEstado(rs.getBoolean(16));
 			}
 		}
 		catch (SQLException e) {
@@ -174,7 +175,7 @@ public class ClienteDao {
 		try {
 		
 			Connection cn = Conexion.getConexion().getSQLConexion();
-			PreparedStatement pst = cn.prepareStatement(obtener);
+			PreparedStatement pst = cn.prepareStatement(obtener + " where Estado=1");
 	
 			ResultSet rs = pst.executeQuery();
 		

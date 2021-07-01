@@ -43,7 +43,8 @@
 			</tr>
 			<tr>
 				<th align="left">Dni</th>
-				<th><input type="text" name="txtDni" value="<%= c.getDNICliente() %>"></th>
+				<th><input type="text" name="txtDni" value="<%= c.getDNICliente() %>" required pattern="[0-9]+" title="Solo se permiten Numeros">
+				<input type="hidden" name="hiddenDniAntiguo" value="<%= c.getDNICliente()%>">		</th>	
 			</tr>
 			<tr>
 				<th align="left">Fecha de Creacion</th>
@@ -51,7 +52,7 @@
 			</tr>
 			<tr>
 				<th align="left">Saldo</th>
-				<th><input type="text" name="txtSaldo" value="<%= c.getSaldo() %>"></th>
+				<th><input type="text" name="txtSaldo" value="<%= c.getSaldo() %>" required pattern="[0-9]+(\.[0-9][0-9]?)?" title="Solo se permiten Numeros con decimales"></th>
 		
 
 		</table>

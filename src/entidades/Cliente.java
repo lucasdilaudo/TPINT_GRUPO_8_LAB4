@@ -18,6 +18,8 @@ public class Cliente {
 	private String Telefono;
 	private String Usuario;
 	private String Contrasenia;
+	private boolean Estado;
+	
 	public String getDni() {
 		return Dni;
 	}
@@ -108,6 +110,12 @@ public class Cliente {
 	}
 	public void setTipodeCliente(int tipodeCliente) {
 		TipodeCliente = tipodeCliente;
+	}
+	public boolean getEstado() {
+		return Estado;
+	}
+	public void setEstado(boolean estado) {
+		Estado = estado;
 	}
 	
 	
