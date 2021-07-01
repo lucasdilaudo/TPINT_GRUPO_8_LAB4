@@ -1,3 +1,5 @@
+<%@page import="com.sun.webkit.ContextMenu.ShowContext"%>
+<%@page import="javax.sound.midi.SysexMessage"%>
 <%@page import="Negocio.NegocioCuenta"%>
 <%@page import="Dao.CuentaDao"%>
 <%@page import="entidades.Cuenta"%>
@@ -69,7 +71,9 @@ if(request.getAttribute("Agregado")!=null){
 	if(agregado){
 		%>
 		<br>	
+		
 		Cuenta agregada con exito!
+		
 		
 	<%}
 }

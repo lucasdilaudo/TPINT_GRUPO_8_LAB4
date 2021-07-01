@@ -20,7 +20,7 @@ public class Conexion
 		{
 			Class.forName("com.mysql.jdbc.Driver"); // quitar si no es necesario
 			this.connection = DriverManager.getConnection(host+dbName,user,pass);
-			this.connection.setAutoCommit(false);
+			this.connection.setAutoCommit(true);
 		}
 		catch(Exception e)
 		{

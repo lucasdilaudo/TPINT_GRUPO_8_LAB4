@@ -1,6 +1,6 @@
 package entidades;
 
-
+import java.sql.Date;
 
 public class Cliente {
 	private String Dni;
@@ -9,7 +9,7 @@ public class Cliente {
 	private String Nombre;
 	private int Sexo;
 	private String Nacionalidad;
-	private String Fecha;
+	private  String Fecha;
 	private String Direccion;
 	private int TipodeCliente;
 	private String Localidad;
