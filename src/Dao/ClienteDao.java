@@ -11,11 +11,11 @@ import entidades.Cliente;
 
 
 public class ClienteDao {
-	private String insertar = "insert into cuentas values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+	private String insertar = "insert into usuarios values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 	
 	private String borrar = "update usuarios set Estado=0 where DNI=?";
 	private String modificar = "update usuarios set Contrasena=? where DNI=?";
-	private String obtener = "SELECT DNI,Cuil,Nombre,Apellido,Sexo,Nacionalidad,DATE_FORMAT(FechadeNacimiento,'%d/%m/%Y'),Direccion,Localidad,Provincia,CorreoElectronico,Telefono,TipodeUsuario,Usuario,Contrasena from usuarios where Estado=1";
+	private String obtener = "SELECT DNI,Cuil,Nombre,Apellido,Sexo,Nacionalidad,DATE_FORMAT(FechadeNacimiento,'%d/%m/%Y'),Direccion,Localidad,Provincia,CorreoElectronico,Telefono,TipodeUsuario,Usuario,Contrasena from usuarios";
 	
 	
 	public int AgregarCliente(Cliente c) {
@@ -39,6 +39,7 @@ public class ClienteDao {
 			pst.setInt(13, c.getTipodeCliente());
 			pst.setString(14, c.getUsuario());
 			pst.setString(15, c.getContrasenia());
+			pst.setBoolean(16, true);
 			filas = pst.executeUpdate();
 			
 		}
@@ -99,11 +100,11 @@ public class ClienteDao {
 		try {
 		
 			Connection cn = Conexion.getConexion().getSQLConexion();
-			PreparedStatement pst = cn.prepareStatement(obtener + " and DNI=?");
+			PreparedStatement pst = cn.prepareStatement(obtener + " where Estado=1 and DNI=?");
 			pst.setString(1, DNI);
 			
 			ResultSet rs = pst.executeQuery();
-			rs.next();
+			if(rs.next()) {
 			
 			
 			c.setDni(rs.getString(1));
@@ -121,7 +122,44 @@ public class ClienteDao {
 			c.setTipodeCliente(rs.getInt(13));
 			c.setUsuario(rs.getString(14));
 			c.setContrasenia(rs.getString(15));
+			}
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return c;
+		
+		
+	}
+	
+	public Cliente Existe(String DNI) {
+		Cliente c = new Cliente();
+		try {
+		
+			Connection cn = Conexion.getConexion().getSQLConexion();
+			PreparedStatement pst = cn.prepareStatement(obtener + " where DNI=?");
+			pst.setString(1, DNI);
 			
+			ResultSet rs = pst.executeQuery();
+			if(rs.next()) {
+			
+			
+			c.setDni(rs.getString(1));
+			c.setCUIL(rs.getString(2));
+			c.setNombre(rs.getString(3));
+			c.setApellido(rs.getString(4));
+			c.setSexo(rs.getInt(5));
+			c.setNacionalidad(rs.getString(6));
+			c.setFecha(rs.getString(7));
+			c.setDireccion(rs.getString(8));
+			c.setLocalidad(rs.getString(9));
+			c.setProvincia(rs.getString(10));
+			c.setCorreo(rs.getString(11));
+			c.setTelefono(rs.getString(12));
+			c.setTipodeCliente(rs.getInt(13));
+			c.setUsuario(rs.getString(14));
+			c.setContrasenia(rs.getString(15));
+			}
 		}
 		catch (SQLException e) {
 			e.printStackTrace();

@@ -20,7 +20,7 @@
 <form action="${pageContext.request.contextPath}/ServletCuenta?action=LIST" method="post">
 <div style="table-layout: auto" align="center">
 	<% Cuenta c = new Cuenta(); //para evitar que llame a obtener cuenta una vez que modifico el registro
-		if(request.getAttribute("Modificado")==null) {
+		if(request.getAttribute("Mensaje")==null) {
 		 c = NegocioCuenta.ObtenerCuenta(request.getParameter("CBU"), request.getParameter("NrodeCuenta"));
 		  %>
 		<table>
@@ -65,17 +65,15 @@
 		<input type="submit" name="btnModificarCuenta" value="Modificar Cuenta"> 
 		<%
 		}
-			if(request.getAttribute("Modificado")!=null){
-				boolean modificado = (boolean) request.getAttribute("Modificado");
+			if(request.getAttribute("Mensaje")!=null){
 			
-				if(modificado){
 				%>
 				
-					<br>Cuenta modificada con exito
+					<br><%= request.getAttribute("Mensaje") %>
 				
 					
 				<% 
-				}			
+						
 			
 				
 			

@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.mysql.cj.Session;
 
 import Dao.CuentaDao;
+import Negocio.NegocioCliente;
 import Negocio.NegocioCuenta;
 import entidades.Cuenta;
 import sun.rmi.server.Dispatcher;
@@ -50,16 +51,37 @@ public class ServletCuenta extends HttpServlet {
 		     c.setFechaCreacion(fecha.getYear()+"-"+fecha.getMonthValue()+"-"+fecha.getDayOfMonth());
 		     c.setSaldo(10000);
 		    
-		    boolean Agregado = NegocioCuenta.AgregarCuenta(c);
+		   String Mensaje;
+		    if(!NegocioCliente.Existe(c.getDNICliente())) {
+		      Mensaje = "No existe un cliente con el DNI ingresado";
+		    }
+		    else {
+			   if(NegocioCuenta.Existe(c.getCBU(), c.getNroCuenta())) {
+				   Mensaje = "Ya existe una cuenta con el CBU y Numero de Cuenta Ingresados";
+				  
+			   }
+			   else {
+				   if(NegocioCuenta.CantidadCuentas(c.getDNICliente())==3) {
+					   	Mensaje = "El cliente excedio la cantidad permitida de cuentas (3)";
+				   }
+				   else {
+					   if	(NegocioCuenta.AgregarCuenta(c)){
+					   Mensaje = "Cuenta agregada con exito";
+					   }
+					   else Mensaje = "No se pudo agregar";
+				   }
+				}
+			
+		    }
 			
 			
 			
 			//REQUESTDISPACHER
-			request.setAttribute("Agregado", Agregado);
+			request.setAttribute("Mensaje", Mensaje);
 			RequestDispatcher rd = request.getRequestDispatcher("ABML Cuentas/AltaCuenta.jsp");
 			rd.forward(request, response);
+	    
 	    }
-   
 
 	}
 
@@ -100,10 +122,23 @@ public class ServletCuenta extends HttpServlet {
 			c.setTipoDeCuenta( Integer.parseInt(request.getParameter("selectTipodeCuenta")));
 			c.setSaldo( Double.parseDouble(request.getParameter("txtSaldo")));
 		
-			boolean Modificado = NegocioCuenta.ModificarCuenta(c);
+			String Mensaje;
+		    if(!NegocioCliente.Existe(c.getDNICliente())) {
+			      Mensaje = "No existe un cliente con el DNI ingresado";
+			}
+		    else {
+				if(NegocioCuenta.CantidadCuentas(c.getDNICliente())==3) {
+				   	Mensaje = "El cliente excedio la cantidad permitida de cuentas (3)";
+				}
+				else {
+				   if	(NegocioCuenta.ModificarCuenta(c)){
+					   Mensaje = "Cuenta modificada con exito";
+					   }
+					   else Mensaje = "No se pudo modificar";
+				   }
+		    }
 			
-			
-			request.setAttribute("Modificado", Modificado);
+			request.setAttribute("Mensaje", Mensaje);
 			
 			RequestDispatcher rd = request.getRequestDispatcher("ABML Cuentas/ModificarCuenta.jsp");
 			rd.forward(request, response);

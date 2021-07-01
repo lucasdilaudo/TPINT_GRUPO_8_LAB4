@@ -66,16 +66,15 @@
  
 boolean agregado;
 
-if(request.getAttribute("Agregado")!=null){
-	agregado = (boolean) request.getAttribute("Agregado");
-	if(agregado){
+if(request.getAttribute("Mensaje")!=null){
+
 		%>
-		<br>	
+		<br>
+		<br>
+		<%=
+		request.getAttribute("Mensaje") %>
 		
-		Cuenta agregada con exito!
-		
-		
-	<%}
+	<%
 }
 
 

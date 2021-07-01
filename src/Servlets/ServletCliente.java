@@ -56,15 +56,19 @@ public class ServletCliente extends HttpServlet {
 		     c.setUsuario(request.getParameter("txtUsuario"));
 		     c.setContrasenia(request.getParameter("txtContrasenia"));
 		     	     
+		     String Mensaje;
 		     
-		     
-		     
-		    boolean Agregado = NegocioCliente.AgregarCliente(c);
+		     if(NegocioCliente.Existe(c.getDni())) Mensaje = "Ya existe un usuario con ese DNI";
+		     else { 
+		    	 if(NegocioCliente.AgregarCliente(c)) Mensaje = "Usuario Agregado con exito";
+		    	 else Mensaje = "No se pudo agregar";
+		     }
+		    
 			
 			
 			
 			//REQUESTDISPACHER
-			request.setAttribute("Agregado", Agregado);
+			request.setAttribute("Mensaje", Mensaje);
 			RequestDispatcher rd = request.getRequestDispatcher("ABML Clientes/AltaCliente.jsp");
 			rd.forward(request, response);
 	    }

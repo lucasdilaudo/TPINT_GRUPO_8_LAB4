@@ -11,8 +11,8 @@ Usuario:
 <br>
 	<h1 align="center">Alta Clientes</h1>
 	
-	<form action="${pageContext.request.contextPath}/ServletCliente?action=LIST" method="get">
-	<div style="table-layout: auto" align="center">
+		<form action="${pageContext.request.contextPath}/ServletCliente?action=LIST" method="get">
+	<div align="center">
 		<table>
 			<tr>
 			
@@ -86,36 +86,31 @@ Usuario:
 			<tr> 
 		</table>
 			
-<% 
- 
-boolean agregado;
-
-if(request.getAttribute("Agregado")!=null){
-	agregado = (boolean) request.getAttribute("Agregado");
-	if(agregado){
-		%>
-		<br>	
 		
-		Usuario agregado con exito!
-		
-		
-	<%}
-}
-
-
-
-
-
-
-
-
-%>			
 		
 	
 	</div>
 
 <div align="center">
 <input type="submit" name="btnguardarCliente" value="Guardar Cliente">
+<% 
+ 
+
+
+if(request.getAttribute("Mensaje")!=null){
+	
+
+		%>
+		<br>	
+		
+		<%=request.getAttribute("Mensaje") %>
+		
+		
+	<%}
+
+
+%>	
+
 </form>
 </div>
 

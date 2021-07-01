@@ -11,10 +11,11 @@ import entidades.Cuenta;
 
 public class CuentaDao {
 	private String insertar = "insert into cuentas values(?,?,?,?,?,?,?)";
+	private String contar = "Select count(usuarios_DNI) from cuentas where usuarios_DNI=?";
 	//private String borrar = "delete from Cuentas where NrodeCuenta=? and CBU=?";
 	private String borrar = "update bdbanco.cuentas set Estado=0 where NrodeCuenta=? and CBU=?";
 	private String modificar = "update cuentas set usuarios_DNI=?,tiposdecuentas_IDTipodeCuenta=?,Saldo=? where NrodeCuenta=? and CBU=?";
-	private String obtener = "SELECT NrodeCuenta,CBU,usuarios_DNI,tiposdecuentas_IDTipodeCuenta,DATE_FORMAT(FechadeCreacion, '%d/%m/%Y'),Saldo FROM bdbanco.cuentas where Estado=1";
+	private String obtener = "SELECT NrodeCuenta,CBU,usuarios_DNI,tiposdecuentas_IDTipodeCuenta,DATE_FORMAT(FechadeCreacion, '%d/%m/%Y'),Saldo FROM bdbanco.cuentas";
 	
 	public int AgregarCuenta(Cuenta c) {
 		int filas=0;
@@ -92,17 +93,18 @@ public class CuentaDao {
 		try {
 		
 			Connection cn = Conexion.getConexion().getSQLConexion();
-			PreparedStatement pst = cn.prepareStatement(obtener + " and NrodeCuenta=? and CBU=?");
+			PreparedStatement pst = cn.prepareStatement(obtener + " where Estado=1 and NrodeCuenta=? and CBU=?");
 			pst.setString(1, NrodeCuenta);
 			pst.setString(2, CBU);
 			ResultSet rs = pst.executeQuery();
-			rs.next();
+			if(rs.next()) {
 			c.setNroCuenta(rs.getString(1));
 			c.setCBU(rs.getString(2));
 			c.setDNICliente(rs.getString(3));
 			c.setFechaCreacion(rs.getString(5));
 			c.setTipoDeCuenta(rs.getInt(4));
 			c.setSaldo(rs.getDouble(6));
+			}
 		}
 		catch (SQLException e) {
 			e.printStackTrace();
@@ -111,6 +113,34 @@ public class CuentaDao {
 		
 		
 	}
+	
+	public Cuenta Existe(String CBU, String NrodeCuenta) {
+		Cuenta c = new Cuenta();
+		try {
+		
+			Connection cn = Conexion.getConexion().getSQLConexion();
+			PreparedStatement pst = cn.prepareStatement(obtener + " where NrodeCuenta=? and CBU=?");
+			pst.setString(1, NrodeCuenta);
+			pst.setString(2, CBU);
+			ResultSet rs = pst.executeQuery();
+			if(rs.next()) {
+			c.setNroCuenta(rs.getString(1));
+			c.setCBU(rs.getString(2));
+			c.setDNICliente(rs.getString(3));
+			c.setFechaCreacion(rs.getString(5));
+			c.setTipoDeCuenta(rs.getInt(4));
+			c.setSaldo(rs.getDouble(6));
+			}
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return c;
+		
+		
+	}
+	
+	
 	
 	public ArrayList<Cuenta> ObtenerTodo() {
 		ArrayList<Cuenta> ac = new ArrayList<>();
@@ -138,6 +168,27 @@ public class CuentaDao {
 			e.printStackTrace();
 		}
 		return ac;
+		
+		
+	}
+	
+	public int CantidadCuentas(String DNI) {
+		int i=0;
+		try {
+		
+			Connection cn = Conexion.getConexion().getSQLConexion();
+			PreparedStatement pst = cn.prepareStatement(contar);
+			pst.setString(1, DNI);
+			
+			ResultSet rs = pst.executeQuery();
+			rs.next();
+	
+			i = rs.getInt(1);
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return i;
 		
 		
 	}

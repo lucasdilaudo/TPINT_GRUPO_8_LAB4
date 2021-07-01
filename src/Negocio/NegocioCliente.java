@@ -41,7 +41,13 @@ public class NegocioCliente {
 	}
 	
 	
-	
+	public static boolean Existe(String DNI) {
+		
+		if(cdao.Existe(DNI).getDni()!=null) return true;
+		else return false;
+		
+		
+	}
 	
 	
 	

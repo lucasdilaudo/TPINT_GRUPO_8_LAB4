@@ -8,6 +8,8 @@ import entidades.Cuenta;
 public class NegocioCuenta {
 	private static CuentaDao cdao = new CuentaDao();
 	
+	
+	
 	public static boolean AgregarCuenta(Cuenta c) {
 		
 		if(cdao.AgregarCuenta(c)==1) return true;
@@ -38,9 +40,21 @@ public class NegocioCuenta {
 		
 	}
 	
+	public static int CantidadCuentas(String DNI) {
+		
+		
+		return cdao.CantidadCuentas(DNI);
+		
+	}
 	
 	
 	
+	public static boolean Existe(String CBU, String NrodeCuenta) {
+	
+		 
+		if(cdao.Existe(CBU, NrodeCuenta).getCBU()!=null) return true;
+		else return false;
+	}
 	
 	
 }
