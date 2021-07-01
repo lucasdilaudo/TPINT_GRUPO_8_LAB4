@@ -62,7 +62,7 @@ Usuario:
 				<th><%=c.getCorreo() %></th>	
 				<th><%= c.getUsuario() %></th>
 				<th> <input type="submit" value="Eliminar" name="btnBajaCliente"
-				onclick="window.location.href='ConfirmarBajaCliente.jsp?DNI=<%=c.getDni()%>'"> </th>
+				onclick="window.location.href='ConfirmarBajaCliente.jsp?DNI=<%=c.getDni()%>&Nombre=<%=c.getNombre()%>'"> </th>
 				<th> <input type="submit" value="Modificar" name="btnModCliente"
 				onclick="window.location.href='ModificarCliente.jsp?DNI=<%=c.getDni()%>'"> </th>
 			</tr>

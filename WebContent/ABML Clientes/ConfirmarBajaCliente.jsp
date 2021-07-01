@@ -11,10 +11,32 @@ Usuario:
 <br>
 <h1 align="center">Confirmar</h1>
 <br>
-<div align="center"> ¿Esta seguro que desea dar de baja este Cliente?
-<br><br>Dni: 111111 Nombre: Marcos Gomez<br><br><input type="submit" name="ConfirmarSi" value="Si" style=" width: 82px">
-<input type="submit" name="ConfirmarNo" value="No" style=" width: 82px">
+<form action="${pageContext.request.contextPath}/ServletCliente?action=LIST" method="post">
+<% if(request.getAttribute("ConfirmarEliminado")==null){ %>
+<div align="center"> ¿Esta seguro que desea dar de baja este cliente?
+<br><br>
+Dni:<%= request.getParameter("DNI") %>  Nombre:<%= request.getParameter("Nombre") %> 
+<br><br>
+<input type="submit" name="ConfirmarSi" value="Si" style=" width: 82px">
+
+<input type=hidden value=<%= request.getParameter("DNI") %> name="hiddenDNI">
 <br>
+<%
+}
+	if(request.getAttribute("ConfirmarEliminado")!=null){	
+		boolean eliminado = (boolean) request.getAttribute("ConfirmarEliminado");	
+		
+		if(eliminado){
+			%>			
+			Usuario Eliminado Con Exito						
+		<% 
+			}		
+	}	
+ %>
+ 
+ <br><br>
+ <a href="${pageContext.request.contextPath}/ABML Clientes/ListarCliente.jsp?action=LIST">Volver a Listar Clientes</a>
 </div>
+</form>
 </body>
 </html>
