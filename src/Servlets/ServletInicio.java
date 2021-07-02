@@ -32,7 +32,6 @@ public class ServletInicio extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
 		String Mensaje;
 		
 		
@@ -64,17 +63,48 @@ public class ServletInicio extends HttpServlet {
 					}
 				}
 			}
-	    }
-		
-		
+	    }	
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		Cliente c;
+		String Mensaje;
+		
+		String usuario=request.getParameter("txtUsuario");
+		String clave=  request.getParameter("txtContraseña");
+		
+		if(request.getParameter("btnIngresar")!=null)
+	    {
+				
+				if(NegocioCliente.Existe(request.getParameter("txtDNI"))) {
+					c=NegocioCliente.ObtenerCliente((request.getParameter("txtDNI")));
+					if( (c.getUsuario().equals(usuario) && (c.getContrasenia().equals(clave) && (c.getTipodeCliente()==1)))) {
+						Mensaje="Log ok";
+						RequestDispatcher rd = request.getRequestDispatcher("MenuUsuario.jsp");
+						rd.forward(request, response);
+					}
+					if( (c.getUsuario().equals(usuario) && (c.getContrasenia().equals(clave) && (c.getTipodeCliente()==2)))) {
+						Mensaje="Log ok";
+						RequestDispatcher rd = request.getRequestDispatcher("MenuAdmin.jsp");	
+						rd.forward(request, response);
+					}
+				
+					else {
+						//Mensaje="Datos erroneos."+" Nombre de usuario: "+c.getUsuario()+", "+usuario+". Clave: "+c.getContrasenia()+", "+clave+" tipo cliente:"+c.getTipodeCliente();
+						Mensaje="Datos erroneos.";
+						request.setAttribute("Mensaje", Mensaje);
+						RequestDispatcher rd = request.getRequestDispatcher("Inicio.jsp");
+						rd.forward(request, response);
+					}
+			}
+			else{
+				Mensaje="DNI no registrado";
+				request.setAttribute("Mensaje", Mensaje);
+				RequestDispatcher rd = request.getRequestDispatcher("Inicio.jsp");
+				rd.forward(request, response);
+			}
+		}
 	}
 
 }

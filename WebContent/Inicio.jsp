@@ -7,13 +7,18 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<center><b><h1 style="color: gray; border: steelblue solid 1px;">Bienvenidos al Banco</h1></h1></b></center>
+	<center><b><h1 style="color: gray; border: steelblue solid 1px;">Bienvenidos al Banco</h1></b></center>
 	<br>
 	<br>
 	<br>
-	<center><form action="${pageContext.request.contextPath}/ServletInicio?action=LIST" method="get">
+	<center><form action="${pageContext.request.contextPath}/ServletInicio?action=LIST" method="post">
 		
 		<table border="0">
+			<tr>
+				<td width="50%">DNI:</td>
+				<td width="50%"><input type="text" name="txtDNI" required></td>
+				
+			</tr>
 			 
 		    <tr>
 				<td width="50%">Usuario:</td>
@@ -23,7 +28,7 @@
 			 
 			<tr>
 				<td width="50%">Contraseña:</td>
-				<td width="50%"><input type="text" name="txtConstraseña" required></td>
+				<td width="50%"><input type="password" name="txtContraseña" required></td>
 				
 			</tr>
 		    <tr>
@@ -31,7 +36,9 @@
 				<td width="50%"></td>
 				<td width="50%" align="center"><input type="submit" name="btnIngresar" value="Ingresar"> </td>
 				
-			</tr></center>
+			</tr>
+		</table>
+		
 
 <% 
  
@@ -56,6 +63,6 @@ if(request.getAttribute("Mensaje")!=null){
 		
 	
 	
-	</form>
+	</form></center>
 </body>
 </html>
