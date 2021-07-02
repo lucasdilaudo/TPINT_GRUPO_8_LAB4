@@ -55,6 +55,7 @@ public class ServletCliente extends HttpServlet {
 		     c.setTelefono(request.getParameter("txtTelefono")); 
 		     c.setUsuario(request.getParameter("txtUsuario"));
 		     c.setContrasenia(request.getParameter("txtContrasenia"));
+		     c.setTipodeCliente(Integer.parseInt(request.getParameter("ddlTipodeusuario")));
 		     	     
 		     String Mensaje;
 		     

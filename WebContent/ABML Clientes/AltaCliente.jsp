@@ -85,6 +85,13 @@ Usuario:
 				<th><input type="password" name="txtContrasenia" required>
 				</th>
 			<tr> 
+			<tr> 
+				<th align="left">Tipo de Usuario</th>
+				<th><select name="ddlTipodeusuario">
+					<option value=1>Admin</option>
+					<option value=2>Cliente</option> 
+					</select></th>
+			</tr>
 		</table>
 			
 		

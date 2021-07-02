@@ -49,6 +49,27 @@ public class NegocioCliente {
 		
 	}
 	
+   
+     public static int Saber_TipodeUsuario(String Usuario,String Contrasena) {
+		
+		if(cdao.Saber_TipodeUsuario(Usuario,Contrasena).getDni()==null) return 0;
+		
+		else {
+			if(cdao.Saber_TipodeUsuario(Usuario,Contrasena).getTipodeCliente()==1) {
+				return 1;
+			}
+			else {
+				if(cdao.Saber_TipodeUsuario(Usuario,Contrasena).getTipodeCliente()==2) {
+					return 2;
+				}
+				else {
+					return 3; // en este caso el usuario esta mal en el sistema y no es ni admin ni cliente.
+				}
+			}
+		}
+		
+		
+	}
 	
 	
 }

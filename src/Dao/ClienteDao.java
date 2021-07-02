@@ -174,6 +174,44 @@ public class ClienteDao {
 		
 	}
 	
+	public Cliente Saber_TipodeUsuario(String Usuario,String Contrasena) {
+		Cliente c = new Cliente();
+		try {
+		
+			Connection cn = Conexion.getConexion().getSQLConexion();
+			PreparedStatement pst = cn.prepareStatement(obtener + " where Usuario=? and Contrasena=?");
+			pst.setString(1, Usuario);
+			pst.setString(2, Contrasena);
+			
+			ResultSet rs = pst.executeQuery();
+			if(rs.next()) {
+			
+			
+			c.setDni(rs.getString(1));
+			c.setCUIL(rs.getString(2));
+			c.setNombre(rs.getString(3));
+			c.setApellido(rs.getString(4));
+			c.setSexo(rs.getInt(5));
+			c.setNacionalidad(rs.getString(6));
+			c.setFecha(rs.getString(7));
+			c.setDireccion(rs.getString(8));
+			c.setLocalidad(rs.getString(9));
+			c.setProvincia(rs.getString(10));
+			c.setCorreo(rs.getString(11));
+			c.setTelefono(rs.getString(12));
+			c.setTipodeCliente(rs.getInt(13));
+			c.setUsuario(rs.getString(14));
+			c.setContrasenia(rs.getString(15));
+			}
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return c;
+		
+		
+	}
+	
 	public ArrayList<Cliente> ObtenerTodo() {
 		ArrayList<Cliente> ac = new ArrayList<>();
 		try {

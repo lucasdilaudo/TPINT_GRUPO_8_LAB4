@@ -11,7 +11,7 @@
 	<br>
 	<br>
 	<br>
-	<center><form action="MenuUsuario.jsp" method="get">
+	<center><form action="${pageContext.request.contextPath}/ServletInicio?action=LIST" method="get">
 		
 		<table border="0">
 			 
@@ -32,7 +32,24 @@
 				<td width="50%" align="center"><input type="submit" name="btnIngresar" value="Ingresar"> </td>
 				
 			</tr></center>
+
+<% 
+ 
+
+
+if(request.getAttribute("Mensaje")!=null){
 	
+
+		%>
+		<br>	
+		
+		<%=request.getAttribute("Mensaje") %>
+		
+		
+	<%}
+
+
+%>	
 	
 	
 		
