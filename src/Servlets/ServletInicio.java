@@ -73,37 +73,36 @@ public class ServletInicio extends HttpServlet {
 		
 		String usuario=request.getParameter("txtUsuario");
 		String clave=  request.getParameter("txtContraseña");
-		
+		String direccion;
 		if(request.getParameter("btnIngresar")!=null)
 	    {
 				
 				if(NegocioCliente.Existe(request.getParameter("txtDNI"))) {
 					c=NegocioCliente.ObtenerCliente((request.getParameter("txtDNI")));
-					if( (c.getUsuario().equals(usuario) && (c.getContrasenia().equals(clave) && (c.getTipodeCliente()==1)))) {
+					if( (c.getUsuario().equals(usuario) && (c.getContrasenia().equals(clave)))) {
 						Mensaje="Log ok";
-						RequestDispatcher rd = request.getRequestDispatcher("MenuUsuario.jsp");
-						rd.forward(request, response);
+						if(c.getTipodeCliente()==1)direccion="MenuUsuario.jsp";
+						else direccion="MenuAdmin.jsp";
+						
 					}
-					if( (c.getUsuario().equals(usuario) && (c.getContrasenia().equals(clave) && (c.getTipodeCliente()==2)))) {
-						Mensaje="Log ok";
-						RequestDispatcher rd = request.getRequestDispatcher("MenuAdmin.jsp");	
-						rd.forward(request, response);
-					}
-				
 					else {
 						//Mensaje="Datos erroneos."+" Nombre de usuario: "+c.getUsuario()+", "+usuario+". Clave: "+c.getContrasenia()+", "+clave+" tipo cliente:"+c.getTipodeCliente();
 						Mensaje="Datos erroneos.";
 						request.setAttribute("Mensaje", Mensaje);
-						RequestDispatcher rd = request.getRequestDispatcher("Inicio.jsp");
-						rd.forward(request, response);
+						direccion="Inicio.jsp";
+						
 					}
 			}
 			else{
 				Mensaje="DNI no registrado";
 				request.setAttribute("Mensaje", Mensaje);
-				RequestDispatcher rd = request.getRequestDispatcher("Inicio.jsp");
-				rd.forward(request, response);
+				direccion="Inicio.jsp";
+				
 			}
+				
+				
+				RequestDispatcher rd = request.getRequestDispatcher(direccion);
+				rd.forward(request, response);
 		}
 	}
 
