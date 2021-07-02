@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Negocio.NegocioCliente;
+import Negocio.NegocioCuenta;
 import entidades.Cliente;
 
 
@@ -38,8 +39,6 @@ public class ServletCliente extends HttpServlet {
 		
 		if(request.getParameter("btnguardarCliente")!=null)
 	    {
-			
-			
 		     Cliente c = new Cliente();
 		     c.setDni(request.getParameter("txtDni"));
 		     c.setCUIL(request.getParameter("txtCuil"));
@@ -64,29 +63,51 @@ public class ServletCliente extends HttpServlet {
 		    	 if(NegocioCliente.AgregarCliente(c)) Mensaje = "Usuario Agregado con exito";
 		    	 else Mensaje = "No se pudo agregar";
 		     }
-		    
-			
-			
 			
 			//REQUESTDISPACHER
 			request.setAttribute("Mensaje", Mensaje);
 			RequestDispatcher rd = request.getRequestDispatcher("ABML Clientes/AltaCliente.jsp");
 			rd.forward(request, response);
 	    }
-		
-		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Cliente c=new Cliente();
+		
 		if(request.getParameter("ConfirmarSi")!=null){
 			
 			boolean Eliminado = NegocioCliente.EliminarCliente(request.getParameter("hiddenDNI"));
 			request.setAttribute("ConfirmarEliminado", Eliminado );	
 			RequestDispatcher rd = request.getRequestDispatcher("ABML Clientes/ConfirmarBajaCliente.jsp");
 			rd.forward(request, response);
+		}
+		
+		
+		if(request.getParameter("btnModCliente")!=null) {
+			
+			c.setDni(request.getParameter("hiddenDniCliente"));
+			c.setNombre(request.getParameter("txtNombre"));
+			c.setApellido(request.getParameter("txtApellido"));
+			c.setCUIL(request.getParameter("txtCuil"));
+			c.setDireccion(request.getParameter("txtDireccion"));
+			c.setLocalidad(request.getParameter("txtLocalidad"));
+			c.setCorreo(request.getParameter("txtCorreo"));
+		
+			String Mensaje;
+		    
+			if(NegocioCliente.ModificarCliente(c)) {
+				Mensaje = "Cuenta modificada con exito";
+			}else Mensaje = "No se pudo modificar";
+			
+			
+			request.setAttribute("Mensaje", Mensaje);
+			
+			RequestDispatcher rd = request.getRequestDispatcher("ABML Clientes/ModificarCliente.jsp");
+			rd.forward(request, response);
+			
 		}
 		
 	}

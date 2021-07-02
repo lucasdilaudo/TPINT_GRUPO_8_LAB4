@@ -39,7 +39,8 @@ Usuario:
 		<thead>	
 			<tr>
 				<th>DNI</th>			
-				<th>Nombre Completo</th>	
+				<th>Nombre</th>	
+				<th>Apellido</th>
 				<th>Cuil</th>	
 				<th>Direccion</th>	
 				<th>Localidad</th>
@@ -56,11 +57,12 @@ Usuario:
 			 %>
 			<tr>
 				<th><%= c.getDni() %></th>	
-				<th><%= c.getNombre()+" "+c.getApellido() %></th>	
+				<th><%= c.getNombre()%></th>
+				<th><%= c.getApellido() %></th>	
 				<th><%= c.getCUIL() %></th>	
 				<th><%= c.getDireccion() %></th>	
 				<th><%= c.getLocalidad() %></th>	
-				<th><%=c.getCorreo() %></th>	
+				<th><%= c.getCorreo() %></th>	
 				<th><%= c.getUsuario() %></th>
 				<th> <input type="submit" value="Eliminar" name="btnBajaCliente"
 				onclick="window.location.href='ConfirmarBajaCliente.jsp?DNI=<%=c.getDni()%>&Nombre=<%=c.getNombre()%>'"> </th>

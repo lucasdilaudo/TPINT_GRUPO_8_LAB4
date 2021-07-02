@@ -14,7 +14,7 @@ public class ClienteDao {
 	private String insertar = "insert into usuarios values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 	
 	private String borrar = "update usuarios set Estado=0 where DNI=?";
-	private String modificar = "update usuarios set Contrasena=? where DNI=?";
+	private String modificar = "update usuarios set Nombre=?, Apellido=?, Cuil=?, Direccion=?, Localidad=?, CorreoElectronico=? where DNI=?";
 	private String obtener = "SELECT DNI,Cuil,Nombre,Apellido,Sexo,Nacionalidad,DATE_FORMAT(FechadeNacimiento,'%d/%m/%Y'),Direccion,Localidad,Provincia,CorreoElectronico,Telefono,TipodeUsuario,Usuario,Contrasena,Estado from usuarios";
 	
 	
@@ -80,9 +80,13 @@ public class ClienteDao {
 			Connection cn = Conexion.getConexion().getSQLConexion();
 			PreparedStatement pst = cn.prepareStatement(modificar);
 		
-			pst.setString(2, c.getDni());
-
-			pst.setString(1, c.getContrasenia());
+			pst.setString(1, c.getNombre());
+			pst.setString(2, c.getApellido());
+			pst.setInt(3, Integer.parseInt(c.getCUIL()));
+			pst.setString(4, c.getDireccion());
+			pst.setString(5, c.getLocalidad());
+			pst.setString(6, c.getCorreo());
+			pst.setInt(7, Integer.parseInt(c.getDni()));
 		
 			filas = pst.executeUpdate();
 			
