@@ -7,6 +7,12 @@
 <title>Reportes</title>
 </head>
 <body>
+<% 
+String Usuario = (String) session.getAttribute("Usuario");
+%>
+
+Usuario:<%out.print(Usuario); %>
+<br>
 <h1 align="left">Reportes</h1>
 <br>
 <div  style="padding-left: 10px;

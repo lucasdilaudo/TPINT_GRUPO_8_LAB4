@@ -8,6 +8,12 @@
 </head>
 <body>
 <h1 style="color: gray; border: steelblue solid 1px;">PRESTAMOS</h1>
+<% 
+String Usuario = (String) session.getAttribute("Usuario");
+%>
+
+Usuario:<%out.print(Usuario); %>
+<br>
 <br>
 <br>
 <form action="MenuUsuario.jsp" method="post">

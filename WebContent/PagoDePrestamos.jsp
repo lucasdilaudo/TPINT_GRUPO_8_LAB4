@@ -7,7 +7,12 @@
 <title>Pago de prestamos</title>
 </head>
 <body>
+<% 
+String Usuario = (String) session.getAttribute("Usuario");
+%>
 
+Usuario:<%out.print(Usuario); %>
+<br>
 <h1 align="Center">Pago de Prestamos</h1>
 <br>
 <a href="MenuUsuario.jsp">Volver</a>

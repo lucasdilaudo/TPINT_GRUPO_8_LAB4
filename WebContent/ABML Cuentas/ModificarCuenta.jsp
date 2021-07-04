@@ -11,9 +11,12 @@
 <title>Modificar Cuenta</title>
 </head>
 <body>
-	Usuario: 
+<% 
+String Usuario = (String) session.getAttribute("Usuario");
+%>
 
-	<br>
+Usuario:<%out.print(Usuario); %>
+<br>
 	<h1 align="center">Modificar  Cuenta</h1>
 	
 	

@@ -8,6 +8,12 @@
 </head>
 
 <body>
+<% 
+String Usuario = (String) session.getAttribute("Usuario");
+%>
+
+Usuario:<%out.print(Usuario); %>
+<br>
 	<center><h1 style="color: gray; border: steelblue solid 1px;">Mi cuenta</h1></center>
 	<br>
 	<br>

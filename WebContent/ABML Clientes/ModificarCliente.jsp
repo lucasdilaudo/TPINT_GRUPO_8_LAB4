@@ -9,7 +9,11 @@
 <title>Modificar Cliente</title>
 </head>
 <body>
-Usuario:
+<% 
+String Usuario = (String) session.getAttribute("Usuario");
+%>
+
+Usuario:<%out.print(Usuario); %>
 <br>
 <h1 align="center">Modificar Cliente</h1>
 <div align="center">

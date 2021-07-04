@@ -9,7 +9,11 @@
 </head>
 
 <body>
-Usuario:
+<% 
+String Usuario = (String) session.getAttribute("Usuario");
+%>
+
+Usuario:<%out.print(Usuario); %>
 <br>
 <h1 align="center">Menu Administrador</h1>
 <br>

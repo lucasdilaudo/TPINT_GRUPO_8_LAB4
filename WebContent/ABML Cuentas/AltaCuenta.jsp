@@ -15,7 +15,12 @@
 </head>
 <body>
 <% LocalDate fecha = LocalDate.now(); %>
-	Usuario:
+<% 
+String Usuario = (String) session.getAttribute("Usuario");
+%>
+
+Usuario:<%out.print(Usuario); %>
+<br>
 	
 	<h1 align="center">Alta Cuentas</h1><br><a href="${pageContext.request.contextPath}/MenuAdmin.jsp?action=LIST"> Volver al menu</a><br><br>
 	

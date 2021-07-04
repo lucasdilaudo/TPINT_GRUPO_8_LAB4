@@ -30,7 +30,11 @@
 </script>
 </head>
 <body>
-Usuario:
+<% 
+String Usuario = (String) session.getAttribute("Usuario");
+%>
+
+Usuario:<%out.print(Usuario); %>
 <br>
 <h1 align="Center">Listar Clientes</h1>
 <a href="${pageContext.request.contextPath}/MenuAdmin.jsp?action=LIST"> Volver al menu</a><br><br>

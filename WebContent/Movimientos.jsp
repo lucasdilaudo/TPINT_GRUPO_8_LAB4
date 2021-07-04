@@ -7,6 +7,12 @@
 <title>Movimientos</title>
 </head>
 <body>
+<% 
+String Usuario = (String) session.getAttribute("Usuario");
+%>
+
+Usuario:<%out.print(Usuario); %>
+<br>
 	<h1 style="padding-left: 120px; color: gray; border: steelblue solid 1px;">Utimos Movimientos</h1>
 
 	<form action="MenuUsuario.jsp" method="post">

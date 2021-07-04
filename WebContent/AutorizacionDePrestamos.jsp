@@ -15,7 +15,12 @@
 
 </head>
 <body>
+<% 
+String Usuario = (String) session.getAttribute("Usuario");
+%>
 
+Usuario:<%out.print(Usuario); %>
+<br>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('#table_id').DataTable();

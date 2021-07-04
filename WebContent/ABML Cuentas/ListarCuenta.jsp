@@ -22,7 +22,6 @@
 
 </head>
 <body>
-
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('#table_id').DataTable();
@@ -30,7 +29,11 @@
 </script>
 </head>
 <body>
-Usuario:
+<% 
+String Usuario = (String) session.getAttribute("Usuario");
+%>
+
+Usuario:<%out.print(Usuario); %>
 <br>
 
 <h1 align="Center">Listar Cuentas</h1>
