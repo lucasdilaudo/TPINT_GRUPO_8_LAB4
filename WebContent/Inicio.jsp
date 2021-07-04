@@ -16,7 +16,7 @@
 		<table border="0">
 			<tr>
 				<td width="50%">DNI:</td>
-				<td width="50%"><input type="text" name="txtDNI" required></td>
+				<td width="50%"><input type="text" name="txtDNI" required pattern="[0-9]+" title="Solo se permiten Numeros"></td>
 				
 			</tr>
 			 

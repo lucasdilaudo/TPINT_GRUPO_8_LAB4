@@ -31,27 +31,27 @@ Usuario:<%out.print(Usuario); %>
 		</tr>
 		<tr>
 			<th align="left">Nombre</th>
-			<th><input type="text" name="txtNombre" value="<%= c.getNombre() %>"></th>
+			<th><input type="text" name="txtNombre" value="<%= c.getNombre() %>" required></th>
 		</tr>
 		<tr>
 			<th align="left">Apellido</th>
-				<th><input type="text" name="txtApellido" value="<%= c.getApellido() %>"></th>
+				<th><input type="text" name="txtApellido" value="<%= c.getApellido() %>" required></th>
 		</tr>
 		<tr>
 			<th align="left">CUIL</th>
-			<th><input type="text" name="txtCuil" value="<%= c.getCUIL() %>"></th>	
+			<th><input type="text" name="txtCuil" value="<%= c.getCUIL() %>" required pattern="[0-9]+" title="Solo se permiten Numeros"></th>	
 		</tr>
 		<tr>
 			<th align="left">Direccion</th>
-			<th><input type="text" name="txtDireccion" value="<%= c.getDireccion() %>"></th>
+			<th><input type="text" name="txtDireccion" value="<%= c.getDireccion() %>" required></th>
 		</tr>
 		<tr>
 			<th align="left">Localidad</th>
-			<th><input type="text" name="txtLocalidad" value="<%= c.getLocalidad() %>"></th>
+			<th><input type="text" name="txtLocalidad" value="<%= c.getLocalidad() %>" required></th>
 		</tr>
 		<tr>
 			<th align="left">Correo</th>
-			<th><input type="text" name="txtCorreo" value="<%= c.getCorreo() %>"></th>
+			<th><input type="email" name="txtCorreo" value="<%= c.getCorreo() %>" required></th>
 		</tr>
 	</table>
 
