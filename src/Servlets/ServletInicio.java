@@ -70,7 +70,7 @@ public class ServletInicio extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		Cliente c = null;
+		Cliente c;
 		String Mensaje;
 		String Nombre;
 	
@@ -103,9 +103,9 @@ public class ServletInicio extends HttpServlet {
 				direccion="Inicio.jsp";
 				
 			}
-				Nombre=c.getUsuario();
+				//Nombre=c.getUsuario();
 				HttpSession session = request.getSession();
-				session.setAttribute("Usuario", Nombre);
+				session.setAttribute("Usuario", request.getParameter("txtUsuario"));
 				RequestDispatcher rd = request.getRequestDispatcher(direccion);
 				rd.forward(request, response);
 		}
