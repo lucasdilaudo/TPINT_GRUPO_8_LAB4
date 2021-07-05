@@ -2,6 +2,7 @@ package Servlets;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.RequestDispatcher;
@@ -35,7 +36,25 @@ public class ServletCliente extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		LocalDate fecha = LocalDate.now();
+		
+		if(request.getParameter("IraMod")!=null) {
+			Cliente c = NegocioCliente.ObtenerCliente(request.getParameter("DNI"));
+			request.setAttribute("Cliente", c);
+			RequestDispatcher rd = request.getRequestDispatcher("ABML Clientes/ModificarCliente.jsp");
+			rd.forward(request, response);
+			
+		}
+		
+		
+		if(request.getParameter("IraListar")!=null) {
+			ArrayList<Cliente> ac = NegocioCliente.ObtenerTodo();
+			request.setAttribute("ListadeClientes", ac);
+			RequestDispatcher rd = request.getRequestDispatcher("/ABML Clientes/ListarCliente.jsp");
+			rd.forward(request, response);
+			
+		}
+		
+		
 		
 		if(request.getParameter("btnguardarCliente")!=null)
 	    {

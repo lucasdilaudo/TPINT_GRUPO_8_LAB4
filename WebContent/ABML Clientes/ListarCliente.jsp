@@ -55,8 +55,8 @@ Usuario:<%out.print(Usuario); %>
 			</tr>
 		</thead>
 		<tbody>
-		<% ArrayList<Cliente> ac = NegocioCliente.ObtenerTodo();
-		
+		<% if(request.getAttribute("ListadeClientes")!=null){
+			ArrayList<Cliente> ac = (ArrayList) request.getAttribute("ListadeClientes");
 			for(Cliente c : ac){
 			 %>
 			<tr>
@@ -69,11 +69,12 @@ Usuario:<%out.print(Usuario); %>
 				<th><%= c.getCorreo() %></th>	
 				<th><%= c.getUsuario() %></th>
 				<th> <input type="submit" value="Eliminar" name="btnBajaCliente"
-				onclick="window.location.href='ConfirmarBajaCliente.jsp?DNI=<%=c.getDni()%>&Nombre=<%=c.getNombre()%>'"> </th>
+				onclick="window.location.href='${pageContext.request.contextPath}/ABML Clientes/ConfirmarBajaCliente.jsp?DNI=<%=c.getDni()%>&Nombre=<%=c.getNombre()%>'"> </th>
 				<th> <input type="submit" value="Modificar" name="btnModCliente"
-				onclick="window.location.href='ModificarCliente.jsp?DNI=<%=c.getDni()%>'"> </th>
+				onclick="window.location.href='${pageContext.request.contextPath}/ServletCliente?DNI=<%=c.getDni()%>&IraMod=1'"> </th>
 			</tr>
-			<%} %>
+			<%}
+			}%>
 		</tbody>
 	
 	

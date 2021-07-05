@@ -63,12 +63,9 @@ Usuario:<%out.print(Usuario); %>
 	
 		
 		<%
-			ArrayList<Cuenta> ac = NegocioCuenta.ObtenerTodo();
-			for(Cuenta c : ac){ 
-				Cliente clien = new Cliente();
-				clien = NegocioCliente.ObtenerCliente(c.getDNICliente());
-		
-				if(clien.getEstado()){   //para evitar mostrar cuentas con clientes dados de baja
+			if(request.getAttribute("ListadeCuentas")!=null) {
+				ArrayList<Cuenta> ac = (ArrayList) request.getAttribute("ListadeCuentas");
+				for(Cuenta c : ac){
 		%>
 			<tr>
 			
@@ -76,7 +73,7 @@ Usuario:<%out.print(Usuario); %>
 					<th><%= c.getNroCuenta() %> </th>	
 					<th><%= c.getCBU() %></th>	
 					<th><%= c.getDNICliente() %></th>	
-					<th><%= clien.getUsuario() %></th>	
+					<th></th>	
 					<% if(c.getTipoDeCuenta()==1){%>
 						<th>Caja de Ahorro </th>	
 					<%}  else {%>
@@ -86,13 +83,13 @@ Usuario:<%out.print(Usuario); %>
 					<th><%= c.getSaldo() %> </th>
 					
 					<th> <input type="submit" value="Eliminar" name="btnBajaCuenta" 
-					onclick="window.location.href='ConfirmarBajaCuenta.jsp?CBU=<%=c.getCBU()%>&NrodeCuenta=<%= c.getNroCuenta() %>&Nombre=<%=clien.getNombre()%>'"></th>
+					onclick="window.location.href='${pageContext.request.contextPath}/ABML Cuentas/ConfirmarBajaCuenta.jsp?CBU=<%=c.getCBU()%>&NrodeCuenta=<%= c.getNroCuenta() %>'"></th>
 					<th> <input type="submit" value="Modificar" name="btnModCuenta"
-					onclick="window.location.href='ModificarCuenta.jsp?CBU=<%=c.getCBU()%>&NrodeCuenta=<%= c.getNroCuenta() %>'"></th>	
+					onclick="window.location.href='${pageContext.request.contextPath}/ServletCuenta?CBU=<%=c.getCBU()%>&NrodeCuenta=<%= c.getNroCuenta() %>&IraMod=1'"></th>	
 	
 			</tr>
-			<%}
-		
+			<%
+				}
 			} %>
 		
 		</tbody>

@@ -16,8 +16,9 @@ Usuario:<%out.print(Usuario); %>
 <h1 align="center">Confirmar</h1>
 <br>
 <form action="${pageContext.request.contextPath}/ServletCliente?action=LIST" method="post">
+<div align="center">
 <% if(request.getAttribute("ConfirmarEliminado")==null){ %>
-<div align="center"> ¿Esta seguro que desea dar de baja este cliente?
+ ¿Esta seguro que desea dar de baja este cliente?
 <br><br>
 Dni:<%= request.getParameter("DNI") %>  Nombre:<%= request.getParameter("Nombre") %> 
 <br><br>
@@ -39,7 +40,7 @@ Dni:<%= request.getParameter("DNI") %>  Nombre:<%= request.getParameter("Nombre"
  %>
  
  <br><br>
- <a href="${pageContext.request.contextPath}/ABML Clientes/ListarCliente.jsp?action=LIST">Volver a Listar Clientes</a>
+ <a href="${pageContext.request.contextPath}/ServletCliente?IraListar=1">Volver a Listar Clientes</a>
 </div>
 </form>
 </body>

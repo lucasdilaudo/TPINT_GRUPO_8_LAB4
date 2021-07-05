@@ -24,7 +24,7 @@ Usuario:<%out.print(Usuario); %>
 <div style="table-layout: auto" align="center">
 	<% Cuenta c = new Cuenta(); //para evitar que llame a obtener cuenta una vez que modifico el registro
 		if(request.getAttribute("Mensaje")==null) {
-		 c = NegocioCuenta.ObtenerCuenta(request.getParameter("CBU"), request.getParameter("NrodeCuenta"));
+		 c = (Cuenta) request.getAttribute("Cuenta");
 		  %>
 		<table>
 			<tr>
@@ -91,7 +91,7 @@ Usuario:<%out.print(Usuario); %>
 		
 			<br> <br>
 		
-	<a href="${pageContext.request.contextPath}/ABML Cuentas/ListarCuenta.jsp?action=LIST">Volver a Listar Cuenta</a>
+	<a href="${pageContext.request.contextPath}/ServletCuenta?action=LIST&IraListar=1">Volver a Listar Cuenta</a>
 	</div>
 	
 	</form>

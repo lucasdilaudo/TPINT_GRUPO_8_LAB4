@@ -2,6 +2,7 @@ package Servlets;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -39,6 +40,39 @@ public class ServletCuenta extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		LocalDate fecha = LocalDate.now();
+		
+		if(request.getParameter("IraListar")!=null) {
+			ArrayList<Cuenta> ac =	NegocioCuenta.ObtenerTodo();
+			ArrayList<Cuenta> nuevo = new ArrayList<>(); //este obtendra los que no tienen cliente con baja
+		 
+			for (Cuenta cuenta : ac) {
+				
+				
+				if(NegocioCliente.ObtenerCliente(cuenta.getDNICliente()).getEstado()) {
+					nuevo.add(cuenta);
+				}
+				
+				
+				
+			}
+			
+			request.setAttribute("ListadeCuentas", nuevo);
+			
+			RequestDispatcher rd = request.getRequestDispatcher("ABML Cuentas/ListarCuenta.jsp");
+			rd.forward(request, response);
+			
+		}
+		
+		
+		if(request.getParameter("IraMod")!=null) {
+			Cuenta c = NegocioCuenta.ObtenerCuenta(request.getParameter("CBU"), request.getParameter("NrodeCuenta"));
+			request.setAttribute("Cuenta", c );
+			RequestDispatcher rd = request.getRequestDispatcher("/ABML Cuentas/ModificarCuenta.jsp");
+			rd.forward(request, response);
+			
+		}
+		
+		
 		
 		
 		if(request.getParameter("btnGuardarCuenta")!=null)

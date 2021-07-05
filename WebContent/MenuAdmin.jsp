@@ -29,7 +29,7 @@ Usuario:<%out.print(Usuario); %>
  <br>	<br>	
 		 <a href="ABML Clientes/AltaCliente.jsp">Alta Cliente</a><br><br>
 		
-		<a href="ABML Clientes/ListarCliente.jsp">Listar Clientes</a><br>
+		<a href="${pageContext.request.contextPath}/ServletCliente?IraListar=1">Listar Clientes</a><br>
 		
 		</div>
 <div  style="padding-left: 10px;
@@ -42,7 +42,7 @@ Usuario:<%out.print(Usuario); %>
 	Gestion de Cuentas:
  <br>	<br>	
 		 <a href="ABML Cuentas/AltaCuenta.jsp">Alta Cuenta</a><br><br>
-		<a href="ABML Cuentas/ListarCuenta.jsp">Listar Cuenta</a><br>
+		<a href="${pageContext.request.contextPath}/ServletCuenta?action=LIST&IraListar=1">Listar Cuenta</a><br>
 		
 		
 		</div>

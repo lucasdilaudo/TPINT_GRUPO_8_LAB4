@@ -22,7 +22,7 @@ Usuario:<%out.print(Usuario); %>
 <form  action="${pageContext.request.contextPath}/ServletCliente?action=LIST" method="post">
 		<% Cliente c = new Cliente();
 		if(request.getAttribute("Mensaje")==null) {
-		 c = NegocioCliente.ObtenerCliente(request.getParameter("DNI"));
+		 c = (Cliente) request.getAttribute("Cliente");
 		  %>
 	<table>
 		<tr>
@@ -68,7 +68,7 @@ Usuario:<%out.print(Usuario); %>
 			}
 		 %>
 		 <br><br>
-		<a href="${pageContext.request.contextPath}/ABML Clientes/ListarCliente.jsp?action=LIST">Volver a Listar Cliente</a>
+		<a href="${pageContext.request.contextPath}/ServletCliente?IraListar=1">Volver a Listar Cliente</a>
 </form>
 </div>
 

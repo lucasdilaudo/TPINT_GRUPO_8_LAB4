@@ -41,7 +41,7 @@ Usuario:<%out.print(Usuario); %><br>
 		</thead>
 		<tbody>
 		<% 
-		Cliente c = NegocioCliente.ObtenerCliente(DNI);
+		Cliente c = (Cliente) request.getAttribute("Cliente");
 		
 			
 			 %>
@@ -54,8 +54,7 @@ Usuario:<%out.print(Usuario); %><br>
 				<th><%out.print(c.getLocalidad()); %></th>	
 				<th><%out.print(c.getCorreo());%></th>	
 				<th><%out.print(c.getUsuario());%></th>
-				<th> <input type="submit" value="Modificar" name="btnModCliente"
-				onclick="window.location.href='ModificarCliente.jsp?DNI=<%=c.getDni()%>'"> </th>
+				
 			</tr>
 			
 		</tbody>

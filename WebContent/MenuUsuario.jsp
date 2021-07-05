@@ -61,7 +61,7 @@ Usuario:<%out.print(Usuario); %>
 			<div><a href="Movimientos.jsp"> Historial de movimientos </a></div><br>
 			<div><a href="Transferencias.jsp"> Transferencias </a></div><br>
 			<div><a href="Prestamos.jsp"> Solicitar Prestamo </a></div><br>
-			<div><a href="Perfil.jsp"> Mi Perfil </a></div><br>
+			<div><a href="${pageContext.request.contextPath}/ServletMenu?IraPerfil=1"> Mi Perfil </a></div><br>
 			<div><a href="PagoDePrestamos.jsp"> Pago de prestamos </a></div><br>
 		</div>
 	</div>
