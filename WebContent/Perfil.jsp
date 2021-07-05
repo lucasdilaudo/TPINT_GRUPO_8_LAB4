@@ -37,7 +37,6 @@ Usuario:<%out.print(Usuario); %><br>
 				<th>Correo</th>
 				<th>Usuario</th>
 				<th></th>
-				<th></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -55,8 +54,6 @@ Usuario:<%out.print(Usuario); %><br>
 				<th><%out.print(c.getLocalidad()); %></th>	
 				<th><%out.print(c.getCorreo());%></th>	
 				<th><%out.print(c.getUsuario());%></th>
-				<th> <input type="submit" value="Eliminar" name="btnBajaCliente"
-				onclick="window.location.href='ConfirmarBajaCliente.jsp?DNI=<%=c.getDni()%>&Nombre=<%=c.getNombre()%>'"> </th>
 				<th> <input type="submit" value="Modificar" name="btnModCliente"
 				onclick="window.location.href='ModificarCliente.jsp?DNI=<%=c.getDni()%>'"> </th>
 			</tr>
