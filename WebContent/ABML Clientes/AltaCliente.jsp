@@ -11,7 +11,7 @@
 String Usuario = (String) session.getAttribute("Usuario");
 %>
 
-Usuario:<%out.print(Usuario); %>
+Usuario:&nbsp;<%out.print(Usuario); %>
 <br>
 	<h1 align="center">Alta Clientes</h1> <a href="${pageContext.request.contextPath}/MenuAdmin.jsp?action=LIST"> Volver al menu</a>
 	

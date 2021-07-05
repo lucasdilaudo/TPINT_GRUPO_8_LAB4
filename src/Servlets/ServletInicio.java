@@ -106,6 +106,7 @@ public class ServletInicio extends HttpServlet {
 				//Nombre=c.getUsuario();
 				HttpSession session = request.getSession();
 				session.setAttribute("Usuario", request.getParameter("txtUsuario"));
+				session.setAttribute("DNI", request.getParameter("txtDNI"));
 				RequestDispatcher rd = request.getRequestDispatcher(direccion);
 				rd.forward(request, response);
 		}
