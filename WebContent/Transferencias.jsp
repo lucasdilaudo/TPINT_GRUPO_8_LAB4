@@ -17,9 +17,14 @@ Usuario:<%out.print(Usuario); %>
 <br>
 <br>
 <br>
-<form action="MenuUsuario.jsp" method="post">
-<b>Ingrese CBU:</b>
-<input type="text" name="txtCBU"/>
+<form action="${pageContext.request.contextPath}/ServletTransferencia?action=LIST" method="post">
+<b>Elija que numero de cuenta debitara:</b>
+<select name="ddlNroDeCuenta">
+<option value="0">Elija una cuenta</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+</select>
 <br>
 <br>
 <b>¿Cuanto quiere transferir?</b>
@@ -28,12 +33,12 @@ Usuario:<%out.print(Usuario); %>
 <br>
 <b>Motivo</b>
 <select name="Motivo">
-<option>Varios</option>
+<option value="varios">Varios</option>
 </select>
 <br>
 <br>
-<b>Referencia:</b>
-<input type="text" name="txtReferencia"/>
+<b>Ingrese CBU destinatario:</b>
+<input type="text" name="txtCbuDestino"/>
 <br>
 <br>
 <input type="submit" name="btnTransferir" value="Realizar Transferencia">

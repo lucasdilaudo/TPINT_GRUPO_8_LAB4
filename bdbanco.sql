@@ -134,3 +134,9 @@ CREATE TABLE IF NOT EXISTS `bdbanco`.`prestamos` (
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+-- trigger para la tabla movimiento
+--CREATE DEFINER=`root`@`localhost` TRIGGER `tranferencia` AFTER INSERT ON `movimiento` FOR EACH ROW begin
+--Update cuentas Set saldo=saldo+NEW.ImporteMovimiento Where cuentas.CBU=NEW.CBUdestino AND NEW.TipoMovimiento=4;
+--Update cuentas Set saldo=saldo-NEW.ImporteMovimiento Where cuentas.CBU=NEW.CBUorigen AND NEW.TipoMovimiento=4;
+--end
