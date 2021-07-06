@@ -1,6 +1,7 @@
 package Servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Negocio.NegocioCliente;
+import Negocio.NegocioPrestamo;
 import entidades.Cliente;
+import entidades.Prestamo;
 
 /**
  * Servlet implementation class ServletMenu
@@ -37,6 +40,15 @@ public class ServletMenu extends HttpServlet {
 			request.setAttribute("Cliente", c);
 			
 			RequestDispatcher rd = request.getRequestDispatcher("Perfil.jsp");
+			rd.forward(request, response);
+			
+		}
+		
+		if(request.getParameter("IraAutorizacion")!=null) {
+			ArrayList<Prestamo> ap = NegocioPrestamo.ObtenerTodo();
+			request.setAttribute("Prestamos", ap  );
+			
+			RequestDispatcher rd = request.getRequestDispatcher("AutorizacionDePrestamos.jsp");
 			rd.forward(request, response);
 			
 		}

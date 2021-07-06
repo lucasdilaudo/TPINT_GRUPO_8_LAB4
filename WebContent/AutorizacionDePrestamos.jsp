@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="entidades.Prestamo" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -43,18 +45,20 @@ Usuario:<%out.print(Usuario); %>
 				</tr>
 		</thead>
 		<tbody>
-		<% for(int i=1;i<15;i++){ %>
+		<% if(request.getAttribute("Prestamos")!=null){
+			ArrayList<Prestamo> ap = (ArrayList) request.getAttribute("Prestamos");
+			for(Prestamo p : ap){  %>
 			<tr>
-				<th><%= 20+i*11 %></th>	
-				<th><%= i+"/"+6+"/"+2021 %></th>	
-				<th><%= i*654 %></th>	
-				<th><%= 2 %></th>	
-				<th><%= i*25%></th>	
-				<th><%=i+8%></th>	
+				<th><%= p.getCBU() %></th>	
+				<th><%= p.getFecha() %></th>	
+				<th><%= p.getImportePedido() %></th>	
+				<th><%= p.getPlazo() %></th>	
+				<th><%= p.getMontoMensual()%></th>	
+				<th><%= p.getCantCuotas()%></th>	
 				<th> <input type="submit" value="Rechazar" name="btnRechazarPrestamo"> </th>
 				<th> <input type="submit" value="Aceptar" name="btnAceptarPrestamo"> </th>
 			</tr>
-			<%} %>
+			<%}} %>
 		</tbody>
 </table>
 

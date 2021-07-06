@@ -56,7 +56,7 @@ Usuario:<%out.print(Usuario); %>
 		    height: auto;">
 	<br>
 	<br>
-		<a href="AutorizacionDePrestamos.jsp">Autorizacion de prestamos </a><br><br>
+		<a href="${pageContext.request.contextPath}/ServletMenu?action=LIST&IraAutorizacion=1">Autorizacion de prestamos </a><br><br>
 		<a href="Reportes.jsp">Reportes</a>
 		</div>
 </body>
