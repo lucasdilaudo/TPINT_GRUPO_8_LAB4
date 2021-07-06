@@ -21,6 +21,10 @@ public class NegocioCuenta {
 		
 		return cdao.ObtenerCuenta(CBU, NrodeCuenta);
 	}
+	public static Cuenta ObtenerCuentaConDNI(String DNI) {
+		
+		return cdao.ObtenerCuentaConDNI(DNI);
+	}
 
 	public static ArrayList<Cuenta> ObtenerTodo(){
 

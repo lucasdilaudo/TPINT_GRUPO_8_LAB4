@@ -10,22 +10,27 @@
 <h1 style="color: gray; border: steelblue solid 1px;">PRESTAMOS</h1>
 <% 
 String Usuario = (String) session.getAttribute("Usuario");
+String DNI = (String) session.getAttribute("DNI");
+
 %>
 
 Usuario:<%out.print(Usuario); %>
 <br>
 <br>
 <br>
-<form action="MenuUsuario.jsp" method="post">
+<form action="${pageContext.request.contextPath}/ServletPrestamo?action=LIST&DNI=<%out.print(DNI); %>" method="post">
 <b>Tipo de Prestamo:</b>
  <select name="TipoPrestamo">
  <option>Seleccione un tipo de prestamo</option>
+ <option value="1">Credito personal</option>
  </select>
  <br>
  <br>
  <b>Plazo en meses:</b>
  <select name="PlazoMeses">
  <option>Seleccione un plazo</option>
+ <option value="1">12 meses</option>
+  <option value="2">24 meses</option>
  </select>
  <br>
  <br>
@@ -36,6 +41,23 @@ Usuario:<%out.print(Usuario); %>
  <br>
  <input type="submit" name="btnSolicitar" value="Solicitar Prestamo">
  <input type="submit" name="btnVolver" value="Volver" style="margin-left: 700px">
+ <% 
+ 
+
+
+if(request.getAttribute("Mensaje")!=null){
+	
+
+		%>
+		<br>	
+		
+		<%=request.getAttribute("Mensaje") %>
+		
+		
+	<%}
+
+
+%>	
 	</form>
 </body>
 </html>
