@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@page import=" java.util.ArrayList" %>
+<%@page import="entidades.Cuenta"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,6 +12,7 @@
 <h1 style="color: gray; border: steelblue solid 1px;">Transferir</h1>
 <% 
 String Usuario = (String) session.getAttribute("Usuario");
+String dni=(String) session.getAttribute("DNI");
 %>
 
 Usuario:<%out.print(Usuario); %>
@@ -21,20 +24,27 @@ Usuario:<%out.print(Usuario); %>
 <b>Elija que numero de cuenta debitara:</b>
 <select name="ddlNroDeCuenta">
 <option value="0">Elija una cuenta</option>
-	<% if(request.getAttribute("CantCuentas")!=null){
-		int cantcuentas = Integer.parseInt(request.getAttribute("CantCuentas").toString());
-		for(int i=1;i<=cantcuentas;i++){
-			%><option value="<%=i%>"><%=i %></option><% 			
-		}
-		
+<%
+	if(request.getAttribute("listaCuentas")!=null){
+		ArrayList<Cuenta> ac = (ArrayList) request.getAttribute("listaCuentas");
+		//request.removeAttribute("listaCuentas");
+			for(Cuenta c : ac){
+				%>
+				<option value="<% out.write(c.getNroCuenta()); %>"><% out.print(c.getNroCuenta()); %></option>
+				<%
+			}
 	}
 	
-	%>
+
+	
+	
+	
+ %>
 </select>
 <br>
 <br>
 <b>¿Cuanto quiere transferir?</b>
-<input type="text" name="txtImporte"/>
+<input type="text" name="txtImporte" required pattern="[0-9]+"/>
 <br>
 <br>
 <b>Motivo</b>
@@ -44,10 +54,11 @@ Usuario:<%out.print(Usuario); %>
 <br>
 <br>
 <b>Ingrese CBU destinatario:</b>
-<input type="text" name="txtCbuDestino"/>
+<input type="text" name="txtCbuDestino" required pattern="[0-9]+"/>
 <br>
 <br>
 <input type="submit" name="btnTransferir" value="Realizar Transferencia">
+<input type="hidden" name="hiddenDni" value="<%out.write(dni);%>">
 <br>
 <input type="submit" name="btnVolver" value="Volver" style="margin-left: 700px">
 	</form>

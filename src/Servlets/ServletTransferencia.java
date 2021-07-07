@@ -49,28 +49,53 @@ public class ServletTransferencia extends HttpServlet {
 		
 		
 
+//		if(request.getParameter("btnTransferir")!=null) {
+//			String NrodeCuenta =  request.getParameter("ddlNroDeCuenta").toString();
+//			Cuenta aux = new Cuenta(); //cuenta donde almacenar el valor
+//			ArrayList<Cuenta> ac = NegocioCuenta.ObtenerCuentasPorUsuario(request.getSession().getAttribute("DNI").toString());
+//			
+//			for (Cuenta cuenta : ac) { //buscando la cuenta con el nroelegido
+//				if(cuenta.getNroCuenta().equals(NrodeCuenta)) aux = cuenta;
+//				
+//			}
+//			
+//			mov.setFecha(fecha.getYear()+"-"+fecha.getMonthValue()+"-"+fecha.getDayOfMonth());
+//			mov.setDetalle("varios...");
+//			mov.setImporte(Float.parseFloat(request.getParameter("txtImporte")));
+//			mov.setTipoMovimiento(4);
+//			mov.setCbuOrigen(Integer.parseInt(aux.getCBU()));
+//			mov.setCbuDestino(Integer.parseInt(request.getParameter("txtCbuDestino")));
+//			
+//			negMov.AgregarTransferencia(mov);
+//			
+//			RequestDispatcher rd = request.getRequestDispatcher("/Transferencias.jsp");
+//			rd.forward(request, response);
+//			
+//		}
+		
 		if(request.getParameter("btnTransferir")!=null) {
-			String NrodeCuenta =  request.getParameter("ddlNroDeCuenta").toString();
-			Cuenta aux = new Cuenta(); //cuenta donde almacenar el valor
-			ArrayList<Cuenta> ac = NegocioCuenta.ObtenerCuentasPorUsuario(request.getSession().getAttribute("DNI").toString());
-			
-			for (Cuenta cuenta : ac) { //buscando la cuenta con el nroelegido
-				if(cuenta.getNroCuenta().equals(NrodeCuenta)) aux = cuenta;
-				
-			}
-			
+
 			mov.setFecha(fecha.getYear()+"-"+fecha.getMonthValue()+"-"+fecha.getDayOfMonth());
 			mov.setDetalle("varios...");
 			mov.setImporte(Float.parseFloat(request.getParameter("txtImporte")));
 			mov.setTipoMovimiento(4);
-			mov.setCbuOrigen(Integer.parseInt(aux.getCBU()));
+			mov.setCbuOrigen(Integer.parseInt(request.getParameter("ddlNroDeCuenta")));
 			mov.setCbuDestino(Integer.parseInt(request.getParameter("txtCbuDestino")));
 			
 			negMov.AgregarTransferencia(mov);
 			
-			RequestDispatcher rd = request.getRequestDispatcher("/Transferencias.jsp");
-			rd.forward(request, response);
+			if(request.getParameter("hiddenDni")!=null) {
+				ArrayList<Cuenta> ac = NegocioCuenta.ObtenerCuentasPorUsuario(request.getParameter("hiddenDni"));
+				request.setAttribute("listaCuentas", ac);
+			}
 			
+			RequestDispatcher rd = request.getRequestDispatcher("Transferencias.jsp");
+			rd.forward(request, response);
+		}
+		
+		if(request.getParameter("btnVolver")!=null) {
+			RequestDispatcher rd = request.getRequestDispatcher("MenuUsuario.jsp");
+			rd.forward(request, response);
 		}
 		
 		

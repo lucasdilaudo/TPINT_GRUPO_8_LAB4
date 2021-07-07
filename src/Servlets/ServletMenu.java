@@ -14,6 +14,7 @@ import Negocio.NegocioCliente;
 import Negocio.NegocioCuenta;
 import Negocio.NegocioPrestamo;
 import entidades.Cliente;
+import entidades.Cuenta;
 import entidades.Prestamo;
 
 /**
@@ -54,15 +55,23 @@ public class ServletMenu extends HttpServlet {
 			
 		}
 		
-		if(request.getParameter("IraTransferencias")!=null) {
-			int cantcuentas = NegocioCuenta.CantidadCuentas(request.getSession().getAttribute("DNI").toString());
-			request.setAttribute("CantCuentas", cantcuentas);
+//		if(request.getParameter("IraTransferencias")!=null) {
+//			int cantcuentas = NegocioCuenta.CantidadCuentas(request.getSession().getAttribute("DNI").toString());
+//			request.setAttribute("CantCuentas", cantcuentas);
+//			
+//			RequestDispatcher rd = request.getRequestDispatcher("Transferencias.jsp");
+//			rd.forward(request, response);
+//			
+//		}
+		
+		if(request.getParameter("IraTransferencia")!=null) {
+			ArrayList<Cuenta> ac = NegocioCuenta.ObtenerCuentasPorUsuario(request.getParameter("IraTransferencia"));
+			request.setAttribute("listaCuentas", ac  );
 			
-			RequestDispatcher rd = request.getRequestDispatcher("Transferencias.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/Transferencias.jsp");
 			rd.forward(request, response);
 			
 		}
-		
 		
 		
 		
