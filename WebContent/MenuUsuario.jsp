@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="Negocio.NegocioCuenta"%>
 <%@page import="entidades.Cuenta"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -13,7 +14,7 @@
 <% 
 String Usuario = (String) session.getAttribute("Usuario");
 String cuenta= (String) session.getAttribute("DNI");
-Cuenta c=NegocioCuenta.ObtenerCuentaConDNI(cuenta);
+
 %>
 
 Usuario:<%out.print(Usuario); %>
@@ -42,7 +43,10 @@ Usuario:<%out.print(Usuario); %>
 			    	<th width="60%">Nro de Cuenta</th>
 			    	<th width="60%">Saldo</th>
 			    </tr>
-			    
+			  <%if(request.getAttribute("Cuentas")!=null){
+				  ArrayList<Cuenta> ac = (ArrayList) request.getAttribute("Cuentas");
+				  for(Cuenta c : ac){
+				  %>  
 			    <tr>
 			    <%
 			    	if (c.getTipoDeCuenta()==1){
@@ -60,6 +64,9 @@ Usuario:<%out.print(Usuario); %>
 					<td align="center" width="30%"> <%=c.getNroCuenta() %> </td>
 					<td align="center" width="20%"> <%=c.getSaldo() %> </td>
 				</tr>
+				<% 
+				
+				  }} %>
 			</table>
 		
 		</form>
@@ -74,7 +81,7 @@ Usuario:<%out.print(Usuario); %>
 		    border: steelblue solid 1px;
 		    height: auto;">
 			<div><a href="Movimientos.jsp"> Historial de movimientos </a></div><br>
-			<div><a href="Transferencias.jsp"> Transferencias </a></div><br>
+			<div><a href="${pageContext.request.contextPath}/ServletMenu?IraTransferencias=1"> Transferencias </a></div><br>
 			<div><a href="Prestamos.jsp"> Solicitar Prestamo </a></div><br>
 			<div><a href="${pageContext.request.contextPath}/ServletMenu?IraPerfil=1"> Mi Perfil </a></div><br>
 			<div><a href="PagoDePrestamos.jsp"> Pago de prestamos </a></div><br>

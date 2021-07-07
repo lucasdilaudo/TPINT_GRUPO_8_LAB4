@@ -60,5 +60,10 @@ public class NegocioCuenta {
 		else return false;
 	}
 	
+	public static ArrayList<Cuenta> ObtenerCuentasPorUsuario(String dni){
+
+		return cdao.ObtenerCuentPorUsuario(dni);
+	}
+	
 	
 }

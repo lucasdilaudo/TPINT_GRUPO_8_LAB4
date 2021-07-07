@@ -218,6 +218,37 @@ public class CuentaDao {
 		
 	}
 
+	
+	public ArrayList<Cuenta> ObtenerCuentPorUsuario(String dni) {
+		ArrayList<Cuenta> ac = new ArrayList<>();
+		try {
+		
+			Connection cn = Conexion.getConexion().getSQLConexion();
+			PreparedStatement pst = cn.prepareStatement(obtener+ " where Estado=1 and usuarios_DNI="+dni);
+	
+			ResultSet rs = pst.executeQuery();
+		
+			while(rs.next()) {
+			
+				Cuenta c = new Cuenta();
+				c.setNroCuenta(rs.getString(1));
+				c.setCBU(rs.getString(2));
+				c.setDNICliente(rs.getString(3));
+				c.setFechaCreacion(rs.getString(5));
+				c.setTipoDeCuenta(rs.getInt(4));
+				c.setSaldo(rs.getDouble(6));
+				
+				ac.add(c);
+			}
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return ac;
+		
+		
+	}
+	
 
 
 }

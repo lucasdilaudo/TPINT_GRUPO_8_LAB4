@@ -21,9 +21,15 @@ Usuario:<%out.print(Usuario); %>
 <b>Elija que numero de cuenta debitara:</b>
 <select name="ddlNroDeCuenta">
 <option value="0">Elija una cuenta</option>
-<option value="1">1</option>
-<option value="2">2</option>
-<option value="3">3</option>
+	<% if(request.getAttribute("CantCuentas")!=null){
+		int cantcuentas = Integer.parseInt(request.getAttribute("CantCuentas").toString());
+		for(int i=1;i<=cantcuentas;i++){
+			%><option value="<%=i%>"><%=i %></option><% 			
+		}
+		
+	}
+	
+	%>
 </select>
 <br>
 <br>

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Negocio.NegocioCliente;
+import Negocio.NegocioCuenta;
 import Negocio.NegocioPrestamo;
 import entidades.Cliente;
 import entidades.Prestamo;
@@ -49,6 +50,15 @@ public class ServletMenu extends HttpServlet {
 			request.setAttribute("Prestamos", ap  );
 			
 			RequestDispatcher rd = request.getRequestDispatcher("AutorizacionDePrestamos.jsp");
+			rd.forward(request, response);
+			
+		}
+		
+		if(request.getParameter("IraTransferencias")!=null) {
+			int cantcuentas = NegocioCuenta.CantidadCuentas(request.getSession().getAttribute("DNI").toString());
+			request.setAttribute("CantCuentas", cantcuentas);
+			
+			RequestDispatcher rd = request.getRequestDispatcher("Transferencias.jsp");
 			rd.forward(request, response);
 			
 		}

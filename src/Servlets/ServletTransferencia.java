@@ -1,6 +1,8 @@
 package Servlets;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,9 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+import Negocio.NegocioCuenta;
 import Negocio.NegocioMovimiento;
-
+import entidades.Cuenta;
 import entidades.Movimiento;
 
 /**
@@ -43,15 +45,25 @@ public class ServletTransferencia extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Movimiento mov=new Movimiento();
 		NegocioMovimiento negMov= new NegocioMovimiento();
+		LocalDate fecha = LocalDate.now();
+		
 		
 
 		if(request.getParameter("btnTransferir")!=null) {
-
-			mov.setFecha("2021-06-06");
+			String NrodeCuenta =  request.getParameter("ddlNroDeCuenta").toString();
+			Cuenta aux = new Cuenta(); //cuenta donde almacenar el valor
+			ArrayList<Cuenta> ac = NegocioCuenta.ObtenerCuentasPorUsuario(request.getSession().getAttribute("DNI").toString());
+			
+			for (Cuenta cuenta : ac) { //buscando la cuenta con el nroelegido
+				if(cuenta.getNroCuenta().equals(NrodeCuenta)) aux = cuenta;
+				
+			}
+			
+			mov.setFecha(fecha.getYear()+"-"+fecha.getMonthValue()+"-"+fecha.getDayOfMonth());
 			mov.setDetalle("varios...");
 			mov.setImporte(Float.parseFloat(request.getParameter("txtImporte")));
 			mov.setTipoMovimiento(4);
-			mov.setCbuOrigen(Integer.parseInt(request.getParameter("ddlNroDeCuenta")));
+			mov.setCbuOrigen(Integer.parseInt(aux.getCBU()));
 			mov.setCbuDestino(Integer.parseInt(request.getParameter("txtCbuDestino")));
 			
 			negMov.AgregarTransferencia(mov);

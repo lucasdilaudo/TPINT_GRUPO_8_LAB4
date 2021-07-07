@@ -1,6 +1,7 @@
 package Servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Set;
 
 import javax.servlet.RequestDispatcher;
@@ -12,7 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import Negocio.NegocioCliente;
+import Negocio.NegocioCuenta;
 import entidades.Cliente;
+import entidades.Cuenta;
 
 /**
  * Servlet implementation class ServletInicio
@@ -86,7 +89,11 @@ public class ServletInicio extends HttpServlet {
 					if( (c.getUsuario().equals(usuario) && (c.getContrasenia().equals(clave)))) {
 						Mensaje="Log ok";
 						if(c.getTipodeCliente()==1)direccion="MenuAdmin.jsp";
-						else direccion="MenuUsuario.jsp";
+						else { direccion="MenuUsuario.jsp";
+								ArrayList<Cuenta> ac = NegocioCuenta.ObtenerCuentasPorUsuario(c.getDni());
+								request.setAttribute("Cuentas", ac);
+						}
+						
 						
 					}
 					else {
