@@ -71,7 +71,7 @@ public class Prestamo {
 	public String toString() {
 		return "Prestamos [IdPrestamo=" + IdPrestamo + ", CBU=" + CBU + ", Fecha=" + Fecha + ", ImporteaPagar="
 				+ ImporteaPagar + ", ImportePedido=" + ImportePedido + ", Plazo=" + Plazo + ", MontoMensual="
-				+ MontoMensual + ", CantCuotas=" + CantCuotas + "]";
+				+ MontoMensual + ", CantCuotas=" + CantCuotas + ", Aceptado="+Aceptado;
 	}
 	
 	

@@ -1,3 +1,5 @@
+<%@page import="Negocio.NegocioCuenta"%>
+<%@page import="entidades.Cuenta"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -10,6 +12,8 @@
 <body>
 <% 
 String Usuario = (String) session.getAttribute("Usuario");
+String cuenta= (String) session.getAttribute("DNI");
+Cuenta c=NegocioCuenta.ObtenerCuentaConDNI(cuenta);
 %>
 
 Usuario:<%out.print(Usuario); %>
@@ -40,10 +44,21 @@ Usuario:<%out.print(Usuario); %>
 			    </tr>
 			    
 			    <tr>
-		    		<td align="center" width="30%"> Cuenta </td>
-					<td align="center" width="20%"> pesos </td>
-					<td align="center" width="30%"> 132354 </td>
-					<td align="center" width="20%"> $200 </td>
+			    <%
+			    	if (c.getTipoDeCuenta()==1){
+			    		%>
+			    		<td align="center" width="30%"> Caja de ahorros </td>
+			    		<%
+			    	}else{
+			    		%>
+			    		<td align="center" width="30%"> Cuenta Corriente </td>
+			    		<%
+			    	}
+			    %>
+		    		
+					<td align="center" width="20%"> Pesos </td>
+					<td align="center" width="30%"> <%=c.getNroCuenta() %> </td>
+					<td align="center" width="20%"> <%=c.getSaldo() %> </td>
 				</tr>
 			</table>
 		

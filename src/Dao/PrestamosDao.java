@@ -13,7 +13,7 @@ import entidades.Prestamo;
 public class PrestamosDao {
 	private String select = "select idprestamos,CBU,DATE_FORMAT(FechaPrestamo,'%d/%m/%Y'),ImporteApagar,ImportePedido,PlazoPrestamo,MontoMensual,CantCuotas,aceptado from prestamos";
 	private String delete = "delete * from prestamos";
-	private String insert = "insert into prestamos values(default,?,?,?,?,?,?,?)";
+	private String insert = "insert into prestamos values(default,?,?,?,?,?,?,?,null)";
 	private String aceptar = "update prestamos set aceptado=? where idprestamos=?";
 	
 	public int AgregarPrestamo(Prestamo p) {

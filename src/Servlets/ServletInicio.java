@@ -85,8 +85,8 @@ public class ServletInicio extends HttpServlet {
 					c=NegocioCliente.ObtenerCliente((request.getParameter("txtDNI")));
 					if( (c.getUsuario().equals(usuario) && (c.getContrasenia().equals(clave)))) {
 						Mensaje="Log ok";
-						if(c.getTipodeCliente()==1)direccion="MenuUsuario.jsp";
-						else direccion="MenuAdmin.jsp";
+						if(c.getTipodeCliente()==1)direccion="MenuAdmin.jsp";
+						else direccion="MenuUsuario.jsp";
 						
 					}
 					else {

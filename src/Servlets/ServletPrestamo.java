@@ -67,7 +67,7 @@ public class ServletPrestamo extends HttpServlet {
 			 LocalDate fecha = LocalDate.now(); 
 			 Cuenta cu = NegocioCuenta.ObtenerCuentaConDNI(request.getParameter("DNI"));
 			 Prestamo p = new Prestamo();
-		    
+		     System.out.println(cu);
 			 p.setCBU(cu.getCBU());
 			 //p.setFecha(fecha.toString());
 			 p.setFecha(fecha.getYear()+"-"+fecha.getMonthValue()+"-"+fecha.getDayOfMonth());
@@ -81,6 +81,7 @@ public class ServletPrestamo extends HttpServlet {
 		     
 		     p.setMontoMensual(p.getImporteaPagar()/p.getPlazo());
 		     p.setCantCuotas(p.getPlazo());
+		    
 		     
 		     String Mensaje;
 		     
