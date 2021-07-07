@@ -44,17 +44,19 @@ public class ServletCuenta extends HttpServlet {
 		if(request.getParameter("IraListar")!=null) {
 			ArrayList<Cuenta> ac =	NegocioCuenta.ObtenerTodo();
 			ArrayList<Cuenta> nuevo = new ArrayList<>(); //este obtendra los que no tienen cliente con baja
-		 
+			String[] Nombres = new String[ac.size()];
 			for (Cuenta cuenta : ac) {
 				
-				
+			
 				if(NegocioCliente.ObtenerCliente(cuenta.getDNICliente()).getEstado()) {
 					nuevo.add(cuenta);
+					Nombres[ac.indexOf(cuenta)] = NegocioCliente.ObtenerCliente(cuenta.getDNICliente()).getUsuario();
 				}
 				
 				
 				
 			}
+			request.setAttribute("Nombres", Nombres);
 			
 			request.setAttribute("ListadeCuentas", nuevo);
 			
@@ -155,7 +157,6 @@ public class ServletCuenta extends HttpServlet {
 			c.setDNICliente(request.getParameter("txtDni"));
 			c.setTipoDeCuenta( Integer.parseInt(request.getParameter("selectTipodeCuenta")));
 			c.setSaldo( Double.parseDouble(request.getParameter("txtSaldo")));
-			System.out.println(dniantiguo+" "+c.getDNICliente());
 			String Mensaje;
 		    if(!NegocioCliente.Existe(c.getDNICliente())) {
 			      Mensaje = "No existe un cliente con el DNI ingresado";
