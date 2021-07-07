@@ -8,7 +8,7 @@ import entidades.Movimiento;
 
 public class MovimientosDao {
 	//transferencia
-	private String insertarTransferencia = "insert into movimiento(FechaMovimiento, DetalleMovimiento, ImporteMovimiento, TipoMovimiento, CBUorigen, CBUdestino) values(?, ?, ?, ?, ?, ?)";
+	private String insertarTransferencia = "insert into movimiento(FechaMovimiento, DetalleMovimiento, ImporteMovimiento, TipoMovimiento,`CBU origen`, `CBU destino`) values(?, ?, ?, ?, ?, ?)";
 	
 	public int AgregarTransferencia(Movimiento m) {
 		int filas=0;

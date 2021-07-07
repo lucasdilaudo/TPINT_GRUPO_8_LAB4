@@ -9,6 +9,8 @@ public class Prestamo {
 	private int Plazo;
 	private double MontoMensual;
 	private int CantCuotas;
+	private int Aceptado;
+	
 	public int getIdPrestamo() {
 		return IdPrestamo;
 	}
@@ -56,6 +58,14 @@ public class Prestamo {
 	}
 	public void setCantCuotas(int cantCuotas) {
 		CantCuotas = cantCuotas;
+	}
+	
+	
+	public int getAceptado() {
+		return Aceptado;
+	}
+	public void setAceptado(int aceptado) {
+		Aceptado = aceptado;
 	}
 	@Override
 	public String toString() {

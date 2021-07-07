@@ -135,8 +135,22 @@ SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
--- trigger para la tabla movimiento
---CREATE DEFINER=`root`@`localhost` TRIGGER `tranferencia` AFTER INSERT ON `movimiento` FOR EACH ROW begin
---Update cuentas Set saldo=saldo+NEW.ImporteMovimiento Where cuentas.CBU=NEW.CBUdestino AND NEW.TipoMovimiento=4;
---Update cuentas Set saldo=saldo-NEW.ImporteMovimiento Where cuentas.CBU=NEW.CBUorigen AND NEW.TipoMovimiento=4;
---end
+ALTER TABLE `bdbanco`.`prestamos` 
+ADD COLUMN `aceptado` INT NULL AFTER `CantCuotas`;
+
+
+
+CREATE DEFINER=`root`@`localhost` TRIGGER `prestamos_AFTER_UPDATE` AFTER UPDATE ON `prestamos` FOR EACH ROW BEGIN
+	if (new.aceptado=1) then
+		insert into movimiento values(default,new.FechaPrestamo,'Alta de Prestamo',new.ImporteApagar,2,new.CBU,new.CBU);
+		end if;
+END
+
+CREATE DEFINER=`root`@`localhost` TRIGGER `tranferencia` AFTER INSERT ON `movimiento` FOR EACH ROW begin
+
+    Update cuentas Set saldo=saldo+NEW.ImporteMovimiento Where cuentas.CBU=NEW.`CBU destino` AND NEW.TipoMovimiento=4;
+	Update cuentas Set saldo=saldo-NEW.ImporteMovimiento Where cuentas.CBU=NEW.`CBU origen` AND NEW.TipoMovimiento=4;
+	
+    Update cuentas Set saldo=saldo+NEW.ImporteMovimiento Where cuentas.CBU=NEW.`CBU origen` AND NEW.TipoMovimiento=2;
+
+end

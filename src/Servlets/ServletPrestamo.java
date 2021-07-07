@@ -1,6 +1,7 @@
 package Servlets;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -38,8 +39,18 @@ public class ServletPrestamo extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		if("btnAceptarPrestamo"!=null) {
+			NegocioPrestamo.AceptarPrestamo(1, request.getParameter("Id"));
+			 RequestDispatcher rd = request.getRequestDispatcher("ServletMenu?IraAutorizacion=1");
+			 rd.forward(request, response);
+			
+		}
+		
+		if("btnRechazarPrestamo"!=null) {
+			NegocioPrestamo.AceptarPrestamo(0, request.getParameter("Id"));
+			 RequestDispatcher rd = request.getRequestDispatcher("ServletMenu?IraAutorizacion=1");
+			 rd.forward(request, response);		
+		}
 	}
 
 	/**
@@ -53,13 +64,13 @@ public class ServletPrestamo extends HttpServlet {
 		}
 		if(request.getParameter("btnSolicitar")!=null)
 	    {
-			 Date fecha= new Date(); 
+			 LocalDate fecha = LocalDate.now(); 
 			 Cuenta cu = NegocioCuenta.ObtenerCuentaConDNI(request.getParameter("DNI"));
 			 Prestamo p = new Prestamo();
 		    
 			 p.setCBU(cu.getCBU());
 			 //p.setFecha(fecha.toString());
-			 p.setFecha("2012-12-04");
+			 p.setFecha(fecha.getYear()+"-"+fecha.getMonthValue()+"-"+fecha.getDayOfMonth());
 		     p.setImporteaPagar(Double.parseDouble(request.getParameter("txtImporte"))*1.5);
 		     p.setImportePedido(Double.parseDouble(request.getParameter("txtImporte")));
 		     if (Integer.valueOf(request.getParameter("PlazoMeses"))==1) {

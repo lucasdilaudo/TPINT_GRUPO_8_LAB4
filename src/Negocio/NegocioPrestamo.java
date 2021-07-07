@@ -20,11 +20,11 @@ public class NegocioPrestamo {
 	
     public static ArrayList<Prestamo> ObtenerTodo(){
     	
-    	return pdao.ObtenerPrestamos(null);
+    	return pdao.ObtenerPrestamos();
     }
 	
     public static ArrayList<Prestamo> ObtenerPorCbu(String cbu){
-    	return pdao.ObtenerPrestamos(cbu);
+    	return pdao.ObtenerPrestamosPorCbu(cbu);
     }
 	
     public static boolean AgregarPrestamo(Prestamo p) {
@@ -33,5 +33,11 @@ public class NegocioPrestamo {
     	
     }
 	
+   
+    public static boolean AceptarPrestamo(int aceptar,String id) {
+    	if(pdao.AceptarPrestamo(aceptar, id)==1) return true;
+    	else return false;
+    	
+    }
 	
 }
