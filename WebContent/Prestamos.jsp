@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@page import=" java.util.ArrayList" %>
+<%@page import="entidades.Cuenta"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -19,6 +21,22 @@ Usuario:<%out.print(Usuario); %>
 <br>
 <br>
 <form action="${pageContext.request.contextPath}/ServletPrestamo?action=LIST&DNI=<%out.print(DNI); %>" method="post">
+<b>Seleccione un CBU donde se acreditara el prestamo:</b>
+ <select name="ddlCBU">
+ <option value="0">-Seleccione un CBU-</option>
+<%
+	if(request.getAttribute("listaCuentas")!=null){
+		ArrayList<Cuenta> ac = (ArrayList) request.getAttribute("listaCuentas");
+		//request.removeAttribute("listaCuentas");
+			for(Cuenta c : ac){
+				%>
+				<option value="<% out.write(c.getCBU()); %>"><% out.print(c.getCBU()); %></option>
+				<%
+			}
+	}
+ %>
+ </select>
+ <br><br>
 <b>Tipo de Prestamo:</b>
  <select name="TipoPrestamo">
  <option>Seleccione un tipo de prestamo</option>
@@ -40,6 +58,7 @@ Usuario:<%out.print(Usuario); %>
  <br>
  <br>
  <input type="submit" name="btnSolicitar" value="Solicitar Prestamo">
+ <input type="hidden" name="hiddenDni" value="<%out.write(DNI);%>">
  <input type="submit" name="btnVolver" value="Volver" style="margin-left: 700px">
  <% 
  

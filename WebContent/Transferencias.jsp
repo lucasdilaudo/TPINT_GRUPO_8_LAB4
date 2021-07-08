@@ -18,6 +18,7 @@ String dni=(String) session.getAttribute("DNI");
 Usuario:<%out.print(Usuario); %>
 <br>
 <br>
+<a href="${pageContext.request.contextPath}/MenuUsuario.jsp?action=LIST"> Volver al menu</a>
 <br>
 <br>
 <form action="${pageContext.request.contextPath}/ServletTransferencia?action=LIST" method="post">
@@ -30,7 +31,7 @@ Usuario:<%out.print(Usuario); %>
 		//request.removeAttribute("listaCuentas");
 			for(Cuenta c : ac){
 				%>
-				<option value="<% out.write(c.getNroCuenta()); %>"><% out.print(c.getNroCuenta()); %></option>
+				<option value="<% out.write(c.getNroCuenta()); %>"><% out.print(c.getNroCuenta()+"- Saldo: $"+c.getSaldo()); %></option>
 				<%
 			}
 	}
@@ -60,7 +61,7 @@ Usuario:<%out.print(Usuario); %>
 <input type="submit" name="btnTransferir" value="Realizar Transferencia">
 <input type="hidden" name="hiddenDni" value="<%out.write(dni);%>">
 <br>
-<input type="submit" name="btnVolver" value="Volver" style="margin-left: 700px">
 	</form>
+	
 </body>
 </html>

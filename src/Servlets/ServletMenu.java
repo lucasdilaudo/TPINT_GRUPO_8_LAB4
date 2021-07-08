@@ -73,6 +73,15 @@ public class ServletMenu extends HttpServlet {
 			
 		}
 		
+		if(request.getParameter("IraPrestamos")!=null) {
+			ArrayList<Cuenta> ac = NegocioCuenta.ObtenerCuentasPorUsuario(request.getParameter("IraPrestamos"));
+			request.setAttribute("listaCuentas", ac);
+			
+			RequestDispatcher rd = request.getRequestDispatcher("/Prestamos.jsp");
+			rd.forward(request, response);
+			
+		}
+		
 		
 		
 	}

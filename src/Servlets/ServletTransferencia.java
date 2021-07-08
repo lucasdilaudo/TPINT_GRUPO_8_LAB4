@@ -93,10 +93,10 @@ public class ServletTransferencia extends HttpServlet {
 			rd.forward(request, response);
 		}
 		
-		if(request.getParameter("btnVolver")!=null) {
-			RequestDispatcher rd = request.getRequestDispatcher("MenuUsuario.jsp");
-			rd.forward(request, response);
-		}
+//		if(request.getParameter("btnVolver")!=null) {
+//			RequestDispatcher rd = request.getRequestDispatcher("MenuUsuario.jsp");
+//			rd.forward(request, response);
+//		}
 		
 		
 	}

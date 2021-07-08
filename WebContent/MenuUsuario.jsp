@@ -83,7 +83,8 @@ Usuario:<%out.print(Usuario); %>
 			<div><a href="Movimientos.jsp"> Historial de movimientos </a></div><br>
 <%-- 			<div><a href="${pageContext.request.contextPath}/ServletMenu?IraTransferencias=1"> Transferencias </a></div><br> --%>
 			<div><a href="${pageContext.request.contextPath}/ServletMenu?IraTransferencia=<% out.print(dni);%>"> Hacer Transferencia </a></div><br>
-			<div><a href="Prestamos.jsp"> Solicitar Prestamo </a></div><br>
+<!-- 			<div><a href="Prestamos.jsp"> Solicitar Prestamo </a></div><br> -->
+			<div><a href="${pageContext.request.contextPath}/ServletMenu?IraPrestamos=<% out.print(dni);%>">Solicitar Prestamo</a></div><br>
 			<div><a href="${pageContext.request.contextPath}/ServletMenu?IraPerfil=1"> Mi Perfil </a></div><br>
 			<div><a href="PagoDePrestamos.jsp"> Pago de prestamos </a></div><br>
 		</div>
