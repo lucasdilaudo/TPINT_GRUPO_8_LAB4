@@ -56,9 +56,10 @@ Usuario:<%out.print(Usuario); %>
 				<th><%= p.getMontoMensual()%></th>	
 				<th><%= p.getCantCuotas()%></th>	
 				<th> <input type="submit" value="Rechazar" name="btnRechazarPrestamo"
-				onclick="window.location.href='${pageContext.request.contextPath}/ServletPrestamo?Id=<%=p.getIdPrestamo()%>'"> </th>
+				onclick="window.location.href='${pageContext.request.contextPath}/ServletPrestamo?Id=<%=p.getIdPrestamo()%>&Rechazar=1'"> </th>
 				<th> <input type="submit" value="Aceptar" name="btnAceptarPrestamo"
-				onclick="window.location.href='${pageContext.request.contextPath}/ServletPrestamo?Id=<%=p.getIdPrestamo()%>'"> </th>
+				onclick="window.location.href='${pageContext.request.contextPath}/ServletPrestamo?Id=<%=p.getIdPrestamo()%>&Aceptar=1'"> </th>
+				
 			</tr>
 			<%}} %>
 		</tbody>

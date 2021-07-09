@@ -141,9 +141,14 @@ ADD COLUMN `aceptado` INT NULL AFTER `CantCuotas`;
 
 
 CREATE DEFINER=`root`@`localhost` TRIGGER `prestamos_AFTER_UPDATE` AFTER UPDATE ON `prestamos` FOR EACH ROW BEGIN
-	if (new.aceptado=1) then
-		insert into movimiento values(default,new.FechaPrestamo,'Alta de Prestamo',new.ImporteApagar,2,new.CBU,new.CBU);
+	if old.aceptado is null then
+			if (new.aceptado=1) then
+				insert into movimiento values(default,new.FechaPrestamo,'Alta de Prestamo',new.ImporteApagar,2,new.CBU,new.CBU);
+				end if;
 		end if;
+        
+	
+
 END
 
 CREATE DEFINER=`root`@`localhost` TRIGGER `tranferencia` AFTER INSERT ON `movimiento` FOR EACH ROW begin

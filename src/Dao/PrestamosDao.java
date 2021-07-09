@@ -14,7 +14,7 @@ public class PrestamosDao {
 	private String select = "select idprestamos,CBU,DATE_FORMAT(FechaPrestamo,'%d/%m/%Y'),ImporteApagar,ImportePedido,PlazoPrestamo,MontoMensual,CantCuotas,aceptado from prestamos";
 	private String delete = "delete * from prestamos";
 	private String insert = "insert into prestamos values(default,?,?,?,?,?,?,?,null)";
-	private String aceptar = "update prestamos set aceptado=? where idprestamos=?";
+	private String aceptar = "update prestamos set Aceptado=? where idprestamos=?";
 	
 	public int AgregarPrestamo(Prestamo p) {
 		int filas=0;
@@ -129,15 +129,15 @@ public class PrestamosDao {
 		
 	}
 	
-	public int AceptarPrestamo(int aceptar,String id) {
+	public int AceptarPrestamo(int a,String id) {
 		int filas=0;
 		try {
 			Connection cn = Conexion.getConexion().getSQLConexion();
-			PreparedStatement pst = cn.prepareStatement(this.aceptar);
-			pst.setInt(1, aceptar);
+			PreparedStatement pst = cn.prepareStatement(aceptar);
+			pst.setInt(1, a);
 			pst.setString(2, id);
 
-			
+		
 			
 			filas = pst.executeUpdate();
 		}catch (SQLException e) {

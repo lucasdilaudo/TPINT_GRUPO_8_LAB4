@@ -41,20 +41,30 @@ public class ServletPrestamo extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//if(request.getParameter("btnAceptarPrestamo")!=null) {
-		if("btnAceptarPrestamo"!=null) {
+		
+		if(request.getParameter("Rechazar") !=null) {
+			
+			NegocioPrestamo.AceptarPrestamo(0, request.getParameter("Id"));
+			ArrayList<Prestamo> ap = NegocioPrestamo.ObtenerTodo();
+			request.setAttribute("Prestamos", ap);
+			request.setAttribute("Rechazar", null);
+			 RequestDispatcher rd = request.getRequestDispatcher("AutorizacionDePrestamos.jsp");
+			 rd.forward(request, response);		
+		}
+		
+		if(request.getParameter("Aceptar")!=null) {
 			NegocioPrestamo.AceptarPrestamo(1, request.getParameter("Id"));
-			 RequestDispatcher rd = request.getRequestDispatcher("ServletMenu?IraAutorizacion=1");
+			ArrayList<Prestamo> ap = NegocioPrestamo.ObtenerTodo();
+			request.setAttribute("Prestamos", ap);
+			
+			request.setAttribute("Aceptar", null);
+			RequestDispatcher rd = request.getRequestDispatcher("AutorizacionDePrestamos.jsp");
 			 rd.forward(request, response);
 			
 		}
 		
 		//if(request.getParameter("btnRechazarPrestamo")!=null) {
-		if("btnRechazarPrestamo"!=null) {
-			NegocioPrestamo.AceptarPrestamo(0, request.getParameter("Id"));
-			 RequestDispatcher rd = request.getRequestDispatcher("ServletMenu?IraAutorizacion=1");
-			 rd.forward(request, response);		
-		}
+
 	}
 
 	/**
