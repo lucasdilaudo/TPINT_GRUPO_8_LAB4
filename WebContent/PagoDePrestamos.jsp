@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
+<%@page import=" java.util.ArrayList" %>
+<%@page import="entidades.Prestamo"%>
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -18,12 +20,22 @@ Usuario:<%out.print(Usuario); %>
 <a href="MenuUsuario.jsp">Volver</a>
 <br><br>
 <select name="listaPrestamos">
-	<option value="1">Seleccione un prestamo</option>
-	<option value="2">Prestamo 1</option>
-	<option value="3">Prestamo 22</option>
+	<option value="0">Seleccione un prestamo</option>
+<%
+	if(request.getAttribute("listaCuentas")!=null){
+		ArrayList<Prestamo> pre = (ArrayList) request.getAttribute("listaPrestamos");
+		//request.removeAttribute("listaCuentas");
+			for(Prestamo p : pre){
+				%>
+				<option value="<% out.write(p.getIdPrestamo()); %>"><% out.print(p.getIdPrestamo()); %></option>
+				<%
+			}
+	}
+ %>
 </select>
 <input type="button" name="btnIr" value="Ir">
 <br><br>
+
 <table  border="1">
 			<tr>
 			    <th>Numero de cuenta</th>			
