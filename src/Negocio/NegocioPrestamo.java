@@ -41,4 +41,22 @@ public class NegocioPrestamo {
     	
     }
 	
+    public static ArrayList<Prestamo> ObtenerPrestamosAceptados(String dni){
+    	return pdao.ObtenerPrestamosAceptados(dni);
+    }
+   
+    public static Prestamo ObtenerPrestamo (String id) {
+    	
+    	return pdao.ObtenerPrestamo(id);
+    }
+    
+    
+    public static boolean PagarPrestamo(Prestamo p) {
+    	
+    	if(pdao.PagarPrestamo(p)==1) return true;
+    	else return false;
+    	
+    }
+    
+    
 }

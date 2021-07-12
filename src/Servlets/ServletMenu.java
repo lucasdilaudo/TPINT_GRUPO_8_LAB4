@@ -83,6 +83,19 @@ public class ServletMenu extends HttpServlet {
 		}
 		
 		
+		if(request.getParameter("IraPago")!=null) {
+			Prestamo p =new Prestamo();
+			
+		
+			ArrayList<Prestamo> pre = NegocioPrestamo.ObtenerPrestamosAceptados(request.getSession().getAttribute("DNI").toString());
+			request.setAttribute("listaPrestamos", pre);
+		
+			
+			
+			RequestDispatcher rd = request.getRequestDispatcher("PagoDePrestamos.jsp");
+			rd.forward(request, response);
+		}
+		
 		
 	}
 

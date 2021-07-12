@@ -155,7 +155,7 @@ CREATE DEFINER=`root`@`localhost` TRIGGER `tranferencia` AFTER INSERT ON `movimi
 
     Update cuentas Set saldo=saldo+NEW.ImporteMovimiento Where cuentas.CBU=NEW.`CBU destino` AND NEW.TipoMovimiento=4;
 	Update cuentas Set saldo=saldo-NEW.ImporteMovimiento Where cuentas.CBU=NEW.`CBU origen` AND NEW.TipoMovimiento=4;
-	
+		Update cuentas Set saldo=saldo-NEW.ImporteMovimiento Where cuentas.CBU=NEW.`CBU origen` AND NEW.TipoMovimiento=3;
     Update cuentas Set saldo=saldo+NEW.ImporteMovimiento Where cuentas.CBU=NEW.`CBU origen` AND NEW.TipoMovimiento=2;
 
 end

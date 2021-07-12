@@ -1,8 +1,10 @@
+<%@page import="com.sun.javafx.scene.layout.region.Margins.Converter"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <%@page import=" java.util.ArrayList" %>
 <%@page import="entidades.Prestamo"%>
+<%@page import="entidades.Cuenta"%>
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -19,26 +21,35 @@ Usuario:<%out.print(Usuario); %>
 <br>
 <a href="MenuUsuario.jsp">Volver</a>
 <br><br>
-<select name="listaPrestamos">
+<form action="${pageContext.request.contextPath}/ServletPagoPrestamo?action=LIST" method="post">
+<% Prestamo hidden = new Prestamo();
+ if(request.getAttribute("PrestamoElegido")!=null) {
+	hidden = (Prestamo) request.getAttribute("PrestamoElegido");
+	
+}
+
+%> <input type="hidden" name="hiddenId" value="<%= hidden.getIdPrestamo()  %>">
+<select name="selectPrestamos">
 	<option value="0">Seleccione un prestamo</option>
 <%
-	if(request.getAttribute("listaCuentas")!=null){
+	
+//	if(request.getAttribute("listaCuentas")!=null){
 		ArrayList<Prestamo> pre = (ArrayList) request.getAttribute("listaPrestamos");
 		//request.removeAttribute("listaCuentas");
 			for(Prestamo p : pre){
 				%>
-				<option value="<% out.write(p.getIdPrestamo()); %>"><% out.print(p.getIdPrestamo()); %></option>
+				<option value="<%= p.getIdPrestamo() %>"><% out.print(p.getIdPrestamo()); %></option>
 				<%
 			}
-	}
+	//}
  %>
 </select>
-<input type="button" name="btnIr" value="Ir">
+<input type="submit" name="btnIr" value="Ir" style="width: 105px; ">
 <br><br>
 
 <table  border="1">
 			<tr>
-			    <th>Numero de cuenta</th>			
+			    <th>Cuenta</th>			
 				<th>Cuota N°</th>	
 				<th>Importe</th>			
 				<th>Pagar</th>
@@ -46,35 +57,39 @@ Usuario:<%out.print(Usuario); %>
 		
 		
 			<tr>
+			<% if(request.getAttribute("CantCuotas")!=null){
+				int cantcuotas = Integer.parseInt(request.getAttribute("CantCuotas").toString());
+				double precio = Double.parseDouble(request.getAttribute("PrecioCuota").toString());
+				for(int i=1;i<=cantcuotas;i++){
+			 %>
 				<td>
-					<select name="listaCuentas">
-						<option value="1">Seleccione una cuenta</option>
-						<option value="2">Cuenta 1</option>
-						<option value="3">Cuenta 2</option>
-						<option value="4">Cuenta 3</option>
-					</select>
+				<% if(i==1){ %>
+					<select name="ddlCBU">
+ <option value="0">-Seleccione un CBU-</option>
+<%
+	if(request.getAttribute("listaCuentas")!=null){
+		ArrayList<Cuenta> ac = (ArrayList) request.getAttribute("listaCuentas");
+		//request.removeAttribute("listaCuentas");
+			for(Cuenta c : ac){
+				%>
+				<option value="<%= c.getCBU() %>"><% out.print(c.getCBU()); %></option>
+				<%
+			}
+	}
+ %>
+ </select>
+ 	<%} %>
 				</td>	
-				<td>1</td>	
-				<td>100</td>			
-				<td> <input type="checkbox"> </td>
+				<td><%= i %></td>	
+				<td><%= precio %></td>			
+				<td> <input type="checkbox" name="chk<%=i%>"> </td>
 			</tr>
-			<tr>
-				<td>
-					<select name="listaCuentas">
-						<option value="1">Seleccione una cuenta</option>
-						<option value="2">Cuenta 1</option>
-						<option value="3">Cuenta 2</option>
-						<option value="4">Cuenta 3</option>
-					</select>
-				</td>	
-				<td>2</td>	
-				<td>100</td>			
-				<td> <input type="checkbox"> </td>
-			</tr>
+	
+			<% }}%>
 
 </table>
 <br>
-<input type="submit" name="btnConfirmar" value="Comfirmar">
-
+<input type="submit" name="btnConfirmar" value="Confirmar">
+</form>
 </body>
 </html>

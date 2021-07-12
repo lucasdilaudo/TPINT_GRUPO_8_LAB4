@@ -86,7 +86,7 @@ Usuario:<%out.print(Usuario); %>
 <!-- 			<div><a href="Prestamos.jsp"> Solicitar Prestamo </a></div><br> -->
 			<div><a href="${pageContext.request.contextPath}/ServletMenu?IraPrestamos=<% out.print(dni);%>">Solicitar Prestamo</a></div><br>
 			<div><a href="${pageContext.request.contextPath}/ServletMenu?IraPerfil=1"> Mi Perfil </a></div><br>
-			<div><a href="PagoDePrestamos.jsp"> Pago de prestamos </a></div><br>
+			<div><a href="${pageContext.request.contextPath}/ServletMenu?IraPago=1"> Pago de prestamos </a></div><br>
 		</div>
 	</div>
 </body>
