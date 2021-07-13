@@ -16,7 +16,7 @@ public class PrestamosDao {
 	private String insert = "insert into prestamos values(default,?,?,?,?,?,?,?,null)";
 	private String pagar = "update prestamos set ImporteApagar=?,CantCuotas=? where idprestamos=?;";
 	private String aceptar = "update prestamos set Aceptado=? where idprestamos=?";
-	private String prestamosAceptados = "SELECT idprestamos,prestamos.CBU,DATE_FORMAT(FechaPrestamo,'%d/%m/%Y'),ImporteApagar,ImportePedido,PlazoPrestamo,MontoMensual,CantCuotas,aceptado from bdbanco.prestamos inner join cuentas on usuarios_DNI = ? where cuentas.CBU=prestamos.CBU";
+	private String prestamosAceptados = "SELECT idprestamos,prestamos.CBU,DATE_FORMAT(FechaPrestamo,'%d/%m/%Y'),ImporteApagar,ImportePedido,PlazoPrestamo,MontoMensual,CantCuotas,aceptado from bdbanco.prestamos inner join cuentas on usuarios_DNI = ? where cuentas.CBU=prestamos.CBU and ImporteApagar>0";
 	public int AgregarPrestamo(Prestamo p) {
 		int filas=0;
 		try {

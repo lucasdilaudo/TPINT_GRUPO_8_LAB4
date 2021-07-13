@@ -9,18 +9,69 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Pago de prestamos</title>
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+	
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" charset="utf8"
+	src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 </head>
 <body>
+<div>
 <% 
 String Usuario = (String) session.getAttribute("Usuario");
 %>
 
 Usuario:<%out.print(Usuario); %>
 <br>
-<h1 align="Center">Pago de Prestamos</h1>
+
+<h1 align="Center">Pago de Prestamos<br></h1>
 <br>
-<a href="${pageContext.request.contextPath}/MenuUsuario.jsp">Volver</a>
+<br>
+</div>
+<br>
+<a href="MenuUsuario.jsp">Volver</a>
 <br><br>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#table_id').DataTable();
+	});
+</script>
+
+
+
+<div style="float: left; padding-left: 50px" >
+	<table id="table_id" class="display">
+		<thead>
+			<tr>
+				<th>Idprestamo</th>
+				<th>ImporteaPagar</th>
+				<th>CantCuotas</th>
+				<th>MontoMensual</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<% 
+				if(request.getAttribute("listaPrestamos")!=null){
+					ArrayList<Prestamo> ap = (ArrayList) request.getAttribute("listaPrestamos");
+					for(Prestamo p : ap){
+			%>
+						<tr>
+							<th><%= p.getIdPrestamo() %></th>
+							<th><%= p.getImporteaPagar() %></th>
+							<th><%= p.getCantCuotas() %></th>
+							<th><%= p.getMontoMensual() %></th>
+							<th> <input type="submit" name="btnSeleccionar" value="Seleccionar"
+							onclick="window.location.href='${pageContext.request.contextPath}/ServletPagoPrestamo?Seleccionar=1&Id=<%=p.getIdPrestamo()%>'"></th>
+						</tr>
+			<%			}
+					} %>
+		</tbody>
+	</table>
+</div>
 <form action="${pageContext.request.contextPath}/ServletPagoPrestamo?action=LIST" method="post">
 <% Prestamo hidden = new Prestamo();
  if(request.getAttribute("PrestamoElegido")!=null) {
@@ -29,68 +80,51 @@ Usuario:<%out.print(Usuario); %>
 }
 
 %> <input type="hidden" name="hiddenId" value="<%= hidden.getIdPrestamo()  %>">
-<select name="selectPrestamos">
-	<option value="0">Seleccione un prestamo</option>
-<%
-	
-//	if(request.getAttribute("listaCuentas")!=null){
-		ArrayList<Prestamo> pre = (ArrayList) request.getAttribute("listaPrestamos");
-		//request.removeAttribute("listaCuentas");
-			for(Prestamo p : pre){
+<div style="float: left; padding-left: 50px;" >
+	<b>Cuentas: </b>
+	<ul>
+		<% if(request.getAttribute("listaCuentas")!=null){ 
+			ArrayList<Cuenta> ac = (ArrayList) request.getAttribute("listaCuentas");
+				for(Cuenta c : ac){%>
+					<li><%= "CBU : "+c.getCBU()+", Saldo: "+c.getSaldo() %></li>
+					
+		<% 		}
+			}%>
+	</ul>
+	<% if(request.getAttribute("PrestamoElegido")!=null){ 
+		int cantcuotas = Integer.parseInt(request.getAttribute("CantCuotas").toString());	
+	%><table>
+		<tr> <th align="left">Prestamo Seleccionado :</th> <th  align="left"><%= hidden.getIdPrestamo() %> </th> </tr>
+		<tr><th  align="left">Cantidad de Cuotas:</th> <th  align="left"> <select name="ddlCuotas" style="width: 46px; ">
+								<% for(int i=1;i<=cantcuotas;i++){ %>
+									<option value="<%=i%>"> <%= i %> </option>
+									<% }%>
+								</select>		</th>
+		</tr>
+		<tr>
+	<th  align="left">	Cbu : </th> <th  align="left"> <select name="ddlCbu" style="width: 46px; ">
+				<% ArrayList<Cuenta> ac = (ArrayList) request.getAttribute("listaCuentas");
+					for(Cuenta c : ac){
+						%>
+						<option value="<%= c.getCBU()%>"><%=c.getCBU() %></option>
+						<% 
+					}
 				%>
-				<option value="<%= p.getIdPrestamo() %>"><% out.print(p.getIdPrestamo()); %></option>
-				<%
-			}
-	//}
- %>
-</select>
-<input type="submit" name="btnIr" value="Ir" style="width: 105px; ">
+			</select> </th>
+			</tr>
+			<tr><th></th><th><input type="submit"  onclick="return confirm('Esta seguro de pagar esta cuota?')" value="Confirmar" name="btnConfirmar"></th></tr>
+			</table>
+	<% }%>
+</div>
+	<%if(request.getAttribute("Mensaje")!=null) %><%= request.getAttribute("Mensaje")%><%; %>
+	
+	
+	
+	
 <br><br>
 
-<table  border="1">
-			<tr>
-			    <th>Cuenta</th>			
-				<th>Cuota N°</th>	
-				<th>Importe</th>			
-				<th>Pagar</th>
-				</tr>
-		
-		
-			<tr>
-			<% if(request.getAttribute("CantCuotas")!=null){
-				int cantcuotas = Integer.parseInt(request.getAttribute("CantCuotas").toString());
-				double precio = Double.parseDouble(request.getAttribute("PrecioCuota").toString());
-				
-				for(int i=1;i<=cantcuotas;i++){
-			 %>
-				<td>
-				<% if(i==1){ %>
-					<select name="ddlCBU">
- <option value="0">-Seleccione un CBU-</option>
-<%
-	if(request.getAttribute("listaCuentas")!=null){
-		ArrayList<Cuenta> ac = (ArrayList) request.getAttribute("listaCuentas");
-		//request.removeAttribute("listaCuentas");
-			for(Cuenta c : ac){
-				%>
-				<option value="<%= c.getCBU() %>"><% out.print(c.getCBU()); %></option>
-				<%
-			}
-	}
- %>
- </select>
- 	<%} %>
-				</td>	
-				<td><%= i %></td>	
-				<td><%= precio %></td>			
-				<td> <input type="checkbox" name="chk<%=i%>"> </td>
-			</tr>
-	
-			<% }}%>
 
-</table>
 <br>
-<input type="submit" onclick="return confirm('Esta seguro de pagar esta cuota?')" name="btnConfirmar" value="Confirmar">
 
 </form>
 </body>

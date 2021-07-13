@@ -92,9 +92,10 @@ public class ServletMenu extends HttpServlet {
 			
 		}
 		
-		
+	
 		if(request.getParameter("IraPago")!=null) {
-			Prestamo p =new Prestamo();
+			ArrayList<Cuenta> ac = NegocioCuenta.ObtenerCuentasPorUsuario(request.getSession().getAttribute("DNI").toString());
+			request.setAttribute("listaCuentas", ac);
 			
 		
 			ArrayList<Prestamo> pre = NegocioPrestamo.ObtenerPrestamosAceptados(request.getSession().getAttribute("DNI").toString());
@@ -105,6 +106,7 @@ public class ServletMenu extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("PagoDePrestamos.jsp");
 			rd.forward(request, response);
 		}
+		
 		
 		
 	}
