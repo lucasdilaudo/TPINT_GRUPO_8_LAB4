@@ -19,7 +19,7 @@ Usuario:<%out.print(Usuario); %>
 <br>
 <h1 align="Center">Pago de Prestamos</h1>
 <br>
-<a href="MenuUsuario.jsp">Volver</a>
+<a href="${pageContext.request.contextPath}/MenuUsuario.jsp">Volver</a>
 <br><br>
 <form action="${pageContext.request.contextPath}/ServletPagoPrestamo?action=LIST" method="post">
 <% Prestamo hidden = new Prestamo();
@@ -60,6 +60,7 @@ Usuario:<%out.print(Usuario); %>
 			<% if(request.getAttribute("CantCuotas")!=null){
 				int cantcuotas = Integer.parseInt(request.getAttribute("CantCuotas").toString());
 				double precio = Double.parseDouble(request.getAttribute("PrecioCuota").toString());
+				
 				for(int i=1;i<=cantcuotas;i++){
 			 %>
 				<td>
@@ -89,7 +90,8 @@ Usuario:<%out.print(Usuario); %>
 
 </table>
 <br>
-<input type="submit" name="btnConfirmar" value="Confirmar">
+<input type="submit" onclick="return confirm('Esta seguro de pagar esta cuota?')" name="btnConfirmar" value="Confirmar">
+
 </form>
 </body>
 </html>

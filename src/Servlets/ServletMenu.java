@@ -12,9 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import Negocio.NegocioCliente;
 import Negocio.NegocioCuenta;
+import Negocio.NegocioMovimiento;
 import Negocio.NegocioPrestamo;
 import entidades.Cliente;
 import entidades.Cuenta;
+import entidades.Movimiento;
 import entidades.Prestamo;
 
 /**
@@ -44,6 +46,14 @@ public class ServletMenu extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("Perfil.jsp");
 			rd.forward(request, response);
 			
+		}
+		if (request.getParameter("IraMovimientos")!=null) {
+			Cuenta c = NegocioCuenta.ObtenerCuentaConDNI(request.getSession().getAttribute("DNI").toString());
+			ArrayList<Movimiento> m = NegocioMovimiento.ObtenerMovPorCBU(c.getCBU());
+			request.setAttribute("Movimientos", m);
+			System.out.println(m);
+			RequestDispatcher rd = request.getRequestDispatcher("Movimientos.jsp");
+			rd.forward(request, response);
 		}
 		
 		if(request.getParameter("IraAutorizacion")!=null) {
