@@ -7,9 +7,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import Daointerfaz.CuentaDaoInterfaz;
 import entidades.Cuenta;
 
-public class CuentaDao {
+public class CuentaDao implements CuentaDaoInterfaz {
 	private String insertar = "insert into cuentas values(?,?,?,?,?,?,?)";
 	private String contar = "Select count(usuarios_DNI) from cuentas where usuarios_DNI=?";
 	//private String borrar = "delete from Cuentas where NrodeCuenta=? and CBU=?";

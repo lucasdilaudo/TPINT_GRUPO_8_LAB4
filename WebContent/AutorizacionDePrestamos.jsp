@@ -37,7 +37,8 @@ Usuario:<%out.print(Usuario); %>
 			<tr>
 			    <th>CBU</th>			
 				<th>Fecha</th>	
-				<th>Importe solicitado</th>			
+				<th>Importe solicitado</th>	
+				<th>Importe a Pagar</th>		
 				<th>Plazo en meses</th>	
 				<th>Monto mensual</th>
 				<th>Cantidad de cuotas</th>
@@ -52,7 +53,8 @@ Usuario:<%out.print(Usuario); %>
 			<tr>
 				<th><%= p.getCBU() %></th>	
 				<th><%= p.getFecha() %></th>	
-				<th><%= p.getImportePedido() %></th>	
+				<th><%= p.getImportePedido() %></th>
+				<th><%= p.getImporteaPagar() %></th>	
 				<th><%= p.getPlazo() %></th>	
 				<th><%= p.getMontoMensual()%></th>	
 				<th><%= p.getCantCuotas()%></th>	

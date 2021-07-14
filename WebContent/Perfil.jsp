@@ -23,7 +23,7 @@ Usuario:<%out.print(Usuario); %><br>
 <br>
 <br>
 <br>
-<form action="MenuUsuario.jsp" method="post">
+<form action="${pageContext.request.contextPath}/ServletMenu?IraMenuUsu=1" method="post">
 <div style="table-layout: auto"align="left" >
 	<table id="table_id" class="display" border="1">
 		<thead>	
@@ -61,8 +61,9 @@ Usuario:<%out.print(Usuario); %><br>
 	
 	
 	</table>
-	</form>
-<input type="submit" name="btnVolver" value="Volver" style="margin-left: 700px" onclick="window.location.href='${pageContext.request.contextPath}/ServletMenu?IraMenuUsu=1'">
 	
+<input type="submit" name="btnVolver" value="Volver" style="margin-left: 700px"/>
+</div>
+</form>
 </body>
 </html>

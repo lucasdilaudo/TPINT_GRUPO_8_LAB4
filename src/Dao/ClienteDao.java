@@ -7,10 +7,11 @@ import java.sql.SQLException;
 
 import java.util.ArrayList;
 
+import Daointerfaz.ClienteDaoInterfaz;
 import entidades.Cliente;
 
 
-public class ClienteDao {
+public class ClienteDao implements ClienteDaoInterfaz {
 	private String insertar = "insert into usuarios values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 	
 	private String borrar = "update usuarios set Estado=0 where DNI=?";

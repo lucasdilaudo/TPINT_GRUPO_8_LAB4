@@ -118,19 +118,48 @@ public class ServletPrestamo extends HttpServlet {
 		if(request.getParameter("btnSolicitar")!=null){
 			 LocalDate fecha = LocalDate.now(); 
 			 Prestamo p = new Prestamo();
+			 double Interes;
+			 if(request.getParameter("ddlCBU").toString().equals("0")) {
+				 request.setAttribute("Mensaje", "Por favor seleccione un CBU");
+				 ArrayList<Cuenta> ac = NegocioCuenta.ObtenerCuentasPorUsuario(request.getSession().getAttribute("DNI").toString());
+					request.setAttribute("listaCuentas", ac);
+				RequestDispatcher rd = request.getRequestDispatcher("Prestamos.jsp");
+				rd.forward(request, response);
+				
+			 }
+			 if(request.getParameter("TipoPrestamo").toString().equals("0")) {
+				 request.setAttribute("Mensaje", "Por favor seleccione un tipo de prestamo");
+				 ArrayList<Cuenta> ac = NegocioCuenta.ObtenerCuentasPorUsuario(request.getSession().getAttribute("DNI").toString());
+					request.setAttribute("listaCuentas", ac);
+				RequestDispatcher rd = request.getRequestDispatcher("Prestamos.jsp");
+				rd.forward(request, response);
+			 }
+			 if(request.getParameter("PlazoMeses").toString().equals("0")) {
+				 request.setAttribute("Mensaje", "Por favor seleccione un plazo");
+				 ArrayList<Cuenta> ac = NegocioCuenta.ObtenerCuentasPorUsuario(request.getSession().getAttribute("DNI").toString());
+					request.setAttribute("listaCuentas", ac);
+				RequestDispatcher rd = request.getRequestDispatcher("Prestamos.jsp");
+				rd.forward(request, response);
+			 }
+	
 			 
 			 p.setCBU(request.getParameter("ddlCBU"));
+			 
+			 
+			 
 			 //p.setFecha(fecha.toString());
 			 p.setFecha(fecha.getYear()+"-"+fecha.getMonthValue()+"-"+fecha.getDayOfMonth());
-//		     p.setImporteaPagar(Double.parseDouble(request.getParameter("txtImporte"))*1.5);
-		     p.setImporteaPagar(Double.parseDouble(request.getParameter("txtImporte")));
+		     
+//		     p.setImporteaPagar(Double.parseDouble(request.getParameter("txtImporte")));
 		     p.setImportePedido(Double.parseDouble(request.getParameter("txtImporte")));
 		     if (Integer.valueOf(request.getParameter("PlazoMeses"))==1) {
 		    	 p.setPlazo(12);
+		    	 Interes = 1.4;
 		     }else {
 		    	 p.setPlazo(24);
+		    	 Interes = 1.6;
 		     }
-		     
+		     p.setImporteaPagar(Double.parseDouble(request.getParameter("txtImporte"))*Interes);
 		     p.setMontoMensual(p.getImporteaPagar()/p.getPlazo());
 		     p.setCantCuotas(p.getPlazo());
 		    
@@ -145,10 +174,10 @@ public class ServletPrestamo extends HttpServlet {
 		    	 
 		     }
 		     
-		     if(request.getParameter("hiddenDni")!=null) {
-					ArrayList<Cuenta> ac = NegocioCuenta.ObtenerCuentasPorUsuario(request.getParameter("hiddenDni"));
-					request.setAttribute("listaCuentas", ac);
-				}
+		     
+			ArrayList<Cuenta> ac = NegocioCuenta.ObtenerCuentasPorUsuario(request.getSession().getAttribute("DNI").toString());
+			request.setAttribute("listaCuentas", ac);
+				
 		   //REQUESTDISPACHER
 			request.setAttribute("Mensaje", Mensaje);
 			RequestDispatcher rd = request.getRequestDispatcher("Prestamos.jsp");

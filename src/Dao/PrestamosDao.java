@@ -6,11 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-
-
+import Daointerfaz.PrestamosDaoInterfaz;
 import entidades.Prestamo;
 
-public class PrestamosDao {
+public class PrestamosDao implements PrestamosDaoInterfaz{
 	private String select = "select idprestamos,CBU,DATE_FORMAT(FechaPrestamo,'%d/%m/%Y'),ImporteApagar,ImportePedido,PlazoPrestamo,MontoMensual,CantCuotas,aceptado from prestamos";
 	private String delete = "delete * from prestamos";
 	private String insert = "insert into prestamos values(default,?,?,?,?,?,?,?,null)";

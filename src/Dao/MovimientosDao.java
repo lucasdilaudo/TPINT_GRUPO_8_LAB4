@@ -6,10 +6,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import Daointerfaz.MovimientosDaoInterfaz;
 import entidades.Movimiento;
 import entidades.Prestamo;
 
-public class MovimientosDao {
+public class MovimientosDao implements MovimientosDaoInterfaz{
 	//transferencia
 	private String insertarTransferencia = "insert into movimiento(FechaMovimiento, DetalleMovimiento, ImporteMovimiento, TipoMovimiento,`CBU origen`, `CBU destino`) values(?, ?, ?, ?, ?, ?)";
 	private String select="select IDmovimiento,DATE_FORMAT(FechaMovimiento,'%d/%m/%Y'),DetalleMovimiento,ImporteMovimiento, TipoMovimiento, `CBU origen`, `CBU destino` from movimiento";

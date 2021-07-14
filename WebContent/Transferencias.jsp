@@ -50,7 +50,7 @@ Usuario:<%out.print(Usuario); %>
 <br>
 <b>Motivo</b>
 <select name="Motivo">
-	<option value="">-- Seleccione un motivo --</option>
+	<option value="0">-- Seleccione un motivo --</option>
 	<option value="Alquileres">Alquileres</option>
 	<option value="Cuota">Cuota</option>
 	<option value="Expensas">Expensas</option>

@@ -75,6 +75,21 @@ public class ServletTransferencia extends HttpServlet {
 		
 		if(request.getParameter("btnTransferir")!=null) {
 			
+			 if(request.getParameter("ddlNroDeCuenta").toString().equals("0")) {
+				 request.setAttribute("Mensaje", "Por favor seleccione una Cuenta");
+				 ArrayList<Cuenta> ac = NegocioCuenta.ObtenerCuentasPorUsuario(request.getSession().getAttribute("DNI").toString());
+					request.setAttribute("listaCuentas", ac);
+				RequestDispatcher rd = request.getRequestDispatcher("Transferencias.jsp");
+				rd.forward(request, response);
+			 }
+			 if(request.getParameter("Motivo").toString().equals("0")) {
+				 request.setAttribute("Mensaje", "Por favor seleccione un Motivo");
+				 ArrayList<Cuenta> ac = NegocioCuenta.ObtenerCuentasPorUsuario(request.getSession().getAttribute("DNI").toString());
+					request.setAttribute("listaCuentas", ac);
+				RequestDispatcher rd = request.getRequestDispatcher("Transferencias.jsp");
+				rd.forward(request, response);
+			 }
+			 
 			if(NegocioCuenta.Existe(request.getParameter("txtCbuDestino"))) {
 				mov.setFecha(fecha.getYear()+"-"+fecha.getMonthValue()+"-"+fecha.getDayOfMonth());
 				mov.setDetalle(request.getParameter("Motivo"));
@@ -89,10 +104,9 @@ public class ServletTransferencia extends HttpServlet {
 			else request.setAttribute("Mensaje", "El cbu destinatario no existe");
 			
 			
-			if(request.getParameter("hiddenDni")!=null) {
-				ArrayList<Cuenta> ac = NegocioCuenta.ObtenerCuentasPorUsuario(request.getParameter("hiddenDni"));
+				ArrayList<Cuenta> ac = NegocioCuenta.ObtenerCuentasPorUsuario(request.getSession().getAttribute("DNI").toString());
 				request.setAttribute("listaCuentas", ac);
-			}
+			
 			
 			RequestDispatcher rd = request.getRequestDispatcher("Transferencias.jsp");
 			rd.forward(request, response);

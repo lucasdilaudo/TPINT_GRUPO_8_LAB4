@@ -39,21 +39,21 @@ Usuario:<%out.print(Usuario); %>
  <br><br>
 <b>Tipo de Prestamo:</b>
  <select name="TipoPrestamo">
- <option>Seleccione un tipo de prestamo</option>
+ <option value="0">Seleccione un tipo de prestamo</option>
  <option value="1">Credito personal</option>
  </select>
  <br>
  <br>
  <b>Plazo en meses:</b>
  <select name="PlazoMeses">
- <option>Seleccione un plazo</option>
+ <option value="0">Seleccione un plazo</option>
  <option value="1">12 meses</option>
   <option value="2">24 meses</option>
  </select>
  <br>
  <br>
  <b>Importe solicitado:</b>
- <input type="text" name="txtImporte"/>
+ <input type="text" name="txtImporte" required pattern="[0-9]+(\.[0-9][0-9]?)?" title="Solo se permiten numeros con decimales"/>
  <br>
  <br>
  <br>
