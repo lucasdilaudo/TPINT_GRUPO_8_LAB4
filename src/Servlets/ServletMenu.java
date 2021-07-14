@@ -56,11 +56,11 @@ public class ServletMenu extends HttpServlet {
 		}
 		
 		if (request.getParameter("IraMovimientos")!=null) {
-			Cuenta c = NegocioCuenta.ObtenerCuentaConDNI(request.getSession().getAttribute("DNI").toString());
+			Cuenta c = NegocioCuenta.ObtenerCuentaConDNI(request.getParameter("IraMovimientos"));
 			ArrayList<Movimiento> m = NegocioMovimiento.ObtenerMovPorCBU(c.getCBU());
 			request.setAttribute("Movimientos", m);
-			System.out.println(m);
-			RequestDispatcher rd = request.getRequestDispatcher("Movimientos.jsp");
+			System.out.println(c);
+			RequestDispatcher rd = request.getRequestDispatcher("/Movimientos.jsp");
 			rd.forward(request, response);
 		}
 		
@@ -72,16 +72,7 @@ public class ServletMenu extends HttpServlet {
 			rd.forward(request, response);
 			
 		}
-		
-//		if(request.getParameter("IraTransferencias")!=null) {
-//			int cantcuentas = NegocioCuenta.CantidadCuentas(request.getSession().getAttribute("DNI").toString());
-//			request.setAttribute("CantCuentas", cantcuentas);
-//			
-//			RequestDispatcher rd = request.getRequestDispatcher("Transferencias.jsp");
-//			rd.forward(request, response);
-//			
-//		}
-		
+
 		if(request.getParameter("IraTransferencia")!=null) {
 			ArrayList<Cuenta> ac = NegocioCuenta.ObtenerCuentasPorUsuario(request.getParameter("IraTransferencia"));
 			request.setAttribute("listaCuentas", ac  );

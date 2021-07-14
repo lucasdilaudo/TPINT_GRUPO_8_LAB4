@@ -77,7 +77,7 @@ public class ServletTransferencia extends HttpServlet {
 			
 			if(NegocioCuenta.Existe(request.getParameter("txtCbuDestino"))) {
 				mov.setFecha(fecha.getYear()+"-"+fecha.getMonthValue()+"-"+fecha.getDayOfMonth());
-				mov.setDetalle("varios...");
+				mov.setDetalle(request.getParameter("Motivo"));
 				mov.setImporte(Float.parseFloat(request.getParameter("txtImporte")));
 				mov.setTipoMovimiento(4);
 				mov.setCbuOrigen(Integer.parseInt(request.getParameter("ddlNroDeCuenta")));

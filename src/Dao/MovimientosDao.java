@@ -12,7 +12,7 @@ import entidades.Prestamo;
 public class MovimientosDao {
 	//transferencia
 	private String insertarTransferencia = "insert into movimiento(FechaMovimiento, DetalleMovimiento, ImporteMovimiento, TipoMovimiento,`CBU origen`, `CBU destino`) values(?, ?, ?, ?, ?, ?)";
-	private String select="select IDmovimiento,DATE_FORMAT(FechaMovimiento,'%d/%m/%Y'),DetalleMovimiento,ImporteMovimiento, TipoMovimiento, CBU origen, CBU destino from movimiento";
+	private String select="select IDmovimiento,DATE_FORMAT(FechaMovimiento,'%d/%m/%Y'),DetalleMovimiento,ImporteMovimiento, TipoMovimiento, `CBU origen`, `CBU destino` from movimiento";
 	
 	public int AgregarTransferencia(Movimiento m) {
 		int filas=0;
@@ -42,7 +42,7 @@ public class MovimientosDao {
 		try {
 			Connection cn = Conexion.getConexion().getSQLConexion();
 			PreparedStatement pst;
-			pst = cn.prepareStatement(select+" where CBU destino="+CBU+" or CBU origen="+CBU); //para buscar por cbu o traer todos
+			pst = cn.prepareStatement(select+" where `CBU destino`="+CBU+" or `CBU origen`="+CBU);
 			
 			ResultSet rs = pst.executeQuery();
 			while(rs.next()) {

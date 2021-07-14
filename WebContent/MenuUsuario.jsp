@@ -81,14 +81,12 @@ Usuario:<%out.print(Usuario); %>
 		    border: steelblue solid 1px;
 		    height: auto;">
 			<div><a href="${pageContext.request.contextPath}/ServletMenu?IraMovimientos=<%out.print(dni);%>"> Historial de movimientos </a></div><br>
-<%-- 			<div><a href="${pageContext.request.contextPath}/ServletMenu?IraTransferencias=1"> Transferencias </a></div><br> --%>
 			<div><a href="${pageContext.request.contextPath}/ServletMenu?IraTransferencia=<% out.print(dni);%>"> Hacer Transferencia </a></div><br>
-<!-- 			<div><a href="Prestamos.jsp"> Solicitar Prestamo </a></div><br> -->
 			<div><a href="${pageContext.request.contextPath}/ServletMenu?IraPrestamos=<% out.print(dni);%>">Solicitar Prestamo</a></div><br>
 			<div><a href="${pageContext.request.contextPath}/ServletMenu?IraPerfil=1"> Mi Perfil </a></div><br>
 			<div><a href="${pageContext.request.contextPath}/ServletMenu?IraPago=1"> Pago de prestamos </a></div><br>
 		</div>
 	</div>
-	<a href="Inicio.jsp">Cerrrar Session</a>
+	<a href="Inicio.jsp">Cerrar Sesion</a>
 </body>
 </html>

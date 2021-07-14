@@ -36,7 +36,7 @@ Usuario:<%out.print(Usuario); %><br>
 				<th>Localidad</th>
 				<th>Correo</th>
 				<th>Usuario</th>
-				<th></th>
+			
 			</tr>
 		</thead>
 		<tbody>
