@@ -159,3 +159,9 @@ CREATE DEFINER=`root`@`localhost` TRIGGER `tranferencia` AFTER INSERT ON `movimi
     Update cuentas Set saldo=saldo+NEW.ImporteMovimiento Where cuentas.CBU=NEW.`CBU origen` AND NEW.TipoMovimiento=2;
 
 end
+
+CREATE TABLE `meses` (
+  `IdMes` int NOT NULL AUTO_INCREMENT,
+  `Descripcion` varchar(45) NOT NULL,
+  PRIMARY KEY (`IdMes`)
+) 
