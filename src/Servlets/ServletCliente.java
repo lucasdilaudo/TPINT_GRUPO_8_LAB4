@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Controles.Validarfecha;
+import Excepciones.FechaException;
 import Negocio.NegocioCliente;
 import Negocio.NegocioCuenta;
 import entidades.Cliente;
@@ -66,7 +68,16 @@ public class ServletCliente extends HttpServlet {
 		     c.setSexo(Integer.parseInt(request.getParameter("ddlSexo")));
 		     c.setNacionalidad(request.getParameter("txtNacionalidad"));
 		     //c.setFecha(request.getParameter("txtAnio")+"-"+request.getParameter("txtMes")+"-"+request.getParameter("txtDia"));  
-		     c.setFecha(request.getParameter("txtAnio")+"-"+ request.getParameter("txtMes")+"-"+request.getParameter("txtDia"));
+		    try {
+		    	Validarfecha.ValidarFecha(Integer.parseInt(request.getParameter("txtDia")), Integer.parseInt(request.getParameter("txtMes")), Integer.parseInt(request.getParameter("txtAnio")));
+		    	c.setFecha(request.getParameter("txtAnio")+"-"+ request.getParameter("txtMes")+"-"+request.getParameter("txtDia"));
+		    } catch (FechaException e) {
+				e.printStackTrace();
+				request.setAttribute("Mensaje", "Fecha no valida");
+				RequestDispatcher rd = request.getRequestDispatcher("ABML Clientes/AltaCliente.jsp");
+				rd.forward(request, response);
+			}
+		     	
 		     c.setDireccion(request.getParameter("txtDireccion"));
 		     c.setLocalidad(request.getParameter("txtLocalidad"));
 		     c.setProvincia(request.getParameter("txtProvincia"));

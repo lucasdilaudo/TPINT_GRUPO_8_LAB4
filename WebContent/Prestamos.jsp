@@ -59,7 +59,8 @@ Usuario:<%out.print(Usuario); %>
  <br>
  <input type="submit" name="btnSolicitar" value="Solicitar Prestamo">
  <input type="hidden" name="hiddenDni" value="<%out.write(DNI);%>">
- <input type="submit" name="btnVolver" value="Volver" style="margin-left: 700px">
+ </form>
+ <input type="submit" name="btnVolver" value="Volver" style="margin-left: 700px" onclick="window.location.href='${pageContext.request.contextPath}/ServletMenu?IraMenuUsu=1'">
  <% 
  
 
@@ -77,6 +78,6 @@ if(request.getAttribute("Mensaje")!=null){
 
 
 %>	
-	</form>
+	
 </body>
 </html>

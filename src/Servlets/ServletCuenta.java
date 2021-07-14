@@ -17,7 +17,9 @@ import com.mysql.cj.Session;
 import Dao.CuentaDao;
 import Negocio.NegocioCliente;
 import Negocio.NegocioCuenta;
+import Negocio.NegocioMovimiento;
 import entidades.Cuenta;
+import entidades.Movimiento;
 import sun.rmi.server.Dispatcher;
 
 /**
@@ -87,6 +89,14 @@ public class ServletCuenta extends HttpServlet {
 		     c.setFechaCreacion(fecha.getYear()+"-"+fecha.getMonthValue()+"-"+fecha.getDayOfMonth());
 		     c.setSaldo(10000);
 		    
+		     Movimiento m = new Movimiento();
+		     m.setFecha(fecha.getYear()+"-"+fecha.getMonthValue()+"-"+fecha.getDayOfMonth());
+		     m.setDetalle("Alta de Cuenta");
+		     m.setImporte(10000);
+		     m.setCbuDestino(Integer.parseInt(c.getCBU()));
+		     m.setCbuOrigen(Integer.parseInt(c.getCBU()));
+		     m.setTipoMovimiento(1);
+		     
 		   String Mensaje;
 		    if(!NegocioCliente.Existe(c.getDNICliente())) {
 		      Mensaje = "No existe un cliente con el DNI ingresado";
@@ -102,6 +112,7 @@ public class ServletCuenta extends HttpServlet {
 				   }
 				   else {
 					   if	(NegocioCuenta.AgregarCuenta(c)){
+						   NegocioMovimiento.AgregarTransferencia(m);
 					   Mensaje = "Cuenta agregada con exito";
 					   }
 					   else Mensaje = "No se pudo agregar";

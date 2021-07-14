@@ -66,4 +66,11 @@ public class NegocioCuenta {
 	}
 	
 	
+	public static boolean Existe(String CBU) {
+		
+		 
+		if(cdao.Existe(CBU).getCBU()!=null) return true;
+		else return false;
+	}
+	
 }

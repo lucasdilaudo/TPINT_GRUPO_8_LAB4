@@ -165,6 +165,31 @@ public class CuentaDao {
 		
 	}
 	
+	public Cuenta Existe(String CBU) {
+		Cuenta c = new Cuenta();
+		try {
+		
+			Connection cn = Conexion.getConexion().getSQLConexion();
+			PreparedStatement pst = cn.prepareStatement(obtener + " where Estado=1 and CBU=?");
+			
+			pst.setString(1, CBU);
+			ResultSet rs = pst.executeQuery();
+			if(rs.next()) {
+			c.setNroCuenta(rs.getString(1));
+			c.setCBU(rs.getString(2));
+			c.setDNICliente(rs.getString(3));
+			c.setFechaCreacion(rs.getString(5));
+			c.setTipoDeCuenta(rs.getInt(4));
+			c.setSaldo(rs.getDouble(6));
+			}
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return c;
+		
+		
+	}
 	
 	
 	public ArrayList<Cuenta> ObtenerTodo() {

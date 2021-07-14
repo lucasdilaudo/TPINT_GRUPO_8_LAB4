@@ -47,6 +47,14 @@ public class ServletMenu extends HttpServlet {
 			rd.forward(request, response);
 			
 		}
+		
+		if(request.getParameter("IraMenuUsu")!=null) {
+			ArrayList<Cuenta> ac = NegocioCuenta.ObtenerCuentasPorUsuario(request.getSession().getAttribute("DNI").toString());
+			request.setAttribute("Cuentas", ac);
+			RequestDispatcher rd = request.getRequestDispatcher("MenuUsuario.jsp");
+			rd.forward(request, response);
+		}
+		
 		if (request.getParameter("IraMovimientos")!=null) {
 			Cuenta c = NegocioCuenta.ObtenerCuentaConDNI(request.getSession().getAttribute("DNI").toString());
 			ArrayList<Movimiento> m = NegocioMovimiento.ObtenerMovPorCBU(c.getCBU());

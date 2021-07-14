@@ -18,7 +18,7 @@ String dni=(String) session.getAttribute("DNI");
 Usuario:<%out.print(Usuario); %>
 <br>
 <br>
-<a href="${pageContext.request.contextPath}/MenuUsuario.jsp?action=LIST"> Volver al menu</a>
+<a href="${pageContext.request.contextPath}/ServletMenu?IraMenuUsu=1"> Volver al menu</a>
 <br>
 <br>
 <form action="${pageContext.request.contextPath}/ServletTransferencia?action=LIST" method="post">
@@ -31,7 +31,7 @@ Usuario:<%out.print(Usuario); %>
 		//request.removeAttribute("listaCuentas");
 			for(Cuenta c : ac){
 				%>
-				<option value="<% out.write(c.getNroCuenta()); %>"><% out.print(c.getNroCuenta()+"- Saldo: $"+c.getSaldo()); %></option>
+				<option value="<%= c.getCBU() %>"><% out.print(c.getNroCuenta()+"- Saldo: $"+c.getSaldo()); %></option>
 				<%
 			}
 	}
@@ -45,7 +45,7 @@ Usuario:<%out.print(Usuario); %>
 <br>
 <br>
 <b>¿Cuanto quiere transferir?</b>
-<input type="text" name="txtImporte" required pattern="[0-9]+"/>
+<input type="text" name="txtImporte" required pattern="[0-9]+(\.[0-9][0-9]?)?" title="Solo se permiten numeros con decimales"/>
 <br>
 <br>
 <b>Motivo</b>
@@ -55,13 +55,13 @@ Usuario:<%out.print(Usuario); %>
 <br>
 <br>
 <b>Ingrese CBU destinatario:</b>
-<input type="text" name="txtCbuDestino" required pattern="[0-9]+"/>
+<input type="text" name="txtCbuDestino" required pattern="[0-9]+" title="Solo se permiten numeros"/>
 <br>
 <br>
 <input type="submit" name="btnTransferir" value="Realizar Transferencia">
 <input type="hidden" name="hiddenDni" value="<%out.write(dni);%>">
 <br>
 	</form>
-	
+	<% if(request.getAttribute("Mensaje")!=null)%><%= request.getAttribute("Mensaje") %><%  ;%>
 </body>
 </html>

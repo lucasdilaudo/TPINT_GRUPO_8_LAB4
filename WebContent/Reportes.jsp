@@ -34,7 +34,8 @@ Usuario:<%out.print(Usuario); %>
 			Clientes que mas solicitaron prestamos: <br>
 			<input type="text" placeholder="Fecha Inicio" name="fechaInicio" style="width: 109px; " required pattern="\d{1,2}/\d{1,2}/\d{4}" title="d/m/a"> 
 			<input type="text" placeholder="Fecha Fin" name="fechaFin" style="width: 109px; " required pattern="\d{1,2}/\d{1,2}/\d{4}" title="d/m/a">
-			<input type="submit" value="Buscar" name="btnBuscar2">
+			<input type="submit" value="Buscar" name="btnBuscar2"><br>
+			<% if(request.getAttribute("Mensaje2")!=null)%><%= request.getAttribute("Mensaje2") %><%  ;%>
 		</form>
 		<br><input type="submit" name="btnDeudores" value="Deudores"><br>
 				
@@ -54,8 +55,9 @@ Usuario:<%out.print(Usuario); %>
 							<table border="1">
 								<tr>
 									<th>Mes</th>
-									<th>Monto dado<br> a usuarios</th>
+									
 									<th>Monto recibido <br>por Usuarios</th>
+									<th>Monto dado<br> a usuarios</th>
 									<th style="width: 106px; ">Balance</th>
 									
 								</tr>

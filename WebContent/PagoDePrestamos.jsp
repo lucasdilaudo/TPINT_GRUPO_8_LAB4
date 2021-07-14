@@ -31,7 +31,7 @@ Usuario:<%out.print(Usuario); %>
 <br>
 </div>
 <br>
-<a href="MenuUsuario.jsp">Volver</a>
+<a href="${pageContext.request.contextPath}/ServletMenu?IraMenuUsu=1">Volver</a>
 <br><br>
 
 <script type="text/javascript">

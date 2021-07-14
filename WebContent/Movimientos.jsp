@@ -51,7 +51,7 @@ Usuario:<%out.print(Usuario); %>
 		
 		</tbody>
 </table>
-		<input type="submit" name="btnVolver" value="Volver" style="margin-left: 700px">
+		<input type="submit" name="btnVolver" value="Volver" style="margin-left: 700px" onclick="href='${pageContext.request.contextPath}/ServletMenu?IraMenuUsu=1'">
 	</form>
 
 </body>

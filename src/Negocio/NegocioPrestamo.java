@@ -34,9 +34,10 @@ public class NegocioPrestamo {
     }
 	
    
-    public static void AceptarPrestamo(int a,String id) {
+    public static boolean AceptarPrestamo(int a,String id) {
     	
-    	pdao.AceptarPrestamo(a, id);
+    	if(pdao.AceptarPrestamo(a, id)==1) return true;
+    	else return false;
     
     	
     }

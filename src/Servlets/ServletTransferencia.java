@@ -44,7 +44,7 @@ public class ServletTransferencia extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Movimiento mov=new Movimiento();
-		NegocioMovimiento negMov= new NegocioMovimiento();
+		
 		LocalDate fecha = LocalDate.now();
 		
 		
@@ -74,15 +74,20 @@ public class ServletTransferencia extends HttpServlet {
 //		}
 		
 		if(request.getParameter("btnTransferir")!=null) {
-
-			mov.setFecha(fecha.getYear()+"-"+fecha.getMonthValue()+"-"+fecha.getDayOfMonth());
-			mov.setDetalle("varios...");
-			mov.setImporte(Float.parseFloat(request.getParameter("txtImporte")));
-			mov.setTipoMovimiento(4);
-			mov.setCbuOrigen(Integer.parseInt(request.getParameter("ddlNroDeCuenta")));
-			mov.setCbuDestino(Integer.parseInt(request.getParameter("txtCbuDestino")));
 			
-			negMov.AgregarTransferencia(mov);
+			if(NegocioCuenta.Existe(request.getParameter("txtCbuDestino"))) {
+				mov.setFecha(fecha.getYear()+"-"+fecha.getMonthValue()+"-"+fecha.getDayOfMonth());
+				mov.setDetalle("varios...");
+				mov.setImporte(Float.parseFloat(request.getParameter("txtImporte")));
+				mov.setTipoMovimiento(4);
+				mov.setCbuOrigen(Integer.parseInt(request.getParameter("ddlNroDeCuenta")));
+				mov.setCbuDestino(Integer.parseInt(request.getParameter("txtCbuDestino")));
+				if(NegocioMovimiento.AgregarTransferencia(mov)) request.setAttribute("Mensaje", "Transferencia realizada con exito");
+				else request.setAttribute("Mensaje", "No se pudo realizar la transferencia");
+			}
+			
+			else request.setAttribute("Mensaje", "El cbu destinatario no existe");
+			
 			
 			if(request.getParameter("hiddenDni")!=null) {
 				ArrayList<Cuenta> ac = NegocioCuenta.ObtenerCuentasPorUsuario(request.getParameter("hiddenDni"));

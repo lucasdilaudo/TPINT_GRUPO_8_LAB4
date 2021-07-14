@@ -44,16 +44,19 @@ public class ServletPrestamo extends HttpServlet {
 		
 		if(request.getParameter("Rechazar") !=null) {
 			
-			NegocioPrestamo.AceptarPrestamo(0, request.getParameter("Id"));
+			if(NegocioPrestamo.AceptarPrestamo(0, request.getParameter("Id")))request.setAttribute("Mensaje", "Prestamo rechazado con exito");
+			else request.setAttribute("Mensaje", "No se pudo rechazar el prestamo");
 			ArrayList<Prestamo> ap = NegocioPrestamo.ObtenerTodo();
 			request.setAttribute("Prestamos", ap);
 			request.setAttribute("Rechazar", null);
+			
 			 RequestDispatcher rd = request.getRequestDispatcher("AutorizacionDePrestamos.jsp");
 			 rd.forward(request, response);		
 		}
 		
 		if(request.getParameter("Aceptar")!=null) {
-			NegocioPrestamo.AceptarPrestamo(1, request.getParameter("Id"));
+			if(NegocioPrestamo.AceptarPrestamo(1, request.getParameter("Id")))request.setAttribute("Mensaje", "Prestamo aceptado con exito");
+			else request.setAttribute("Mensaje", "No se pudo aceptar el prestamo");
 			ArrayList<Prestamo> ap = NegocioPrestamo.ObtenerTodo();
 			request.setAttribute("Prestamos", ap);
 			

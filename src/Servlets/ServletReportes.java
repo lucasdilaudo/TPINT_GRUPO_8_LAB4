@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Controles.Validarfecha;
 import Dao.ReportesDao;
+import Excepciones.FechaException;
 import Negocio.NegocioCliente;
 import Negocio.NegocioReportes;
 
@@ -50,11 +52,18 @@ public class ServletReportes extends HttpServlet {
 		}
 		
 		if(request.getParameter("btnBuscar2")!=null) {
-			String fecha1 = request.getParameter("fechaInicio");
-			String fecha2 = request.getParameter("fechaFin");
-			ArrayList<String[]> ar = NegocioReportes.Clientesquemaspidieron(adaptarfecha(fecha1), adaptarfecha(fecha2));
+			try {
+				String fecha1 = request.getParameter("fechaInicio");
+				String fecha2 = request.getParameter("fechaFin");
+				Validarfecha.ValidarFecha(fecha1);
+				Validarfecha.ValidarFecha(fecha2);
+				ArrayList<String[]> ar = NegocioReportes.Clientesquemaspidieron(adaptarfecha(fecha1), adaptarfecha(fecha2));
+				request.setAttribute("Tablaclientesquemaspidieron", ar);
+			}catch(FechaException e) {
+				e.printStackTrace();
+				request.setAttribute("Mensaje2", "Ingrese una fecha valida");
+			}
 			
-			request.setAttribute("Tablaclientesquemaspidieron", ar);
 			RequestDispatcher rd = request.getRequestDispatcher("Reportes.jsp");
 			rd.forward(request, response);
 			
