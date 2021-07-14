@@ -59,5 +59,18 @@ Usuario:<%out.print(Usuario); %>
 		<a href="${pageContext.request.contextPath}/ServletMenu?action=LIST&IraAutorizacion=1">Autorizacion de prestamos </a><br><br>
 		<a href="Reportes.jsp">Reportes</a>
 		</div>
+		<div style="padding-left: 10px;
+		    margin-left: 10px;
+		    position: left;
+		    float: left;
+		    width: 164px;"
+		    
+		    height: auto;">
+	<br>
+	<br>
+		<a href="Inicio.jsp">Cerrrar Session</a>
+		</div>
+		
+		
 </body>
 </html>

@@ -89,5 +89,6 @@ Usuario:<%out.print(Usuario); %>
 			<div><a href="${pageContext.request.contextPath}/ServletMenu?IraPago=1"> Pago de prestamos </a></div><br>
 		</div>
 	</div>
+	<a href="Inicio.jsp">Cerrrar Session</a>
 </body>
 </html>
