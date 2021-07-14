@@ -68,4 +68,37 @@ public class MovimientosDao implements MovimientosDaoInterfaz{
 		return amov;
 		
 	}
+	
+	public ArrayList<Movimiento> ObtenerMovimientosPorDNI(String dni) {
+		ArrayList<Movimiento> amov = new ArrayList<>();
+
+		 
+		try {
+			Connection cn = Conexion.getConexion().getSQLConexion();
+			PreparedStatement pst;
+			pst = cn.prepareStatement("SELECT * FROM movimiento inner join cuentas on (movimiento.`CBU origen`=cuentas.CBU or movimiento.`CBU destino`=cuentas.CBU)  where cuentas.usuarios_DNI="+dni+" and Estado=1 ");
+			
+			ResultSet rs = pst.executeQuery();
+			while(rs.next()) {
+				Movimiento mov = new Movimiento();
+				mov.setIdMovimiento(rs.getInt(1));
+				mov.setFecha(rs.getString(2));
+				mov.setDetalle(rs.getString(3));
+				mov.setImporte(rs.getFloat(4));
+				mov.setTipoMovimiento(rs.getInt(5));
+				mov.setCbuOrigen(rs.getInt(6));
+				mov.setCbuDestino(rs.getInt(7));
+				
+				amov.add(mov);
+			}
+			
+			
+			
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return amov;
+		
+	}
 }

@@ -1,5 +1,6 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="entidades.Movimiento" %>
+<%@page import="entidades.Cuenta"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -48,15 +49,30 @@
 </script>
 <% 
 String Usuario = (String) session.getAttribute("Usuario");
+String DNI = (String) session.getAttribute("DNI");
 %>
 
 Usuario:<%out.print(Usuario); %>
 <br>
 	<h1 style="padding-left: 120px; color: gray; border: steelblue solid 1px;">Utimos Movimientos</h1>
-
-	<form action="MenuUsuario.jsp" method="post">
-	<a href="${pageContext.request.contextPath}/ServletMenu?IraMenuUsu=1"> Volver al menu</a>
-
+<a href="${pageContext.request.contextPath}/ServletMenu?IraMenuUsu=1"> Volver al menu</a><br><br>
+	<form action="${pageContext.request.contextPath}/ServletMovimiento" method="post">
+	Seleccione un CBU: <select name="ddlCbu">
+<%
+	if(request.getAttribute("listaCbu")!=null){
+		ArrayList<Cuenta> ac = (ArrayList) request.getAttribute("listaCbu");
+		//request.removeAttribute("listaCuentas");
+			for(Cuenta c : ac){
+				%>
+				<option value="<% out.write(c.getCBU()); %>"><% out.print(c.getCBU()); %></option>
+				<%
+			}
+	}
+ %>
+ </select>
+ <input type="submit" name="btnFiltrar" value="Filtrar">
+ <input type="hidden" name="hiddenDni" value="<%out.write(DNI);%>">
+ <input type="submit" name="btnMostrarTodo" value="Mostrar todo"><br><br>
 		<table id="table_id" class="display">
 		<thead>	
 			<tr>
@@ -76,8 +92,20 @@ Usuario:<%out.print(Usuario); %>
 			<tr>
 				<th><%= m.getFecha() %></th>	
 				<th><%= m.getDetalle() %></th>	
-				<th><%= m.getImporte() %></th>	
-				<th><%= m.getTipoMovimiento() %></th>	
+				<th><%= m.getImporte() %></th>
+				<th><% switch(m.getTipoMovimiento()){
+							case 1:out.print("Alta de cuenta");
+							break;
+							case 2:out.print("Alta de un prestamo");
+							break;
+							case 3:out.print("Pago de prestamo");
+							break;
+							case 4:out.print("Transferencia");
+							break;
+							default:out.print(m.getTipoMovimiento());
+							break;
+						}
+					%></th>
 				<th><%= m.getCbuOrigen()%></th>	
 				<th><%= m.getCbuDestino()%></th>	
 							

@@ -10,6 +10,6 @@ public interface MovimientosDaoInterfaz {
 
 	public ArrayList<Movimiento> ObtenerMovimientosPorCBU(String CBU);
 	
-	
+	public ArrayList<Movimiento> ObtenerMovimientosPorDNI(String dni);
 	
 }

@@ -19,5 +19,9 @@ public class NegocioMovimiento {
 	public static ArrayList<Movimiento> ObtenerMovPorCBU(String CBU) {
 		return movDao.ObtenerMovimientosPorCBU(CBU);
 	}
+	
+	public static ArrayList<Movimiento> ObtenerMovPorDNI(String dni) {
+		return movDao.ObtenerMovimientosPorDNI(dni);
+	}
 
 }
