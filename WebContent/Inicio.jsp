@@ -28,8 +28,8 @@
 			</tr>
 			 
 			<tr>
-				<td width="50%">Contrase�a:</td>
-				<td width="50%"><input type="password" name="txtContrase�a" required></td>
+				<td width="50%">Contrasena:</td>
+				<td width="50%"><input type="password" name="txtContrasena" required></td>
 				
 			</tr>
 		    <tr>

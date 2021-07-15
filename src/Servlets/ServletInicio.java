@@ -47,7 +47,7 @@ public class ServletInicio extends HttpServlet {
 	
 		String dni = request.getParameter("txtDNI");
 		String usuario=request.getParameter("txtUsuario");
-		String clave=  request.getParameter("txtContraseña");
+		String clave=  request.getParameter("txtContrasena");
 		String direccion;
 		if(request.getParameter("btnIngresar")!=null)
 	    {
