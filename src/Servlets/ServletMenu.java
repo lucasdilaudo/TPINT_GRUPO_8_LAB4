@@ -56,9 +56,12 @@ public class ServletMenu extends HttpServlet {
 		}
 		
 		if (request.getParameter("IraMovimientos")!=null) {
+			//Cuenta c = NegocioCuenta.ObtenerCuentaConDNI(request.getParameter("IraMovimientos"));
+			//ArrayList<Movimiento> m = NegocioMovimiento.ObtenerMovPorCBU(c.getCBU());
 			ArrayList<Movimiento> m = NegocioMovimiento.ObtenerMovPorDNI(request.getParameter("IraMovimientos"));
 			request.setAttribute("Movimientos", m);
-
+			//System.out.println(c);
+			
 			ArrayList<Cuenta> ac = NegocioCuenta.ObtenerCuentasPorUsuario(request.getParameter("IraMovimientos"));
 			request.setAttribute("listaCbu", ac);
 			

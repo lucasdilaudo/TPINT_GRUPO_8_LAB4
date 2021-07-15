@@ -117,7 +117,7 @@ Usuario:<%out.print(Usuario); %>
 	<% }%>
 </div>
 	<%if(request.getAttribute("Mensaje")!=null) %><%= request.getAttribute("Mensaje")%><%; %>
-	<% if(request.getAttribute("Mensaje2")!=null)%><%= request.getAttribute("Mensaje2") %><%  ;%>
+	
 	
 	
 	
