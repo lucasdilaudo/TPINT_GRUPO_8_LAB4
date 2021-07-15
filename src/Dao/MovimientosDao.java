@@ -27,7 +27,6 @@ public class MovimientosDao implements MovimientosDaoInterfaz{
 			pst.setInt(4, m.getTipoMovimiento());
 			pst.setInt(5, m.getCbuOrigen());
 			pst.setInt(6, m.getCbuDestino());
-			System.out.println(pst.toString());
 			filas = pst.executeUpdate();
 		}
 		catch (SQLException e) {

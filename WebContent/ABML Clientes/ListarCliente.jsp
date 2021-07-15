@@ -36,7 +36,7 @@ String Usuario = (String) session.getAttribute("Usuario");
 
 Usuario:<%out.print(Usuario); %>
 <br>
-<h1 align="Center">Listar Clientes</h1>
+<center><h1 style="color: gray; border: steelblue solid 1px;">LISTAR CLIENTES</h1></center>
 <a href="${pageContext.request.contextPath}/MenuAdmin.jsp?action=LIST"> Volver al menu</a><br><br>
 
 	<table id="table_id" class="display">

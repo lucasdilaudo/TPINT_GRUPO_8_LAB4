@@ -22,7 +22,7 @@ String Usuario = (String) session.getAttribute("Usuario");
 Usuario:<%out.print(Usuario); %>
 <br>
 	
-	<h1 align="center">Alta Cuentas</h1><br><a href="${pageContext.request.contextPath}/MenuAdmin.jsp?action=LIST"> Volver al menu</a><br><br>
+	<center><h1 style="color: gray; border: steelblue solid 1px;">ALTA CUENTA</h1></center><br><a href="${pageContext.request.contextPath}/MenuAdmin.jsp?action=LIST"> Volver al menu</a><br><br>
 	
 	<form action="${pageContext.request.contextPath}/ServletCuenta?action=LIST" method="get">
 	<div style="table-layout: auto" align="center">

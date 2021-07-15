@@ -81,7 +81,6 @@ public class ServletTransferencia extends HttpServlet {
 					mov.setCbuDestino(Integer.parseInt(request.getParameter("txtCbuDestino")));
 					
 					saldo = saldo - mov.getImporte();
-					System.out.println(saldo);
 					ValidarSaldos.ValidarSaldos(saldo);
 					
 					if(NegocioMovimiento.AgregarTransferencia(mov)) request.setAttribute("Mensaje", "Transferencia realizada con exito");

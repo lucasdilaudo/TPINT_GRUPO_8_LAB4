@@ -48,9 +48,7 @@ public class PrestamosDao implements PrestamosDaoInterfaz{
 			pst.setDouble(1, p.getImporteaPagar());
 			pst.setInt(2, p.getCantCuotas());
 			pst.setInt(3, p.getIdPrestamo());
-			System.out.println(pst.toString());
-			
-			
+		
 			filas = pst.executeUpdate();
 		}catch (SQLException e) {
 			e.printStackTrace();

@@ -6,10 +6,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Prestamos</title>
 </head>
 <body>
-<h1 style="color: gray; border: steelblue solid 1px;">PRESTAMOS</h1>
+<center><h1 style="color: gray; border: steelblue solid 1px;">PRESTAMOS</h1></center>
 <% 
 String Usuario = (String) session.getAttribute("Usuario");
 String DNI = (String) session.getAttribute("DNI");

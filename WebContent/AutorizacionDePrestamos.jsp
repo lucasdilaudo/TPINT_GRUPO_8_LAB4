@@ -30,7 +30,7 @@ Usuario:<%out.print(Usuario); %>
 </script>
 </head>
 <br>
-<h1 align="Center">Autorizacion de Prestamos</h1><br><br> <a href="${pageContext.request.contextPath}/MenuAdmin.jsp?action=LIST"> Volver al menu</a>
+<center><h1 style="color: gray; border: steelblue solid 1px;">AUTORIZACION DE PRESTAMOS</h1></center><br><br> <a href="${pageContext.request.contextPath}/MenuAdmin.jsp?action=LIST"> Volver al menu</a>
  <% if(request.getAttribute("Mensaje")!=null) %><%=request.getAttribute("Mensaje")%><%  %>
 <table id="table_id" class="display">
 		<thead>	
