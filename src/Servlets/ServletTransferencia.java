@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Controles.ValidarSaldos;
+import Excepciones.SaldoNegativoException;
 import Negocio.NegocioCuenta;
 import Negocio.NegocioMovimiento;
 import entidades.Cuenta;
@@ -47,61 +49,51 @@ public class ServletTransferencia extends HttpServlet {
 		
 		LocalDate fecha = LocalDate.now();
 		
-		
-
-//		if(request.getParameter("btnTransferir")!=null) {
-//			String NrodeCuenta =  request.getParameter("ddlNroDeCuenta").toString();
-//			Cuenta aux = new Cuenta(); //cuenta donde almacenar el valor
-//			ArrayList<Cuenta> ac = NegocioCuenta.ObtenerCuentasPorUsuario(request.getSession().getAttribute("DNI").toString());
-//			
-//			for (Cuenta cuenta : ac) { //buscando la cuenta con el nroelegido
-//				if(cuenta.getNroCuenta().equals(NrodeCuenta)) aux = cuenta;
-//				
-//			}
-//			
-//			mov.setFecha(fecha.getYear()+"-"+fecha.getMonthValue()+"-"+fecha.getDayOfMonth());
-//			mov.setDetalle("varios...");
-//			mov.setImporte(Float.parseFloat(request.getParameter("txtImporte")));
-//			mov.setTipoMovimiento(4);
-//			mov.setCbuOrigen(Integer.parseInt(aux.getCBU()));
-//			mov.setCbuDestino(Integer.parseInt(request.getParameter("txtCbuDestino")));
-//			
-//			negMov.AgregarTransferencia(mov);
-//			
-//			RequestDispatcher rd = request.getRequestDispatcher("/Transferencias.jsp");
-//			rd.forward(request, response);
-//			
-//		}
-		
 		if(request.getParameter("btnTransferir")!=null) {
-			
-			 if(request.getParameter("ddlNroDeCuenta").toString().equals("0")) {
-				 request.setAttribute("Mensaje", "Por favor seleccione una Cuenta");
-				 ArrayList<Cuenta> ac = NegocioCuenta.ObtenerCuentasPorUsuario(request.getSession().getAttribute("DNI").toString());
+			try {
+				Double saldo = 0.00;
+				Cuenta c = NegocioCuenta.ObtenerCuentaConDNI(request.getSession().getAttribute("DNI").toString());
+				saldo = c.getSaldo();
+				
+				if(request.getParameter("ddlNroDeCuenta").toString().equals("0")) {
+					request.setAttribute("Mensaje", "Por favor seleccione una Cuenta");
+					ArrayList<Cuenta> ac = NegocioCuenta.ObtenerCuentasPorUsuario(request.getSession().getAttribute("DNI").toString());
+					
+					System.out.println(saldo);
 					request.setAttribute("listaCuentas", ac);
-				RequestDispatcher rd = request.getRequestDispatcher("Transferencias.jsp");
-				rd.forward(request, response);
-			 }
-			 if(request.getParameter("Motivo").toString().equals("0")) {
-				 request.setAttribute("Mensaje", "Por favor seleccione un Motivo");
-				 ArrayList<Cuenta> ac = NegocioCuenta.ObtenerCuentasPorUsuario(request.getSession().getAttribute("DNI").toString());
-					request.setAttribute("listaCuentas", ac);
-				RequestDispatcher rd = request.getRequestDispatcher("Transferencias.jsp");
-				rd.forward(request, response);
-			 }
-			 
-			if(NegocioCuenta.Existe(request.getParameter("txtCbuDestino"))) {
-				mov.setFecha(fecha.getYear()+"-"+fecha.getMonthValue()+"-"+fecha.getDayOfMonth());
-				mov.setDetalle(request.getParameter("Motivo"));
-				mov.setImporte(Float.parseFloat(request.getParameter("txtImporte")));
-				mov.setTipoMovimiento(4);
-				mov.setCbuOrigen(Integer.parseInt(request.getParameter("ddlNroDeCuenta")));
-				mov.setCbuDestino(Integer.parseInt(request.getParameter("txtCbuDestino")));
-				if(NegocioMovimiento.AgregarTransferencia(mov)) request.setAttribute("Mensaje", "Transferencia realizada con exito");
-				else request.setAttribute("Mensaje", "No se pudo realizar la transferencia");
+					RequestDispatcher rd = request.getRequestDispatcher("Transferencias.jsp");
+					rd.forward(request, response);
+				 }
+				 if(request.getParameter("Motivo").toString().equals("0")) {
+					 request.setAttribute("Mensaje", "Por favor seleccione un Motivo");
+					 ArrayList<Cuenta> ac = NegocioCuenta.ObtenerCuentasPorUsuario(request.getSession().getAttribute("DNI").toString());
+						request.setAttribute("listaCuentas", ac);
+					RequestDispatcher rd = request.getRequestDispatcher("Transferencias.jsp");
+					rd.forward(request, response);
+				 }
+				 
+				if(NegocioCuenta.Existe(request.getParameter("txtCbuDestino"))) {
+					mov.setFecha(fecha.getYear()+"-"+fecha.getMonthValue()+"-"+fecha.getDayOfMonth());
+					mov.setDetalle(request.getParameter("Motivo"));
+					mov.setImporte(Float.parseFloat(request.getParameter("txtImporte")));
+					mov.setTipoMovimiento(4);
+					mov.setCbuOrigen(Integer.parseInt(request.getParameter("ddlNroDeCuenta")));
+					mov.setCbuDestino(Integer.parseInt(request.getParameter("txtCbuDestino")));
+					
+					saldo = saldo - mov.getImporte();
+					ValidarSaldos.ValidarSaldos(saldo);
+					
+					if(NegocioMovimiento.AgregarTransferencia(mov)) request.setAttribute("Mensaje", "Transferencia realizada con exito");
+					else request.setAttribute("Mensaje", "No se pudo realizar la transferencia");
+				}
+				
+				else request.setAttribute("Mensaje", "El cbu destinatario no existe");
 			}
-			
-			else request.setAttribute("Mensaje", "El cbu destinatario no existe");
+			catch (SaldoNegativoException e) {
+				e.printStackTrace();
+				request.setAttribute("Mensaje2", "La operacion excede el saldo disponible");
+			}
+			 
 			
 			
 				ArrayList<Cuenta> ac = NegocioCuenta.ObtenerCuentasPorUsuario(request.getSession().getAttribute("DNI").toString());
@@ -111,13 +103,7 @@ public class ServletTransferencia extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("Transferencias.jsp");
 			rd.forward(request, response);
 		}
-		
-//		if(request.getParameter("btnVolver")!=null) {
-//			RequestDispatcher rd = request.getRequestDispatcher("MenuUsuario.jsp");
-//			rd.forward(request, response);
-//		}
-		
-		
+
 	}
 
 }
