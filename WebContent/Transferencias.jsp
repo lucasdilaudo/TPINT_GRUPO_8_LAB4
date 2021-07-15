@@ -69,5 +69,7 @@ Usuario:<%out.print(Usuario); %>
 <br>
 	</form>
 	<% if(request.getAttribute("Mensaje")!=null)%><%= request.getAttribute("Mensaje") %><%  ;%>
+	<% if(request.getAttribute("Mensaje2")!=null)%><%= request.getAttribute("Mensaje2") %><%  ;%>
+	
 </body>
 </html>
