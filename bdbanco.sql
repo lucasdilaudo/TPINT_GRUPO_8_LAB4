@@ -165,3 +165,87 @@ CREATE TABLE `meses` (
   `Descripcion` varchar(45) NOT NULL,
   PRIMARY KEY (`IdMes`)
 ) 
+-- --------------------------
+-- Registros
+-- --------------------------
+
+-- --------------------------
+-- Registro Tipos de usuarios. 
+-- --------------------------
+INSERT INTO `bdbanco`.`tiposdecuentas` (`IDTipodeCuenta`, `Descripcion`, `Estado`) 
+VALUES ('1', 'caja de ahorro', '1');
+INSERT INTO `bdbanco`.`tiposdecuentas` (`IDTipodeCuenta`, `Descripcion`, `Estado`) 
+VALUES ('2', 'cuenta corriente', '1');
+-- --------------------------
+-- Registro Usuarios. 
+-- --------------------------
+INSERT INTO `bdbanco`.`usuarios` (`DNI`, `Cuil`, `Nombre`, `Apellido`, `Sexo`, `Nacionalidad`, `FechadeNacimiento`, `Direccion`, `Localidad`, `Provincia`, `CorreoElectronico`, `Telefono`, `TipodeUsuario`, `Usuario`, `Contrasena`, `Estado`) 
+VALUES ('1', '1111', 'pablo', 'boris', '2', 'Argentina', '1999-06-05', 'sarmiento 3244', 'San Miguel', 'Buenos Aires', 'pablo002@hotmail.com', '65493217', '1', 'pablo', '1234', '1');
+INSERT INTO `bdbanco`.`usuarios` (`DNI`, `Cuil`, `Nombre`, `Apellido`, `Sexo`, `Nacionalidad`, `FechadeNacimiento`, `Direccion`, `Localidad`, `Provincia`, `CorreoElectronico`, `Telefono`, `TipodeUsuario`, `Usuario`, `Contrasena`, `Estado`)
+VALUES ('2', '2222', 'fede', 'maza', '2', 'Argentina', '1998-03-08', 'constituyentes 3562', 'Gral. pacheco', 'Buenos Aires', 'Federico@hotmail.com', '95137534', '1', 'fede', '1234', '1');
+INSERT INTO `bdbanco`.`usuarios` (`DNI`, `Cuil`, `Nombre`, `Apellido`, `Sexo`, `Nacionalidad`, `FechadeNacimiento`, `Direccion`, `Localidad`, `Provincia`, `CorreoElectronico`, `Telefono`, `TipodeUsuario`, `Usuario`, `Contrasena`, `Estado`) 
+VALUES ('3', '3333', 'Lucas', 'Di laudo', '2', 'Argentina', '1997-08-17', 'Corrientes 230', 'Hurlingham', 'Buenos Aires', 'Lucas@hotmail.com', '85267524', '1', 'lucas', '1234', '1');
+INSERT INTO `bdbanco`.`usuarios` (`DNI`, `Cuil`, `Nombre`, `Apellido`, `Sexo`, `Nacionalidad`, `FechadeNacimiento`, `Direccion`, `Localidad`, `Provincia`, `CorreoElectronico`, `Telefono`, `TipodeUsuario`, `Usuario`, `Contrasena`, `Estado`)
+VALUES ('4', '4444', 'Marcos', 'Zone', '2', 'Argentina', '1999-10-13', 'cordoba 657', 'Avellaneda', 'Buenos Aires', 'marcos@hotmail.com', '63257854', '1', 'marcos', '1234', '1');
+INSERT INTO `bdbanco`.`usuarios` (`DNI`, `Cuil`, `Nombre`, `Apellido`, `Sexo`, `Nacionalidad`, `FechadeNacimiento`, `Direccion`, `Localidad`, `Provincia`, `CorreoElectronico`, `Telefono`, `TipodeUsuario`, `Usuario`, `Contrasena`, `Estado`) 
+VALUES ('5', '5555', 'Profe', 'UTN', '2', 'Argentina', '2002-01-01', 'Av.Hipolito Yrigoyen 288', 'Gral. pacheco', 'Buenos Aires', 'profeUTN@hotmail.com', '12345678', '1', 'profeUTN', '1234', '1');
+INSERT INTO `bdbanco`.`usuarios` (`DNI`, `Cuil`, `Nombre`, `Apellido`, `Sexo`, `Nacionalidad`, `FechadeNacimiento`, `Direccion`, `Localidad`, `Provincia`, `CorreoElectronico`, `Telefono`, `TipodeUsuario`, `Usuario`, `Contrasena`, `Estado`)
+VALUES ('123451', '154321', 'Jorge', 'Fernandez', '2', 'Chile', '1995-07-27', 'Tucuman 695', 'caseros', 'Buenos Aires', 'Jorge@hotmail.com', '85693652', '2', 'jorge', '5678', '1');
+INSERT INTO `bdbanco`.`usuarios` (`DNI`, `Cuil`, `Nombre`, `Apellido`, `Sexo`, `Nacionalidad`, `FechadeNacimiento`, `Direccion`, `Localidad`, `Provincia`, `CorreoElectronico`, `Telefono`, `TipodeUsuario`, `Usuario`, `Contrasena`, `Estado`) 
+VALUES ('123452', '254321', 'Juana', 'Hernandez', '1', 'Peru', '1989-06-23', 'Flauber 132', 'San Martín', 'Santa Fe', 'JuanaHernandez@hotmail.com', '34021336', '2', 'juana', '5678', '1');
+INSERT INTO `bdbanco`.`usuarios` (`DNI`, `Cuil`, `Nombre`, `Apellido`, `Sexo`, `Nacionalidad`, `FechadeNacimiento`, `Direccion`, `Localidad`, `Provincia`, `CorreoElectronico`, `Telefono`, `TipodeUsuario`, `Usuario`, `Contrasena`, `Estado`)
+VALUES ('123453', '354321', 'Jose Maria', 'Vargas', '2', 'Argentina', '1980-8-29', 'Risso Patrón 581', 'Laferrere', 'Buenos Aires', 'Vargas@hotmail.com', '46269348', '2', 'vargas', '5678', '1');
+INSERT INTO `bdbanco`.`usuarios` (`DNI`, `Cuil`, `Nombre`, `Apellido`, `Sexo`, `Nacionalidad`, `FechadeNacimiento`, `Direccion`, `Localidad`, `Provincia`, `CorreoElectronico`, `Telefono`, `TipodeUsuario`, `Usuario`, `Contrasena`, `Estado`)
+VALUES ('123454', '454321', 'Enriqua', 'Manfrin', '1', 'Argentina', '1972-1-14', 'Urquiza 1585', 'Gualeguaychú', 'Entre Ríos', 'Enriqua@hotmail.com', '96574235', '2', 'erniqua', '5678', '1');
+INSERT INTO `bdbanco`.`usuarios` (`DNI`, `Cuil`, `Nombre`, `Apellido`, `Sexo`, `Nacionalidad`, `FechadeNacimiento`, `Direccion`, `Localidad`, `Provincia`, `CorreoElectronico`, `Telefono`, `TipodeUsuario`, `Usuario`, `Contrasena`, `Estado`)
+VALUES ('123455', '554321', 'Naomi', 'fallaci', '1', 'Argentina', '1994-7-18', 'F Amoedo 7123', 'Quilmes', 'Buenos Aires', 'Nao@hotmail.com', '42536356', '2', 'naomi', '5678', '1');
+INSERT INTO `bdbanco`.`usuarios` (`DNI`, `Cuil`, `Nombre`, `Apellido`, `Sexo`, `Nacionalidad`, `FechadeNacimiento`, `Direccion`, `Localidad`, `Provincia`, `CorreoElectronico`, `Telefono`, `TipodeUsuario`, `Usuario`, `Contrasena`, `Estado`)
+VALUES ('123456', '654321', 'Diego', 'Caseres', '2', 'Argentina', '1985-1-17', 'A Vignes 1410', 'Haedo', 'Buenos Aires', 'Diego@hotmail.com', '85246397', '2', 'diego', '5678', '1');
+INSERT INTO `bdbanco`.`usuarios` (`DNI`, `Cuil`, `Nombre`, `Apellido`, `Sexo`, `Nacionalidad`, `FechadeNacimiento`, `Direccion`, `Localidad`, `Provincia`, `CorreoElectronico`, `Telefono`, `TipodeUsuario`, `Usuario`, `Contrasena`, `Estado`)
+VALUES ('123457', '754321', 'German', 'Pirozi', '2', 'Argentina', '1985-8-21', 'Manuel Belgran 1923', 'La plata', 'Buenos Aires', 'German@hotmail.com', '84673162', '2', 'german', '5678', '1');
+INSERT INTO `bdbanco`.`usuarios` (`DNI`, `Cuil`, `Nombre`, `Apellido`, `Sexo`, `Nacionalidad`, `FechadeNacimiento`, `Direccion`, `Localidad`, `Provincia`, `CorreoElectronico`, `Telefono`, `TipodeUsuario`, `Usuario`, `Contrasena`, `Estado`)
+VALUES ('123458', '854321', 'Vicente', 'Pestalozzi', '2', 'Argentina', '1987-4-10', 'Roque Saenz Pe A 298', 'Rafaela', 'Santa Fe', 'vicente@hotmail.com', '96574255', '2', 'vicente', '5678', '1');
+INSERT INTO `bdbanco`.`usuarios` (`DNI`, `Cuil`, `Nombre`, `Apellido`, `Sexo`, `Nacionalidad`, `FechadeNacimiento`, `Direccion`, `Localidad`, `Provincia`, `CorreoElectronico`, `Telefono`, `TipodeUsuario`, `Usuario`, `Contrasena`, `Estado`)
+VALUES ('123459', '954321', 'Aricela', 'Malavia', '1', 'Argentina', '1985-4-11', '21 De Caballeria 765', 'Gualeguaychú', 'Entre Ríos', 'aricela@hotmail.com', '96124235', '2', 'aricela', '5678', '1');
+INSERT INTO `bdbanco`.`usuarios` (`DNI`, `Cuil`, `Nombre`, `Apellido`, `Sexo`, `Nacionalidad`, `FechadeNacimiento`, `Direccion`, `Localidad`, `Provincia`, `CorreoElectronico`, `Telefono`, `TipodeUsuario`, `Usuario`, `Contrasena`, `Estado`)
+VALUES ('1234510', '1054321', 'Facundo', 'Torres', '2', 'Argentina', '1997-11-10', 'Ramos Mejias 16105', 'Villa María', 'Córdoba', 'facu@hotmail.com', '65434235', '2', 'facundo', '5678', '1');
+-- --------------------------
+-- Registro de cuentas. 
+-- --------------------------
+INSERT INTO `bdbanco`.`cuentas` (`NrodeCuenta`, `CBU`, `FechadeCreacion`, `Saldo`, `Estado`, `tiposdecuentas_IDTipodeCuenta`, `usuarios_DNI`) 
+VALUES ('3652', '35412', '2020-07-13', '10000', '1', '1', '123451');
+INSERT INTO `bdbanco`.`cuentas` (`NrodeCuenta`, `CBU`, `FechadeCreacion`, `Saldo`, `Estado`, `tiposdecuentas_IDTipodeCuenta`, `usuarios_DNI`) 
+VALUES ('8561', '51316', '2020-09-20', '10000', '1', '2', '123451');
+INSERT INTO `bdbanco`.`cuentas` (`NrodeCuenta`, `CBU`, `FechadeCreacion`, `Saldo`, `Estado`, `tiposdecuentas_IDTipodeCuenta`, `usuarios_DNI`) 
+VALUES ('6854', '75177', '2020-11-13', '10000', '1', '2', '123451');
+INSERT INTO `bdbanco`.`cuentas` (`NrodeCuenta`, `CBU`, `FechadeCreacion`, `Saldo`, `Estado`, `tiposdecuentas_IDTipodeCuenta`, `usuarios_DNI`) 
+VALUES ('7412', '15165', '2020-02-20', '10000', '1', '2', '123452');
+INSERT INTO `bdbanco`.`cuentas` (`NrodeCuenta`, `CBU`, `FechadeCreacion`, `Saldo`, `Estado`, `tiposdecuentas_IDTipodeCuenta`, `usuarios_DNI`) 
+VALUES ('8412', '16513', '2020-06-15', '10000', '1', '1', '123453');
+INSERT INTO `bdbanco`.`cuentas` (`NrodeCuenta`, `CBU`, `FechadeCreacion`, `Saldo`, `Estado`, `tiposdecuentas_IDTipodeCuenta`, `usuarios_DNI`) 
+VALUES ('4356', '98465', '2020-05-23', '10000', '1', '1', '123454');
+INSERT INTO `bdbanco`.`cuentas` (`NrodeCuenta`, `CBU`, `FechadeCreacion`, `Saldo`, `Estado`, `tiposdecuentas_IDTipodeCuenta`, `usuarios_DNI`) 
+VALUES ('5254', '21563', '2021-06-24', '10000', '1', '2', '123454');
+INSERT INTO `bdbanco`.`cuentas` (`NrodeCuenta`, `CBU`, `FechadeCreacion`, `Saldo`, `Estado`, `tiposdecuentas_IDTipodeCuenta`, `usuarios_DNI`) 
+VALUES ('4535', '35426', '2020-08-10', '10000', '1', '1', '123455');
+INSERT INTO `bdbanco`.`cuentas` (`NrodeCuenta`, `CBU`, `FechadeCreacion`, `Saldo`, `Estado`, `tiposdecuentas_IDTipodeCuenta`, `usuarios_DNI`) 
+VALUES ('2468', '15169', '2020-03-20', '10000', '1', '2', '123456');
+INSERT INTO `bdbanco`.`cuentas` (`NrodeCuenta`, `CBU`, `FechadeCreacion`, `Saldo`, `Estado`, `tiposdecuentas_IDTipodeCuenta`, `usuarios_DNI`) 
+VALUES ('8998', '15616', '2019-09-12', '10000', '1', '2', '123457');
+INSERT INTO `bdbanco`.`cuentas` (`NrodeCuenta`, `CBU`, `FechadeCreacion`, `Saldo`, `Estado`, `tiposdecuentas_IDTipodeCuenta`, `usuarios_DNI`) 
+VALUES ('7893', '25168', '2021-05-19', '10000', '1', '1', '123457');
+INSERT INTO `bdbanco`.`cuentas` (`NrodeCuenta`, `CBU`, `FechadeCreacion`, `Saldo`, `Estado`, `tiposdecuentas_IDTipodeCuenta`, `usuarios_DNI`) 
+VALUES ('3872', '23153', '2019-06-03', '10000', '1', '2', '123458');
+INSERT INTO `bdbanco`.`cuentas` (`NrodeCuenta`, `CBU`, `FechadeCreacion`, `Saldo`, `Estado`, `tiposdecuentas_IDTipodeCuenta`, `usuarios_DNI`) 
+VALUES ('7823', '57863', '2018-05-09', '10000', '1', '1', '123459');
+INSERT INTO `bdbanco`.`cuentas` (`NrodeCuenta`, `CBU`, `FechadeCreacion`, `Saldo`, `Estado`, `tiposdecuentas_IDTipodeCuenta`, `usuarios_DNI`) 
+VALUES ('7245', '35244', '2020-05-08', '10000', '1', '2', '123459');
+INSERT INTO `bdbanco`.`cuentas` (`NrodeCuenta`, `CBU`, `FechadeCreacion`, `Saldo`, `Estado`, `tiposdecuentas_IDTipodeCuenta`, `usuarios_DNI`) 
+VALUES ('5275', '22665', '2020-06-25', '10000', '1', '1', '1234510');
+INSERT INTO `bdbanco`.`cuentas` (`NrodeCuenta`, `CBU`, `FechadeCreacion`, `Saldo`, `Estado`, `tiposdecuentas_IDTipodeCuenta`, `usuarios_DNI`) 
+VALUES ('7523', '21354', '2021-02-16', '10000', '1', '2', '1234510');
+-- --------------------------
+-- Registro de cuentas. 
+-- --------------------------
+INSERT INTO `bdbanco`.`tiposdemovimientos` (`IDTipodeMovimiento`, `Descripcion`, `Estado`)
+VALUES ('4', 'varios', '1');
