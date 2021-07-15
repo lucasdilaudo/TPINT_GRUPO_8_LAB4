@@ -51,15 +51,12 @@ public class ServletTransferencia extends HttpServlet {
 		
 		if(request.getParameter("btnTransferir")!=null) {
 			try {
-				Double saldo = 0.00;
-				Cuenta c = NegocioCuenta.ObtenerCuentaConDNI(request.getSession().getAttribute("DNI").toString());
-				saldo = c.getSaldo();
+			
 				
 				if(request.getParameter("ddlNroDeCuenta").toString().equals("0")) {
 					request.setAttribute("Mensaje", "Por favor seleccione una Cuenta");
 					ArrayList<Cuenta> ac = NegocioCuenta.ObtenerCuentasPorUsuario(request.getSession().getAttribute("DNI").toString());
-					
-					System.out.println(saldo);
+			
 					request.setAttribute("listaCuentas", ac);
 					RequestDispatcher rd = request.getRequestDispatcher("Transferencias.jsp");
 					rd.forward(request, response);
@@ -73,6 +70,9 @@ public class ServletTransferencia extends HttpServlet {
 				 }
 				 
 				if(NegocioCuenta.Existe(request.getParameter("txtCbuDestino"))) {
+					Double saldo = 0.00;
+					Cuenta c = NegocioCuenta.ObtenerCuenta(request.getParameter("ddlNroDeCuenta"));
+					saldo = c.getSaldo();
 					mov.setFecha(fecha.getYear()+"-"+fecha.getMonthValue()+"-"+fecha.getDayOfMonth());
 					mov.setDetalle(request.getParameter("Motivo"));
 					mov.setImporte(Float.parseFloat(request.getParameter("txtImporte")));
@@ -81,6 +81,7 @@ public class ServletTransferencia extends HttpServlet {
 					mov.setCbuDestino(Integer.parseInt(request.getParameter("txtCbuDestino")));
 					
 					saldo = saldo - mov.getImporte();
+					System.out.println(saldo);
 					ValidarSaldos.ValidarSaldos(saldo);
 					
 					if(NegocioMovimiento.AgregarTransferencia(mov)) request.setAttribute("Mensaje", "Transferencia realizada con exito");

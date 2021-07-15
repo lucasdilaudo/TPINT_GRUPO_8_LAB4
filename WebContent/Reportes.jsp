@@ -15,6 +15,7 @@ String Usuario = (String) session.getAttribute("Usuario");
 Usuario:<%out.print(Usuario); %>
 <br>
 <h1 align="left">Reportes</h1>
+<a href="${pageContext.request.contextPath}/MenuAdmin.jsp?action=LIST"> Volver al menu</a>
 <br>	  
 <div  style="padding-left: 10px;
 		    margin-left: 10px;

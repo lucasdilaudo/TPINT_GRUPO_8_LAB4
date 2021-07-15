@@ -22,7 +22,8 @@ public interface CuentaDaoInterfaz {
 	public ArrayList<Cuenta> ObtenerTodo();
 	
 	public int CantidadCuentas(String DNI);
-
+	
+	public Cuenta ObtenerCuenta(String CBU);
 	
 	public ArrayList<Cuenta> ObtenerCuentPorUsuario(String dni);
 	

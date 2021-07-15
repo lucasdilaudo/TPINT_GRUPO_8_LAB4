@@ -75,46 +75,7 @@ public class ServletPrestamo extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-//		if (request.getParameter("btnVolver")!=null) {
-//			RequestDispatcher rd = request.getRequestDispatcher("MenuUsuario.jsp");
-//			rd.forward(request, response);
-//		}
-		
-//		if(request.getParameter("btnSolicitar")!=null)
-//	    {
-//			 LocalDate fecha = LocalDate.now(); 
-//			 Cuenta cu = NegocioCuenta.ObtenerCuentaConDNI(request.getParameter("DNI"));
-//			 Prestamo p = new Prestamo();
-//		     System.out.println(cu);
-//			 p.setCBU(cu.getCBU());
-//			 //p.setFecha(fecha.toString());
-//			 p.setFecha(fecha.getYear()+"-"+fecha.getMonthValue()+"-"+fecha.getDayOfMonth());
-//		     p.setImporteaPagar(Double.parseDouble(request.getParameter("txtImporte"))*1.5);
-//		     p.setImportePedido(Double.parseDouble(request.getParameter("txtImporte")));
-//		     if (Integer.valueOf(request.getParameter("PlazoMeses"))==1) {
-//		    	 p.setPlazo(12);
-//		     }else {
-//		    	 p.setPlazo(24);
-//		     }
-//		     
-//		     p.setMontoMensual(p.getImporteaPagar()/p.getPlazo());
-//		     p.setCantCuotas(p.getPlazo());
-//		    
-//		     
-//		     String Mensaje;
-//		     
-//		     if(NegocioPrestamo.AgregarPrestamo(p)) {
-//		    	 Mensaje = "Prestamo en proceso de autorizacion";
-//		     }
-//		     else { 
-//		    	 Mensaje = "Prestamo no disponible por el momento";
-//		    	 
-//		     }
-//		   //REQUESTDISPACHER
-//			request.setAttribute("Mensaje", Mensaje);
-//			RequestDispatcher rd = request.getRequestDispatcher("Prestamos.jsp");
-//			rd.forward(request, response);
-//	    }
+
 		if(request.getParameter("btnSolicitar")!=null){
 			 LocalDate fecha = LocalDate.now(); 
 			 Prestamo p = new Prestamo();

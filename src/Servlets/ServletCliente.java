@@ -67,7 +67,6 @@ public class ServletCliente extends HttpServlet {
 		     c.setApellido(request.getParameter("txtApellido")); 
 		     c.setSexo(Integer.parseInt(request.getParameter("ddlSexo")));
 		     c.setNacionalidad(request.getParameter("txtNacionalidad"));
-		     //c.setFecha(request.getParameter("txtAnio")+"-"+request.getParameter("txtMes")+"-"+request.getParameter("txtDia"));  
 		    try {
 		    	Validarfecha.ValidarFecha(Integer.parseInt(request.getParameter("txtDia")), Integer.parseInt(request.getParameter("txtMes")), Integer.parseInt(request.getParameter("txtAnio")));
 		    	c.setFecha(request.getParameter("txtAnio")+"-"+ request.getParameter("txtMes")+"-"+request.getParameter("txtDia"));

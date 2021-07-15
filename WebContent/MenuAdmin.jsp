@@ -68,7 +68,7 @@ Usuario:<%out.print(Usuario); %>
 		    height: auto;">
 	<br>
 	<br>
-		<a href="Inicio.jsp">Cerrrar Session</a>
+		<a href="Inicio.jsp">Cerrar sesión</a>
 		</div>
 		
 		

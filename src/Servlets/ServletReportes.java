@@ -45,7 +45,6 @@ public class ServletReportes extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(request.getParameter("btnBuscar1")!=null) {
 			ArrayList<String[]> ar = NegocioReportes.Reportepormeses(Integer.parseInt(request.getParameter("txtAnio").toString()));
-			//NegocioReportes.Reportepormeses(Integer.parseInt(request.getParameter("txtAnio").toString()));
 			request.setAttribute("Tablamontopormes", ar);
 			RequestDispatcher rd = request.getRequestDispatcher("Reportes.jsp");
 			rd.forward(request, response);

@@ -37,38 +37,6 @@ public class ServletInicio extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		/*String Mensaje;
-		
-		
-		if(request.getParameter("btnIngresar")!=null)
-	    {
-			if(NegocioCliente.Saber_TipodeUsuario(request.getParameter("txtUsuario"), request.getParameter("txtConstraseña")) == 0) {
-				Mensaje="El usuario no existe.";
-				request.setAttribute("Mensaje", Mensaje);
-				RequestDispatcher rd = request.getRequestDispatcher("Inicio.jsp");
-				rd.forward(request, response);
-			}
-			else {
-				if(NegocioCliente.Saber_TipodeUsuario(request.getParameter("txtUsuario"), request.getParameter("txtConstraseña")) == 2) {
-					RequestDispatcher rd = request.getRequestDispatcher("MenuUsuario.jsp");
-					rd.forward(request, response);
-				}
-				else {
-					if(NegocioCliente.Saber_TipodeUsuario(request.getParameter("txtUsuario"), request.getParameter("txtConstraseña")) == 1) {
-						RequestDispatcher rd = request.getRequestDispatcher("MenuAdmin.jsp");
-						rd.forward(request, response);
-					}
-					else {
-						if(NegocioCliente.Saber_TipodeUsuario(request.getParameter("txtUsuario"), request.getParameter("txtConstraseña")) == 3) {
-							Mensaje="El usuario no es ni admin ni cliente - ERROR";
-							request.setAttribute("Mensaje", Mensaje);
-							RequestDispatcher rd = request.getRequestDispatcher("Inicio.jsp");
-							rd.forward(request, response);
-						}
-					}
-				}
-			}
-	    }*/	
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -97,7 +65,6 @@ public class ServletInicio extends HttpServlet {
 						
 					}
 					else {
-						//Mensaje="Datos erroneos."+" Nombre de usuario: "+c.getUsuario()+", "+usuario+". Clave: "+c.getContrasenia()+", "+clave+" tipo cliente:"+c.getTipodeCliente();
 						Mensaje="Datos erroneos.";
 						request.setAttribute("Mensaje", Mensaje);
 						direccion="Inicio.jsp";
@@ -110,7 +77,6 @@ public class ServletInicio extends HttpServlet {
 				direccion="Inicio.jsp";
 				
 			}
-				//Nombre=c.getUsuario();
 				HttpSession session = request.getSession();
 				session.setAttribute("Usuario", request.getParameter("txtUsuario"));
 				session.setAttribute("DNI", request.getParameter("txtDNI"));

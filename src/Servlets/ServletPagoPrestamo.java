@@ -82,7 +82,7 @@ public class ServletPagoPrestamo extends HttpServlet {
 				LocalDate fecha = LocalDate.now();
 				
 				Prestamo a =  NegocioPrestamo.ObtenerPrestamo((request.getParameter("hiddenId").toString()));
-				Cuenta c = NegocioCuenta.ObtenerCuentaConDNI(request.getSession().getAttribute("DNI").toString());
+				Cuenta c = NegocioCuenta.ObtenerCuentaConDNI(request.getParameter("ddlCbu"));
 				Double importe = 0.00;
 				Double saldo = 0.00;
 				
