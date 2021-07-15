@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Home</title>
 </head>
 <body>
-	<center><b><h1 style="color: gray; border: steelblue solid 1px;">Bienvenidos al Banco</h1></b></center>
+	<center><b><h1 style="color: gray; border: steelblue solid 1px;">BIENVENIDOS AL BANCO</h1></b></center>
 	<br>
 	<br>
 	<br>

@@ -26,7 +26,7 @@ String Usuario = (String) session.getAttribute("Usuario");
 Usuario:<%out.print(Usuario); %>
 <br>
 
-<h1 align="Center">Pago de Prestamos<br></h1>
+<center><h1 style="color: gray; border: steelblue solid 1px;">PAGO DE PRESTAMOS</h1></center>
 <br>
 <br>
 </div>

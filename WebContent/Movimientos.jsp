@@ -54,7 +54,7 @@ String DNI = (String) session.getAttribute("DNI");
 
 Usuario:<%out.print(Usuario); %>
 <br>
-	<h1 style="padding-left: 120px; color: gray; border: steelblue solid 1px;">Utimos Movimientos</h1>
+	<center><h1 style="color: gray; border: steelblue solid 1px;">ULTIMOS MOVIMIENTOS</h1></center>
 <a href="${pageContext.request.contextPath}/ServletMenu?IraMenuUsu=1"> Volver al menu</a><br><br>
 	<form action="${pageContext.request.contextPath}/ServletMovimiento" method="post">
 	Seleccione un CBU: <select name="ddlCbu">
