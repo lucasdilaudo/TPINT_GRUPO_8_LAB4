@@ -28,7 +28,7 @@ Usuario:<%out.print(Usuario); %>
 	
  <br><form action="${pageContext.request.contextPath}/ServletReportes?action=LIST" method="post">
 		  Monto  total por mes<br>
-		  Seleccionar Año: <input type="text" name="txtAnio" required pattern="[0-9]+">
+		  Seleccionar Aï¿½o: <input type="text" name="txtAnio" required pattern="[0-9]+">
 		 <input type="submit" name="btnBuscar1" value="Buscar"><br>
 		</form>
 		<br>

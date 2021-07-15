@@ -10,7 +10,7 @@
 <title>Transferencias</title>
 </head>
 <body>
-<h1 style="color: gray; border: steelblue solid 1px;">Transferir</h1>
+<center><h1 style="color: gray; border: steelblue solid 1px;">TRANSFERIR</h1></center>
 <% 
 String Usuario = (String) session.getAttribute("Usuario");
 String dni=(String) session.getAttribute("DNI");

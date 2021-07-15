@@ -87,7 +87,7 @@ Usuario:&nbsp;<%out.print(Usuario); %>
 				</th>
 			<tr> 
 				<tr> 
-				<th align="left">Contraseña</th>
+				<th align="left">Contraseï¿½a</th>
 				<th><input type="password" name="txtContrasenia" required>
 				</th>
 			<tr> 

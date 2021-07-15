@@ -31,7 +31,7 @@ Usuario:<%out.print(Usuario); %>
 		<table>
 			<tr>
 
-				<th align="left">N° de Cuenta</th>
+				<th align="left">Nï¿½ de Cuenta</th>
 				<th><input type="text" name="txtNrodeCuenta" required pattern="[0-9]+" title="Solo se permiten Numeros"></th>
 			<tr>
 			<tr>

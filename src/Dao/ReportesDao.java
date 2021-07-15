@@ -20,7 +20,6 @@ public class ReportesDao {
 			Connection cn = Conexion.getConexion().getSQLConexion();
 			PreparedStatement pst = cn.prepareStatement(Reportepormeses);
 			pst.setInt(1, anio);
-			System.out.println(pst.toString());
 			ResultSet rs = pst.executeQuery();
 			while(rs.next()) {
 				String[] campos = new String[4];
@@ -49,7 +48,6 @@ public class ReportesDao {
 			PreparedStatement pst = cn.prepareStatement(Clientesquemaspidierion);
 			pst.setString(1, fecha1);
 			pst.setString(2, fecha2);
-			System.out.println(pst.toString());
 			ResultSet rs = pst.executeQuery();
 			while(rs.next()) {
 				String[] campos = new String[6];

@@ -8,7 +8,7 @@
 <title>Inicio</title>
 </head>
 <body>
-	<center><b><h1 style="color: gray; border: steelblue solid 1px;">Bienvenidos al Banco</h1></b></center>
+	<center><b><h1 style="color: gray; border: steelblue solid 1px;">BIENVENIDOS AL BANCO</h1></b></center>
 	<br>
 	<br>
 	<br>
@@ -28,8 +28,8 @@
 			</tr>
 			 
 			<tr>
-				<td width="50%">Contraseña:</td>
-				<td width="50%"><input type="password" name="txtContraseña" required></td>
+				<td width="50%">Contraseï¿½a:</td>
+				<td width="50%"><input type="password" name="txtContraseï¿½a" required></td>
 				
 			</tr>
 		    <tr>

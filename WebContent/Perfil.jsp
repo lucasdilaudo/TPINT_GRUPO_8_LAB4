@@ -12,7 +12,7 @@
 <title>Perfil</title>
 </head>
 <body>
-<h1 style="color: gray; border: steelblue solid 1px;">Mi perfil</h1>
+<center><h1 style="color: gray; border: steelblue solid 1px;">MI PERFIL</h1></center>
 <% 
 String Usuario = (String) session.getAttribute("Usuario");
 String DNI= (String) session.getAttribute("DNI");

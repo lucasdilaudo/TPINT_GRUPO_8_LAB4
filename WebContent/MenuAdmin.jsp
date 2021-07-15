@@ -16,7 +16,7 @@ String Usuario = (String) session.getAttribute("Usuario");
 
 Usuario:<%out.print(Usuario); %>
 <br>
-<h1 align="center">Menu Administrador</h1>
+<center><h1 style="color: gray; border: steelblue solid 1px;">MENU ADMINISTRADOR</h1></center>
 <br>
 		<div align="center">
 		<a href="Inicio.jsp" class="badge badge-danger">Cerrar sesión</a>
