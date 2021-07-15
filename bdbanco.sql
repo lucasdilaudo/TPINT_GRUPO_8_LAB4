@@ -247,5 +247,22 @@ VALUES ('7523', '21354', '2021-02-16', '10000', '1', '2', '1234510');
 -- --------------------------
 -- Registro de cuentas. 
 -- --------------------------
-INSERT INTO `bdbanco`.`tiposdemovimientos` (`IDTipodeMovimiento`, `Descripcion`, `Estado`)
-VALUES ('4', 'varios', '1');
+INSERT INTO `bdbanco`.`tiposdemovimientos` (`IDTipodeMovimiento`, `Descripcion`, `Estado`) VALUES ('1', 'Alta de cuenta', '1');
+UPDATE `bdbanco`.`tiposdemovimientos` SET `Descripcion` = 'Transferencia' WHERE (`IDTipodeMovimiento` = '4');
+INSERT INTO `bdbanco`.`tiposdemovimientos` (`IDTipodeMovimiento`, `Descripcion`, `Estado`) VALUES ('2', 'Alta de prestamo', '1');
+INSERT INTO `bdbanco`.`tiposdemovimientos` (`IDTipodeMovimiento`, `Descripcion`, `Estado`) VALUES ('3', 'Pago de prestamo', '1');
+
+INSERT INTO `bdbanco`.`meses` (`Descripcion`) VALUES ('Enero');
+INSERT INTO `bdbanco`.`meses` (`Descripcion`) VALUES ('Febrero');
+INSERT INTO `bdbanco`.`meses` (`Descripcion`) VALUES ('Marzo');
+INSERT INTO `bdbanco`.`meses` (`Descripcion`) VALUES ('Abril');
+INSERT INTO `bdbanco`.`meses` (`Descripcion`) VALUES ('Mayo');
+INSERT INTO `bdbanco`.`meses` (`Descripcion`) VALUES ('Junio');
+INSERT INTO `bdbanco`.`meses` (`Descripcion`) VALUES ('Julio');
+INSERT INTO `bdbanco`.`meses` (`Descripcion`) VALUES ('Agosto');
+INSERT INTO `bdbanco`.`meses` (`Descripcion`) VALUES ('Septiembre');
+INSERT INTO `bdbanco`.`meses` (`Descripcion`) VALUES ('Octubre');
+INSERT INTO `bdbanco`.`meses` (`Descripcion`) VALUES ('Noviembre');
+INSERT INTO `bdbanco`.`meses` (`Descripcion`) VALUES ('Diciembre');
+
+
