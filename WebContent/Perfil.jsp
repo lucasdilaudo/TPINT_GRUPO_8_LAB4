@@ -8,6 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <title>Perfil</title>
 </head>
 <body>
@@ -28,14 +29,14 @@ Usuario:<%out.print(Usuario); %><br>
 	<table id="table_id" class="display" border="1">
 		<thead>	
 			<tr>
-				<th>DNI</th>			
-				<th>Nombre</th>	
-				<th>Apellido</th>
-				<th>Cuil</th>	
-				<th>Direccion</th>	
-				<th>Localidad</th>
-				<th>Correo</th>
-				<th>Usuario</th>
+				<th class="p-3 mb-2 bg-info text-white">DNI</th>			
+				<th class="p-3 mb-2 bg-info text-white">Nombre</th>	
+				<th class="p-3 mb-2 bg-info text-white">Apellido</th>
+				<th class="p-3 mb-2 bg-info text-white">Cuil</th>	
+				<th class="p-3 mb-2 bg-info text-white">Direccion</th>	
+				<th class="p-3 mb-2 bg-info text-white">Localidad</th>
+				<th class="p-3 mb-2 bg-info text-white">Correo</th>
+				<th class="p-3 mb-2 bg-info text-white">Usuario</th>
 			
 			</tr>
 		</thead>
@@ -61,8 +62,11 @@ Usuario:<%out.print(Usuario); %><br>
 	
 	
 	</table>
+	</div>
+	<br>
 	
-<input type="submit" name="btnVolver" value="Volver" style="margin-left: 700px"/>
+	<div  align="center">
+<input type="submit"  class="btn btn-primary" name="btnVolver" value="Volver"/>
 </div>
 </form>
 </body>

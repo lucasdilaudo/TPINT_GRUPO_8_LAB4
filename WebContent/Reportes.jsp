@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <title>Reportes</title>
 </head>
 <body>
@@ -14,8 +15,8 @@ String Usuario = (String) session.getAttribute("Usuario");
 
 Usuario:<%out.print(Usuario); %>
 <br>
-<h1 align="left">Reportes</h1>
-<a href="${pageContext.request.contextPath}/MenuAdmin.jsp?action=LIST"> Volver al menu</a>
+<h1 align="center">Reportes</h1>
+<a href="${pageContext.request.contextPath}/MenuAdmin.jsp?action=LIST" class="badge badge-secondary"> Volver al menu</a>
 <br>	  
 <div  style="padding-left: 10px;
 		    margin-left: 10px;

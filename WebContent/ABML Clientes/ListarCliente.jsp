@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <title>Listar Cliente</title>
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
@@ -37,7 +37,7 @@ String Usuario = (String) session.getAttribute("Usuario");
 Usuario:<%out.print(Usuario); %>
 <br>
 <h1 align="Center">Listar Clientes</h1>
-<a href="${pageContext.request.contextPath}/MenuAdmin.jsp?action=LIST"> Volver al menu</a><br><br>
+<a href="${pageContext.request.contextPath}/MenuAdmin.jsp?action=LIST"  class="badge badge-secondary"> Volver al menu</a><br><br>
 
 	<table id="table_id" class="display">
 		<thead>	
@@ -68,9 +68,9 @@ Usuario:<%out.print(Usuario); %>
 				<th><%= c.getLocalidad() %></th>	
 				<th><%= c.getCorreo() %></th>	
 				<th><%= c.getUsuario() %></th>
-				<th> <input type="submit" value="Eliminar" name="btnBajaCliente"
+				<th> <input type="submit" value="Eliminar" class="btn btn-danger" name="btnBajaCliente"
 				onclick="window.location.href='${pageContext.request.contextPath}/ABML Clientes/ConfirmarBajaCliente.jsp?DNI=<%=c.getDni()%>&Nombre=<%=c.getNombre()%>'"> </th>
-				<th> <input type="submit" value="Modificar" name="btnModCliente"
+				<th> <input type="submit" value="Modificar" class="btn btn-warning" name="btnModCliente"
 				onclick="window.location.href='${pageContext.request.contextPath}/ServletCliente?DNI=<%=c.getDni()%>&IraMod=1'"> </th>
 			</tr>
 			<%}

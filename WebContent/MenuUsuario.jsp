@@ -7,6 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <title>Mi Cuenta</title>
 </head>
 
@@ -21,6 +22,10 @@ Usuario:<%out.print(Usuario); %>
 <br>
 	<center><h1 style="color: gray; border: steelblue solid 1px;">Mi cuenta</h1></center>
 	<br>
+	
+	<div  align="center">
+	<a href="Inicio.jsp" class="badge badge-danger">Cerrar Sesion</a>
+	</div>
 	<br>
 	<div>
 		<div style="padding-left: 10px;
@@ -38,10 +43,10 @@ Usuario:<%out.print(Usuario); %>
 			<table style="width: 60%"  border="2">
 				 
 			    <tr>
-			    	<th>Tipo de Cuenta</th>
-			    	<th>Moneda</th>
-			    	<th width="60%">Nro de Cuenta</th>
-			    	<th width="60%">Saldo</th>
+			    	<th align="center" class="p-3 mb-2 bg-info text-white">Tipo de Cuenta</th>
+			    	<th align="center" class="p-3 mb-2 bg-info text-white">Moneda</th>
+			    	<th align="center" class="p-3 mb-2 bg-info text-white" width="60%">Nro de Cuenta</th>
+			    	<th align="center" class="p-3 mb-2 bg-info text-white" width="60%">Saldo</th>
 			    </tr>
 			  <%if(request.getAttribute("Cuentas")!=null){
 				  ArrayList<Cuenta> ac = (ArrayList) request.getAttribute("Cuentas");
@@ -86,7 +91,8 @@ Usuario:<%out.print(Usuario); %>
 			<div><a href="${pageContext.request.contextPath}/ServletMenu?IraPerfil=1"> Mi Perfil </a></div><br>
 			<div><a href="${pageContext.request.contextPath}/ServletMenu?IraPago=1"> Pago de prestamos </a></div><br>
 		</div>
+		<br>
 	</div>
-	<a href="Inicio.jsp">Cerrar Sesion</a>
+	
 </body>
 </html>

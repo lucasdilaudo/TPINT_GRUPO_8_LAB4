@@ -14,6 +14,7 @@
 <script type="text/javascript" charset="utf8"
 	src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <title>Movimientos</title>
 
 <style>
@@ -55,7 +56,7 @@ String DNI = (String) session.getAttribute("DNI");
 Usuario:<%out.print(Usuario); %>
 <br>
 	<h1 style="padding-left: 120px; color: gray; border: steelblue solid 1px;">Utimos Movimientos</h1>
-<a href="${pageContext.request.contextPath}/ServletMenu?IraMenuUsu=1"> Volver al menu</a><br><br>
+<a href="${pageContext.request.contextPath}/ServletMenu?IraMenuUsu=1"  class="badge badge-secondary"> Volver al menu</a><br><br>
 	<form action="${pageContext.request.contextPath}/ServletMovimiento" method="post">
 	Seleccione un CBU: <select name="ddlCbu">
 <%
@@ -70,9 +71,9 @@ Usuario:<%out.print(Usuario); %>
 	}
  %>
  </select>
- <input type="submit" name="btnFiltrar" value="Filtrar">
+ <input type="submit" name="btnFiltrar" value="Filtrar"  class="btn btn-info">
  <input type="hidden" name="hiddenDni" value="<%out.write(DNI);%>">
- <input type="submit" name="btnMostrarTodo" value="Mostrar todo"><br><br>
+ <input type="submit" name="btnMostrarTodo" value="Mostrar todo"  class="btn btn-info"><br><br>
 		<table id="table_id" class="display">
 		<thead>	
 			<tr>

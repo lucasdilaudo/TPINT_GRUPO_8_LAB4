@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <title>Autorizacion de prestamos</title>
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
@@ -30,8 +31,10 @@ Usuario:<%out.print(Usuario); %>
 </script>
 </head>
 <br>
-<h1 align="Center">Autorizacion de Prestamos</h1><br><br> <a href="${pageContext.request.contextPath}/MenuAdmin.jsp?action=LIST"> Volver al menu</a>
+<h1 align="Center">Autorizacion de Prestamos</h1><br><br>
+ <a href="${pageContext.request.contextPath}/MenuAdmin.jsp?action=LIST" class="badge badge-secondary"> Volver al menu</a><br><br>
  <% if(request.getAttribute("Mensaje")!=null) %><%=request.getAttribute("Mensaje")%><%  %>
+ <br>
 <table id="table_id" class="display">
 		<thead>	
 			<tr>
@@ -58,9 +61,9 @@ Usuario:<%out.print(Usuario); %>
 				<th><%= p.getPlazo() %></th>	
 				<th><%= p.getMontoMensual()%></th>	
 				<th><%= p.getCantCuotas()%></th>	
-				<th> <input type="submit" value="Rechazar" name="btnRechazarPrestamo"
+				<th> <input type="submit" value="Rechazar" class="btn btn-danger" name="btnRechazarPrestamo"
 				onclick="window.location.href='${pageContext.request.contextPath}/ServletPrestamo?Id=<%=p.getIdPrestamo()%>&Rechazar=1'"> </th>
-				<th> <input type="submit" value="Aceptar" name="btnAceptarPrestamo"
+				<th> <input type="submit" value="Aceptar" class="btn btn-success" name="btnAceptarPrestamo"
 				onclick="window.location.href='${pageContext.request.contextPath}/ServletPrestamo?Id=<%=p.getIdPrestamo()%>&Aceptar=1'"> </th>
 				
 			</tr>

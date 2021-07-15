@@ -8,6 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <title>Modificar Cuenta</title>
 </head>
 <body>
@@ -66,7 +67,7 @@ Usuario:<%out.print(Usuario); %>
 	</div>
 <br>
 	<div align="center">
-		<input type="submit" name="btnModificarCuenta" value="Modificar Cuenta"> 
+		<input type="submit" name="btnModificarCuenta" value="Modificar Cuenta" class="btn btn-warning"> 
 		<%
 		}
 			if(request.getAttribute("Mensaje")!=null){
@@ -91,7 +92,7 @@ Usuario:<%out.print(Usuario); %>
 		
 			<br> <br>
 		
-	<a href="${pageContext.request.contextPath}/ServletCuenta?action=LIST&IraListar=1">Volver a Listar Cuenta</a>
+	<a href="${pageContext.request.contextPath}/ServletCuenta?action=LIST&IraListar=1" class="badge badge-secondary">Volver a Listar Cuenta</a>
 	</div>
 	
 	</form>

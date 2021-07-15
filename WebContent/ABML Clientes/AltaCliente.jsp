@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <title>Alta Cliente</title> 
 </head>
 <body>
@@ -13,7 +14,8 @@ String Usuario = (String) session.getAttribute("Usuario");
 
 Usuario:&nbsp;<%out.print(Usuario); %>
 <br>
-	<h1 align="center">Alta Clientes</h1> <a href="${pageContext.request.contextPath}/MenuAdmin.jsp?action=LIST"> Volver al menu</a>
+	<h1 align="center">Alta Clientes</h1> 
+	<a href="${pageContext.request.contextPath}/MenuAdmin.jsp?action=LIST" class="badge badge-secondary"> Volver al menu</a>
 	
 		<form action="${pageContext.request.contextPath}/ServletCliente?action=LIST" method="get">
 		
@@ -104,7 +106,8 @@ Usuario:&nbsp;<%out.print(Usuario); %>
 	</div>
 
 <div align="center">
-<input type="submit" name="btnguardarCliente" value="Guardar Cliente">
+<br>
+<input type="submit" name="btnguardarCliente" value="Guardar Cliente"  class="btn btn-success">
 <% 
  
 

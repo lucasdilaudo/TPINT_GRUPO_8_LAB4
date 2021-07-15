@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <title>Confirmar Baja</title>
 </head>
 <body>
@@ -22,7 +23,7 @@ Usuario:<%out.print(Usuario); %>
 <br><br>
 Dni:<%= request.getParameter("DNI") %>  Nombre:<%= request.getParameter("Nombre") %> 
 <br><br>
-<input type="submit" name="ConfirmarSi" value="Si" style=" width: 82px">
+<input type="submit" name="ConfirmarSi" value="Si" style=" width: 82px"  class="btn btn-danger">
 
 <input type=hidden value=<%= request.getParameter("DNI") %> name="hiddenDNI">
 <br>
@@ -40,7 +41,7 @@ Dni:<%= request.getParameter("DNI") %>  Nombre:<%= request.getParameter("Nombre"
  %>
  
  <br><br>
- <a href="${pageContext.request.contextPath}/ServletCliente?IraListar=1">Volver a Listar Clientes</a>
+ <a href="${pageContext.request.contextPath}/ServletCliente?IraListar=1" class="badge badge-secondary">Volver a Listar Clientes</a>
 </div>
 </form>
 </body>

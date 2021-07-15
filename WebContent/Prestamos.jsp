@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <title>Insert title here</title>
 </head>
 <body>
@@ -19,6 +20,7 @@ String DNI = (String) session.getAttribute("DNI");
 Usuario:<%out.print(Usuario); %>
 <br>
 <br>
+<a href="${pageContext.request.contextPath}/ServletMenu?IraMenuUsu=1" class="badge badge-secondary"> Volver al menu</a><br>
 <br>
 <form action="${pageContext.request.contextPath}/ServletPrestamo?action=LIST&DNI=<%out.print(DNI); %>" method="post">
 <b>Seleccione un CBU donde se acreditara el prestamo:</b>
@@ -57,10 +59,10 @@ Usuario:<%out.print(Usuario); %>
  <br>
  <br>
  <br>
- <input type="submit" name="btnSolicitar" value="Solicitar Prestamo">
+ <input type="submit" name="btnSolicitar" value="Solicitar Prestamo" class="btn btn-success">
  <input type="hidden" name="hiddenDni" value="<%out.write(DNI);%>">
  </form>
- <input type="submit" name="btnVolver" value="Volver" style="margin-left: 700px" onclick="window.location.href='${pageContext.request.contextPath}/ServletMenu?IraMenuUsu=1'">
+ 
  <% 
  
 

@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <title>Confirmar Baja</title>
 </head>
 <body>
@@ -27,7 +28,7 @@ Usuario:<%out.print(Usuario); %>
 				 ¿Esta seguro que desea dar de baja esta Cuenta?<br><br>
 				Nro de Cuenta: <%= request.getParameter("NrodeCuenta") %> 
 				 CBU: <%= request.getParameter("CBU") %> Nombre del Usuario:  <%= request.getParameter("Nombre") %>  <br><br>
-				 <input type="submit" name="ConfirmarBajaSi" value="Dar de Baja" style=" width: 123px">
+				 <input type="submit" name="ConfirmarBajaSi" value="Dar de Baja" style=" width: 123px" class="btn btn-danger">
 				
 				<br>
 				<br>
@@ -55,7 +56,7 @@ Usuario:<%out.print(Usuario); %>
 	
  %>
  <br><br>
- <a href="${pageContext.request.contextPath}/ServletCuenta?action=LIST&IraListar=1">Volver a Listar Cuentas</a>
+ <a href="${pageContext.request.contextPath}/ServletCuenta?action=LIST&IraListar=1" class="badge badge-secondary">Volver a Listar Cuentas</a>
  
 <br>
 </div>

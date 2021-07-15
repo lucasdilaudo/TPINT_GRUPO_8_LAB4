@@ -8,6 +8,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <title>Pago de prestamos</title>
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
@@ -31,7 +32,7 @@ Usuario:<%out.print(Usuario); %>
 <br>
 </div>
 <br>
-<a href="${pageContext.request.contextPath}/ServletMenu?IraMenuUsu=1">Volver</a>
+<a href="${pageContext.request.contextPath}/ServletMenu?IraMenuUsu=1" class="badge badge-secondary"> Volver al menu</a><br>
 <br><br>
 
 <script type="text/javascript">
@@ -93,16 +94,24 @@ Usuario:<%out.print(Usuario); %>
 	</ul>
 	<% if(request.getAttribute("PrestamoElegido")!=null){ 
 		int cantcuotas = Integer.parseInt(request.getAttribute("CantCuotas").toString());	
-	%><table>
-		<tr> <th align="left">Prestamo Seleccionado :</th> <th  align="left"><%= hidden.getIdPrestamo() %> </th> </tr>
-		<tr><th  align="left">Cantidad de Cuotas:</th> <th  align="left"> <select name="ddlCuotas" style="width: 46px; ">
+	%><table class="border border-dark">
+		<tr class="border border-dark"> 
+			<th align="left">Prestamo Seleccionado :</th> 
+			<th  align="left"><%= hidden.getIdPrestamo() %> </th> 
+		</tr>
+		<tr class="border border-dark">
+			<th  class="border border-dark" align="left">Cantidad de Cuotas:</th> 
+			<th  align="left"> <select name="ddlCuotas" style="width: 46px; ">
 								<% for(int i=1;i<=cantcuotas;i++){ %>
 									<option value="<%=i%>"> <%= i %> </option>
 									<% }%>
-								</select>		</th>
+								</select>		
+			</th>
 		</tr>
-		<tr>
-	<th  align="left">	Cbu : </th> <th  align="left"> <select name="ddlCbu" style="width: 46px; ">
+		<tr class="border border-dark">
+			<th class="border border-dark"  align="left">	Cbu : </th> 
+			<th  align="left"> 
+				<select name="ddlCbu" style="width: 46px; ">
 				<% ArrayList<Cuenta> ac = (ArrayList) request.getAttribute("listaCuentas");
 					for(Cuenta c : ac){
 						%>
@@ -110,10 +119,16 @@ Usuario:<%out.print(Usuario); %>
 						<% 
 					}
 				%>
-			</select> </th>
-			</tr>
-			<tr><th></th><th><input type="submit"  onclick="return confirm('Esta seguro de pagar esta cuota?')" value="Confirmar" name="btnConfirmar"></th></tr>
-			</table>
+				</select> 
+			</th>
+		</tr>
+		<tr>
+			<th></th>
+			<th>
+				<input type="submit"  class="btn btn-success"  onclick="return confirm('Esta seguro de pagar esta cuota?')" value="Confirmar" name="btnConfirmar">
+			</th>
+		</tr>
+	</table>
 	<% }%>
 </div>
 	<%if(request.getAttribute("Mensaje")!=null) %><%= request.getAttribute("Mensaje")%><%; %>

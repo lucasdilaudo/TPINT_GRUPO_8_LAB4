@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <title>Modificar Cliente</title>
 </head>
 <body>
@@ -17,7 +18,6 @@ Usuario:<%out.print(Usuario); %>
 <br>
 <h1 align="center">Modificar Cliente</h1>
 <div align="center">
-<br>
 <br>
 <form  action="${pageContext.request.contextPath}/ServletCliente?action=LIST" method="post">
 		<% Cliente c = new Cliente();
@@ -54,8 +54,8 @@ Usuario:<%out.print(Usuario); %>
 			<th><input type="email" name="txtCorreo" value="<%= c.getCorreo() %>" required></th>
 		</tr>
 	</table>
-
-<input type="submit" value="Modificar" name="btnModCliente">
+<br>
+<input type="submit" value="Modificar" name="btnModCliente" class="btn btn-warning">
 
 <%
 		}
@@ -68,7 +68,7 @@ Usuario:<%out.print(Usuario); %>
 			}
 		 %>
 		 <br><br>
-		<a href="${pageContext.request.contextPath}/ServletCliente?IraListar=1">Volver a Listar Cliente</a>
+		<a href="${pageContext.request.contextPath}/ServletCliente?IraListar=1" class="badge badge-secondary">Volver a Listar Cliente</a>
 </form>
 </div>
 

@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <title>Listar Cuentas</title>
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
@@ -37,7 +37,7 @@ Usuario:<%out.print(Usuario); %>
 <br>
 
 <h1 align="Center">Listar Cuentas</h1>
-<a href="${pageContext.request.contextPath}/MenuAdmin.jsp?action=LIST"> Volver al menu</a>
+<a href="${pageContext.request.contextPath}/MenuAdmin.jsp?action=LIST" class="badge badge-secondary"> Volver al menu</a>
 <br>
 <br>
 
@@ -83,9 +83,9 @@ Usuario:<%out.print(Usuario); %>
 					<th><%= c.getFechaCreacion() %> </th>	
 					<th><%= c.getSaldo() %> </th>
 					
-					<th> <input type="submit" value="Eliminar" name="btnBajaCuenta" 
+					<th> <input type="submit" value="Eliminar" class="btn btn-danger" name="btnBajaCuenta" 
 					onclick="window.location.href='${pageContext.request.contextPath}/ABML Cuentas/ConfirmarBajaCuenta.jsp?CBU=<%=c.getCBU()%>&NrodeCuenta=<%= c.getNroCuenta() %>&Nombre=<%=Nombres[ac.indexOf(c)]%>'"></th>
-					<th> <input type="submit" value="Modificar" name="btnModCuenta"
+					<th> <input type="submit" value="Modificar"  class="btn btn-warning" name="btnModCuenta"
 					onclick="window.location.href='${pageContext.request.contextPath}/ServletCuenta?CBU=<%=c.getCBU()%>&NrodeCuenta=<%= c.getNroCuenta() %>&IraMod=1'"></th>	
 	
 			</tr>

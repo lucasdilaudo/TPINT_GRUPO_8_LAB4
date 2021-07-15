@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<title>Inicio</title>
 </head>
 <body>
 	<center><b><h1 style="color: gray; border: steelblue solid 1px;">Bienvenidos al Banco</h1></b></center>
@@ -34,7 +35,7 @@
 		    <tr>
 		    	
 				<td width="50%"></td>
-				<td width="50%" align="center"><input type="submit" name="btnIngresar" value="Ingresar"> </td>
+				<td width="50%" align="center"><input type="submit" name="btnIngresar" value="Ingresar" class="btn btn-primary"> </td>
 				
 			</tr>
 		</table>
